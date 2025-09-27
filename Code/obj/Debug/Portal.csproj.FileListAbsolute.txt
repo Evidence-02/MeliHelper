@@ -1,0 +1,176 @@
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Portal.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Portal.pdb
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Celeste.exe
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\ExtendedVariantMode.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\FNA.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\MMHOOK_Celeste.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Mono.Cecil.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Mono.Cecil.Mdb.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Mono.Cecil.Pdb.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Mono.Cecil.Rocks.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\MonoMod.Utils.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\OutbackHelper.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\VivHelper.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\YamlDotNet.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\MonoMod.exe
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Jdenticon.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\DotNetZip.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\NLua.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Newtonsoft.Json.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\KeraLua.dll
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Celeste.pdb
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\Celeste.xml
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\FNA.xml
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\FNA.dll.config
+D:\another\Celeste\Mods\Portal\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+D:\another\Celeste\Mods\Portal\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+D:\another\Celeste\Mods\Portal\Code\obj\Debug\Portal.csproj.CopyComplete
+D:\another\Celeste\Mods\Portal\Code\obj\Debug\Portal.dll
+D:\another\Celeste\Mods\Portal\Code\obj\Debug\Portal.pdb
+D:\another\Celeste\Mods\Portal\Code\bin\Debug\MAB.DotIgnore.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Portal.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Celeste.exe
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\FNA.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\MMHOOK_Celeste.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Mono.Cecil.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Mono.Cecil.Mdb.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Mono.Cecil.Pdb.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Mono.Cecil.Rocks.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\MonoMod.Utils.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\VivHelper.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\YamlDotNet.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\MonoMod.exe
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Jdenticon.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\MAB.DotIgnore.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\DotNetZip.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\DiscordGameSDK.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Newtonsoft.Json.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\NLua.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\KeraLua.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Celeste.pdb
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\Celeste.xml
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\FNA.xml
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\FNA.dll.config
+D:\torrents\Celeste\Mods\Portal 230104\Code\bin\Debug\DiscordGameSDK.pdb
+D:\torrents\Celeste\Mods\Portal 230104\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+D:\torrents\Celeste\Mods\Portal 230104\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+D:\torrents\Celeste\Mods\Portal 230104\Code\obj\Debug\Portal.csproj.CopyComplete
+D:\torrents\Celeste\Mods\Portal 230104\Code\obj\Debug\Portal.dll
+D:\torrents\Celeste\Mods\Portal 230104\Code\obj\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Portal.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Celeste.exe
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\FNA.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\MMHOOK_Celeste.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Mono.Cecil.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Mono.Cecil.Mdb.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Mono.Cecil.Pdb.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Mono.Cecil.Rocks.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\MonoMod.Utils.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\VivHelper.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\YamlDotNet.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\MonoMod.exe
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Jdenticon.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\MAB.DotIgnore.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\DotNetZip.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\DiscordGameSDK.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Newtonsoft.Json.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\NLua.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\KeraLua.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Celeste.pdb
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\Celeste.xml
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\FNA.xml
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\FNA.dll.config
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\bin\Debug\DiscordGameSDK.pdb
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\obj\Debug\Portal.csproj.CopyComplete
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\obj\Debug\Portal.dll
+D:\torrents\Celeste\Mods\CrossoverCollab-Portal\Code\obj\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Portal.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Celeste.exe
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\FNA.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\MMHOOK_Celeste.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Mono.Cecil.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Mono.Cecil.Mdb.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Mono.Cecil.Pdb.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Mono.Cecil.Rocks.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\MonoMod.Utils.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\VivHelper.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\YamlDotNet.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\MonoMod.exe
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Jdenticon.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\MAB.DotIgnore.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\DotNetZip.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\DiscordGameSDK.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Newtonsoft.Json.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\NLua.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\KeraLua.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Celeste.pdb
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\Celeste.xml
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\FNA.xml
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\FNA.dll.config
+D:\torrents\Celeste\Mods\EviHelper\Code\bin\Debug\DiscordGameSDK.pdb
+D:\torrents\Celeste\Mods\EviHelper\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+D:\torrents\Celeste\Mods\EviHelper\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+D:\torrents\Celeste\Mods\EviHelper\Code\obj\Debug\Portal.csproj.CopyComplete
+D:\torrents\Celeste\Mods\EviHelper\Code\obj\Debug\Portal.dll
+D:\torrents\Celeste\Mods\EviHelper\Code\obj\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Portal.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Celeste.exe
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\FNA.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\MMHOOK_Celeste.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Mono.Cecil.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Mono.Cecil.Mdb.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Mono.Cecil.Pdb.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Mono.Cecil.Rocks.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\MonoMod.Utils.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\VivHelper.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\YamlDotNet.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\MonoMod.exe
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Jdenticon.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\MAB.DotIgnore.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\DotNetZip.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\DiscordGameSDK.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Newtonsoft.Json.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\NLua.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\KeraLua.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Celeste.pdb
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\Celeste.xml
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\FNA.xml
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\FNA.dll.config
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\DiscordGameSDK.pdb
+D:\torrents\Celeste\Mods\EvaHelper\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+D:\torrents\Celeste\Mods\EvaHelper\Code\obj\Debug\Portal.csproj.CopyComplete
+D:\torrents\Celeste\Mods\EvaHelper\Code\obj\Debug\Portal.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\obj\Debug\Portal.pdb
+D:\torrents\Celeste\Mods\EvaHelper\Code\bin\Debug\ExtendedVariantMode.dll
+D:\torrents\Celeste\Mods\EvaHelper\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Portal.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Portal.pdb
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\MonoMod.exe
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Jdenticon.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\MAB.DotIgnore.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\DotNetZip.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\DiscordGameSDK.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Newtonsoft.Json.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\NLua.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\KeraLua.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Celeste.pdb
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\Celeste.xml
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\FNA.xml
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\FNA.dll.config
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\bin\Debug\DiscordGameSDK.pdb
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\obj\Debug\Portal.csproj.AssemblyReference.cache
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\obj\Debug\Portal.csproj.CoreCompileInputs.cache
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\obj\Debug\Portal.csproj.CopyComplete
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\obj\Debug\Portal.dll
+C:\Users\chudi\OneDrive\Рабочий стол\Mods 230614 portal\EvaHelper\Code\obj\Debug\Portal.pdb

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Sprites>
+	<MeliHelper_BC_Flag path="Evidence02/objects_bc/flag/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="99" frames="0" />
+        <Loop id="destroy" path="idle" delay="99" frames="1" />
+    </MeliHelper_BC_Flag>
+	
+	<MeliHelper_BC_FlagTheo path="characters/theo/" start="idle">
+        <Justify x="0.5" y="0.75" />
+        <Loop id="idle" path="theo" delay="0.16" frames="0-8" />
+        <Loop id="destroy" path="idle" delay="99" frames="1" />
+    </MeliHelper_BC_FlagTheo>
+	
+	<MeliHelper_BC_Spawnpoint path="Evidence02/objects_bc/spawnpoint/" start="stop">
+        <Center />
+        <Loop id="idle" path="idle" delay="0.06" frames="0,1,2,3,2,1" />
+        <Loop id="stop" path="idle" delay="1" frames="0" />
+    </MeliHelper_BC_Spawnpoint>
+	
+	<MeliHelper_BC_ItemShield path="Evidence02/objects_bc/bonuses/" start="idle">
+        <Center />
+        <Loop id="idle" path="shield" delay="0.06" frames="0-1" />
+    </MeliHelper_BC_ItemShield>
+	
+	<MeliHelper_BC_ItemDirtBall path="Evidence02/objects_bc/bonuses/" start="idle">
+        <Center />
+        <Loop id="idle" path="dirtball" delay="0.06" frames="0-3" />
+    </MeliHelper_BC_ItemDirtBall>
+	
+	<MeliHelper_BC_Explosion path="Evidence02/objects_bc/" start="idle">
+        <Center />
+        <Anim id="idle" path="explosion" delay="0.05" frames="0-2" goto="stop" />
+        <Loop id="stop" path="explosion" delay="99" frames="2" />
+    </MeliHelper_BC_Explosion>
+	
+	<MeliHelper_BC_ExplosionBig path="Evidence02/objects_bc/" start="idle">
+        <Center />
+        <Anim id="idle" path="explosionBig" delay="0.12" frames="0-1" goto="stop" />
+        <Loop id="stop" path="explosionBig" delay="99" frames="1" />
+    </MeliHelper_BC_ExplosionBig>
+	
+	
+	
+	<MeliHelper_BombermanCapsule path="Evidence02/objects_melihelper/bomberman_capsule/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="99" frames="0" />
+        <Anim id="hit" path="idle" delay="0.06" frames="2,3,2,1" goto="idle" />
+    </MeliHelper_BombermanCapsule>
+	
+	<MeliHelper_BombermanStation path="Evidence02/objects_melihelper/bomberman_station/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="99" frames="0" />
+        <Anim id="open" path="idle" delay="0.06" frames="1-6" goto="opened" />
+        <Loop id="opened" path="idle" delay="99" frames="7" />
+    </MeliHelper_BombermanStation>
+	
+	<MeliHelper_WarpZone path="Evidence02/objects_melihelper/warpzone/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="0.12" frames="0-5" />
+    </MeliHelper_WarpZone>
+</Sprites>
