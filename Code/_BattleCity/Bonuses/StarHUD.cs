@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper._BattleCity._Bonuses
+namespace Celeste.Mod.MeliHelper._BattleCity
 {
     class StarHUD : Entity
     {

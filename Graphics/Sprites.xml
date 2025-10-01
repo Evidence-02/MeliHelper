@@ -60,4 +60,36 @@
         <Center />
         <Loop id="idle" path="idle" delay="0.12" frames="0-5" />
     </MeliHelper_WarpZone>
+	
+	<MeliHelper_CheckpointSaveFlag path="Evidence02/objects_melihelper/checkpoint_flag/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+        <Loop id="active" path="idle" delay="0.06" frames="1-7" />
+    </MeliHelper_CheckpointSaveFlag>
+	
+	
+	
+	
+	<MeliHelper_LaniHookEntity path="Evidence02/objects_lani/hook/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+    </MeliHelper_LaniHookEntity>
+	
+	<MeliHelper_LaniHookSpot path="Evidence02/objects_lani/hook_spot/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+    </MeliHelper_LaniHookSpot>
+	
+	<MeliHelper_LaniSpring path="Evidence02/objects_lani/obj_spring/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+        <Anim id="jump" path="idle" delay="0.06" frames="1,2,3,2,1" goto="idle" />
+    </MeliHelper_LaniSpring>
+	
+	<MeliHelper_LaniSnowball path="Evidence02/objects_lani/obj_snowball/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+        <Loop id="rotate" path="idle" delay="0.09" frames="0-3" />
+    </MeliHelper_LaniSnowball>
+	
 </Sprites>

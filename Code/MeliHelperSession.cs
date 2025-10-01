@@ -1,4 +1,5 @@
 ﻿using Celeste.Mod.MeliHelper._BattleCity;
+using Microsoft.Xna.Framework;
 using Monocle;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,10 @@ namespace Celeste.Mod.MeliHelper
 
 
         public Minesweeper_CellMark Minesweeper_CellMarker { get; set; } = Minesweeper_CellMark.None;
+
+        public LaniHookParams LaniHook_Params { get; set; }
+        public int LaniActiveFlagID { get; set; }
+
 
         //public Dictionary<Solid, string> RegisteredSolid { get; set; } = new Dictionary<Solid, string>();
     }
@@ -67,5 +72,14 @@ namespace Celeste.Mod.MeliHelper
         public bool PlayerCustomShooting { get; set; }
         public bool isVanillaDeaths { get; set; }
         public bool isShootOnlyCenter { get; set; }
+    }
+
+    class LaniHookParams
+    {
+        public string Direction { get; set; }
+        public float Length { get; set; }
+        public float Speed { get; set; }
+        public float Cooldown { get; set; }
+        public Color Color { get; set; }
     }
 }

@@ -123,61 +123,6 @@ namespace Celeste.Mod.MeliHelper
             return new Color(R, G, B);
         }
 
-        public static void DrawText(Vector2 pos, string text, Color color)
-        {
-            text = text.ToUpper();
-
-            int temp;
-            for (int i = 0; i < text.Length; i++)
-            {
-                string ch = text[i].ToString();
-                int len = 4;
-                bool is_double = !int.TryParse(text[i].ToString(), out temp);
-                switch (text[i])
-                {
-                    case 'I': len = 2; break;
-                    case 'L': len = 3; break;
-                    case 'M': case 'W': len = 6; break;
-                    case '!': ch = "EXCL"; len = 3; break;
-                    case '?': ch = "QUO"; break;
-                    case '(': ch = "BRCL"; len = 4; break;
-                    case ')': ch = "BRCR"; len = 4; break;
-                    case '-': ch = "DASH"; break;
-                    case '=': ch = "EQUAL"; break;
-                    case '.': ch = "PNT"; break;
-                    case ',': ch = "COM"; break;
-                    case '*': ch = "MULT"; break;
-                    //case '+': ch = "PLUS"; break;
-                    case '\'': ch = "QUOTE"; break;
-                    case ' ': len = 6; ch = ""; break;
-                }
-
-                if (ch != "")
-                    GFX.Game["Evidence02/objects_melihelper/floaty_points/idle" + ch + (is_double ? "01" : "1")].Draw(pos, Vector2.Zero, color);
-                pos.X += len;
-            }
-        }
-
-        public static int GetTextLength(string text)
-        {
-            text = text.ToUpper();
-
-            int res = 0;
-            for (int i = 0; i < text.Length; i++)
-            {
-                int len = 0;
-                switch (text[i])
-                {
-                    case 'I': len = 2; break;
-                    case 'L': case '!': len = 3; break;
-                    case 'M': case 'W': case ' ': len = 6; break;
-                    default: len = 4; break;
-                }
-                res += len;
-            }
-            return res;
-        }
-
 
 
 

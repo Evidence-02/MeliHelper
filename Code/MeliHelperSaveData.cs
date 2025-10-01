@@ -12,7 +12,7 @@ namespace Celeste.Mod.MeliHelper
 
         public Dictionary<string, int> BattleCity_HiScores { get; set; } = new Dictionary<string, int>();
 
-        public int MinesweeperFieldID { get; set; } = 0;
+        public int MinesweeperFieldSeed { get; set; } = 0;
 
     }
 }

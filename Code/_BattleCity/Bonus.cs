@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Monocle;
-using Celeste.Mod.MeliHelper._BattleCity._Bonuses;
 
 namespace Celeste.Mod.MeliHelper._BattleCity
 {
@@ -108,14 +107,14 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                 string floaty_label = Dialog.Clean(dialogue_id);
                 switch (type_text)
                 {
-                    case "gradient": level.Add(new FloatyWordsEntityGradient(pos, floaty_label)); break;
-                    case "ordinary": level.Add(new FloatyWordsEntity(pos, floaty_label, color_text)); break;
+                    case "gradient": level.Add(new TextOutlineEntityGradient(pos, floaty_label)); break;
+                    case "ordinary": level.Add(new TextOutlineEntity(pos, floaty_label, color_text)); break;
                 }
             }
 
             if (is_gen_new_bonus)
             {
-                level.Add(new FloatyWordsEntityGradient(this.Position + new Vector2(0, 6), "Reroll!"));
+                level.Add(new TextOutlineEntityGradient(this.Position + new Vector2(0, 6), "Reroll!"));
                 this.Scene.Add(new BonusDefault(
                     Field.Instance.GetPositionForBonus(),
                     BonusesController.GetRandomBonus(),

@@ -10,11 +10,11 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 {
     class Item : Entity
     {
-        Level level;
+        protected Level level;
         protected Field field;
-        Player player;
+        protected Player player;
         protected Vector2 dir;
-        float dist;
+        protected float dist;
         int id;
         protected bool is_connected;
 
@@ -29,18 +29,6 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             base.Awake(scene);
             level = scene as Level;
-        }
-
-        public override void Update()
-        {
-            base.Update();
-            if (is_connected)
-            {
-                dir = (Input.MenuUp.Check ? new Vector2(0, -1) : player.Facing == Facings.Left ? new Vector2(-1, 0) : new Vector2(1, 0));
-                Position = player.Center + dist * dir;
-                //if (MeliHelperModule.Settings.BC_Shoot.Check)
-                //    Shoot();
-            }
         }
 
         public void SetPosition(int id)

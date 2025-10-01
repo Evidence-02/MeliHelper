@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Celeste.Mod.MeliHelper._BattleCity._Bonuses;
 
 namespace Celeste.Mod.MeliHelper._BattleCity
 {
@@ -64,8 +63,8 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (info.Lifes > 3)
             {
                 texture_life.DrawCentered(new Vector2(center_x - 60, y), Color.White);
-                FontController.ShowTextNES("X", new Vector2(center_x, y - FontController.GetTextHeight() / 2), Color.White, TextAlignment.Center);
-                FontController.ShowTextNES(info.Lifes.ToString(), new Vector2(center_x + 30, y - FontController.GetTextHeight() / 2), Color.White, TextAlignment.Left);
+                FontControllerNES.ShowTextNES("X", new Vector2(center_x, y - FontControllerNES.GetTextHeight() / 2), Color.White, TextAlignment.Center);
+                FontControllerNES.ShowTextNES(info.Lifes.ToString(), new Vector2(center_x + 30, y - FontControllerNES.GetTextHeight() / 2), Color.White, TextAlignment.Left);
             }
             else
             {
@@ -93,9 +92,9 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
             // 4 Points
             y = Math.Max(510, 300 + 60 * list_events.Count + 15);
-            int x_points = center_x + FontController.GetTextWidth("POINTS") / 2;
-            FontController.ShowTextNES("POINTS", new Vector2(x_points, y), Color.White, TextAlignment.Right);
-            FontController.ShowTextNES(info.Points.ToString(), new Vector2(x_points, y + 12 + FontController.GetTextHeight()), Color.White, TextAlignment.Right);
+            int x_points = center_x + FontControllerNES.GetTextWidth("POINTS") / 2;
+            FontControllerNES.ShowTextNES("POINTS", new Vector2(x_points, y), Color.White, TextAlignment.Right);
+            FontControllerNES.ShowTextNES(info.Points.ToString(), new Vector2(x_points, y + 12 + FontControllerNES.GetTextHeight()), Color.White, TextAlignment.Right);
             
             // 5 Tanks (right side)
             if (Field.Instance != null && Field.Instance.GetEnemiesComponent != null)

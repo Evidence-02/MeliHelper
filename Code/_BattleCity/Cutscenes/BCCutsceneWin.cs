@@ -1,5 +1,4 @@
-﻿using Celeste.Mod.MeliHelper._BattleCity._Bonuses;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Monocle;
 using System;
 using System.Collections;
@@ -150,7 +149,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             base.Render();
             if (is_game_over && !is_show_screen)
-                FontController.ShowTextNES("GAME OVER", new Vector2(960, label_gameover_dy), Color.Red, TextAlignment.Center);
+                FontControllerNES.ShowTextNES("GAME OVER", new Vector2(960, label_gameover_dy), Color.Red, TextAlignment.Center);
             if (is_show_screen) Draw.Rect(-2, -2, 1924, 1084, Color.Black);
 
             float y = Y1;
@@ -159,29 +158,29 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (state_show >= 1)
             {
                 // 960 + 40
-                FontController.ShowTextNES("HI-SCORE", new Vector2(920, y), Color.Red, TextAlignment.Right);
-                FontController.ShowTextNES(hiscore_message, new Vector2(1000, y), Color.Orange, TextAlignment.Left);
+                FontControllerNES.ShowTextNES("HI-SCORE", new Vector2(920, y), Color.Red, TextAlignment.Right);
+                FontControllerNES.ShowTextNES(hiscore_message, new Vector2(1000, y), Color.Orange, TextAlignment.Left);
                 y += DY;
             }
 
-            if (state_show >= 2) FontController.ShowTextNES(current_level, new Vector2(960, y), Color.White, TextAlignment.Center);
+            if (state_show >= 2) FontControllerNES.ShowTextNES(current_level, new Vector2(960, y), Color.White, TextAlignment.Center);
             y += DY;
-            if (state_show >= 3) FontController.ShowTextNES("I-PLAYER", new Vector2(XPTS, y), Color.Red, TextAlignment.Right);
+            if (state_show >= 3) FontControllerNES.ShowTextNES("I-PLAYER", new Vector2(XPTS, y), Color.Red, TextAlignment.Right);
             y += DY;
-            if (state_show >= 3) FontController.ShowTextNES(total_points.ToString(), new Vector2(XPTS, y), Color.Orange, TextAlignment.Right);
+            if (state_show >= 3) FontControllerNES.ShowTextNES(total_points.ToString(), new Vector2(XPTS, y), Color.Orange, TextAlignment.Right);
             y += DD;
 
 
             foreach (BCEnum_EnemyType type in mass_stats.Keys)
             {
                 if (mass_stats[type].show)
-                    FontController.ShowTextNES(mass_stats[type].points.ToString(), new Vector2(565, y), Color.White, TextAlignment.Right);
+                    FontControllerNES.ShowTextNES(mass_stats[type].points.ToString(), new Vector2(565, y), Color.White, TextAlignment.Right);
                 if (state_show >= 5)
-                    FontController.ShowTextNES("PTS", new Vector2(XPTS, y), Color.White, TextAlignment.Right);
+                    FontControllerNES.ShowTextNES("PTS", new Vector2(XPTS, y), Color.White, TextAlignment.Right);
                 if (mass_stats[type].show)
-                    FontController.ShowTextNES(mass_stats[type].count_enemies.ToString(), new Vector2(880, y), Color.White, TextAlignment.Right);
+                    FontControllerNES.ShowTextNES(mass_stats[type].count_enemies.ToString(), new Vector2(880, y), Color.White, TextAlignment.Right);
                 if (state_show >= 4)
-                    FontController.ShowTextNES("<", new Vector2(920, y), Color.White, TextAlignment.Right);
+                    FontControllerNES.ShowTextNES("<", new Vector2(920, y), Color.White, TextAlignment.Right);
                 if (state_show >= 6)
                     TextureController.GetEnemyTextureUI(type).DrawCentered(new Vector2(960, y + 14), Color.White);
                 y += DD;
@@ -191,11 +190,11 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (state_show >= 7)
             {
                 Draw.Line(new Vector2(XPTS + 10, y - 15), new Vector2(1920 - XPTS - 10, y - 15), Color.White, 4);
-                FontController.ShowTextNES("TOTAL", new Vector2(XPTS, y), Color.White, TextAlignment.Right);
+                FontControllerNES.ShowTextNES("TOTAL", new Vector2(XPTS, y), Color.White, TextAlignment.Right);
             }
             
             if (state_show >= 8)
-                FontController.ShowTextNES(total_enemies.ToString(), new Vector2(880, y), Color.White, TextAlignment.Right);
+                FontControllerNES.ShowTextNES(total_enemies.ToString(), new Vector2(880, y), Color.White, TextAlignment.Right);
 
             if (is_show_gameover_bricks)
             {

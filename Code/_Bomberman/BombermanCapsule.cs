@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper
+namespace Celeste.Mod.MeliHelper._Bomberman
 {
     [CustomEntity("MeliHelper/BombermanCapsule")]
     class BombermanCapsule : Solid
@@ -44,7 +44,7 @@ namespace Celeste.Mod.MeliHelper
             if (lifes <= 0)
             {
                 Level level = SceneAs<Level>();
-                level.Add(new FloatyWordsEntity(this.Center, "800", Color.White));
+                level.Add(new TextOutlineEntity(this.Center, "800", Color.White));
                 is_opened = true;
                 if (!level.Entities.FindAll<BombermanCapsule>().Exists(t => !t.is_opened))
                 {

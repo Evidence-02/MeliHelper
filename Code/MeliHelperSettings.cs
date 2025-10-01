@@ -50,8 +50,10 @@ namespace Celeste.Mod.MeliHelper
         [SettingIgnore()]
         public bool Testing_MoveThroughWaterisDreamblock { get; set; } = false;
 
-        //[SettingRange(0, 999)]
-        //public int Debug_BonusType { get; set; } = 0;
+
+        [SettingIgnore()]
+        [SettingRange(0, 999)]
+        public int Debug_BonusType { get; set; } = 0;
 
         [SettingIgnore()]
         [SettingRange(0, 5)]
@@ -59,7 +61,15 @@ namespace Celeste.Mod.MeliHelper
 
 
 
-        [SettingIgnore()]
         public bool Debug_MinesweeperSolvedFromStart { get; set; } = false;
+
+        public bool Debug_MinesweeperAutoWin { get; set; } = false;
+
+
+
+        [SettingIgnore()]
+        public bool Debug_LaniHookShowAhhhh { get; set; } = false;
+
+        
     }
 }

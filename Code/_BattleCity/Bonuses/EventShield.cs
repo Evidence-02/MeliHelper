@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Celeste.Mod.MeliHelper._BattleCity._Bonuses;
 
 namespace Celeste.Mod.MeliHelper._BattleCity
 {

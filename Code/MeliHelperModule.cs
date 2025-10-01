@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Celeste.Mod.MeliHelper._BattleCity;
+using Celeste.Mod.MeliHelper._Lani;
 
 namespace Celeste.Mod.MeliHelper
 {
@@ -37,6 +38,7 @@ namespace Celeste.Mod.MeliHelper
             LevelTemplateController.Load();
             BonusesController.Initialize();
             EnemyTypesController.Initialize();
+            LaniController.Load();
         }
 
         public override void Unload()

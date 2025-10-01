@@ -34,8 +34,14 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         public static BCEnum_BonusType GetRandomBonus()
         {
-            //if (MeliHelperModule.Settings.Debug_BonusType > 0) 
-            //    return GetDebugBonusType();
+            if (MeliHelperModule.Settings.Debug_BonusType > 0)
+                switch (MeliHelperModule.Settings.Debug_BonusType)
+                {
+                    case 1: return BCEnum_BonusType.DirtBall;
+                    case 2: return BCEnum_BonusType.Mine;
+                    case 3: return BCEnum_BonusType.Star;
+                }
+
 
 
             BCEnum_BonusType res = BCEnum_BonusType.Star;

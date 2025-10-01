@@ -24,7 +24,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         public void Render(int x, int y)
         {
             texture.DrawCentered(new Vector2(x - 35, y));
-            FontController.ShowTextNES(seconds.ToString(), new Vector2(x + 8, y - 0.75f * FontController.GetTextHeight() / 2), 
+            FontControllerNES.ShowTextNES(seconds.ToString(), new Vector2(x + 8, y - 0.75f * FontControllerNES.GetTextHeight() / 2), 
                 Color.White, TextAlignment.Left, koef_size: 0.75f);
         }
 

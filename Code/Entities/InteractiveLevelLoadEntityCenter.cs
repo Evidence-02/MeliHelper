@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper._BattleCity
+namespace Celeste.Mod.MeliHelper
 {
     [CustomEntity("MeliHelper/InteractiveLevelLoadEntityCenter")]
     class InteractiveLevelLoadEntityCenter : Solid

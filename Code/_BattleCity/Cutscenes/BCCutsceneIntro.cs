@@ -84,7 +84,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
             if (is_show_name)
             {
-                FontController.ShowTextNES(name, new Vector2(920 - FontController.GetTextWidth(name) / 2, 500), Color.Black, TextAlignment.Left);
+                FontControllerNES.ShowTextNES(name, new Vector2(920 - FontControllerNES.GetTextWidth(name) / 2, 500), Color.Black, TextAlignment.Left);
             }
         }
 

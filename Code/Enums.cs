@@ -38,6 +38,19 @@ namespace Celeste.Mod.MeliHelper
     enum Minesweeper_CellMark { None, Flag, Question }
 
 
+
+
+    enum LaniEnum_State { Start, Wait, MovePlayer, HoldToSolid, Release, Cooldown }
+    enum LaniEnum_Grab
+    {
+        Nothing, Bounce, Explode,
+        HookSolid, HookSolidTop, HookSolidBottom, HookSolidUpward, HookSolidDownward,
+        HookEntity, HookAir,
+        GrabObject, HoldObject
+    }
+
+
+
     enum DirectionEnum { Left, Right, Up, Down }
     enum TextAlignment { Left, Center, Right }
     public enum ConditionEnum { PlayerInside, PlayerOnLeft, PlayerOnRight, BerryCollected }

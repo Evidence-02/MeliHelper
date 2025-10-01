@@ -108,7 +108,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                 if (sprite_explosion != null && sprite_explosion.CurrentAnimationID == "stop")
                 {
                     if (points > 0)
-                        level.Add(new FloatyPointsEntity(Position, points));
+                        level.Add(new TextOutlineEntity(Position, points.ToString(), Color.White));
                     RemoveSelf();
                 }
                 return;

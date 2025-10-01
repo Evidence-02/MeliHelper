@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper
+namespace Celeste.Mod.MeliHelper._Bomberman
 {
     [CustomEntity("MeliHelper/BombermanStation")]
     class BombermanStation : Entity

@@ -235,6 +235,11 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             return (mass_cells[tx, ty] != null) ? mass_cells[tx, ty].GetCellType : BCEnum_CellType.Empty;
         }
 
+        public BCEnum_CellType GetCellType(Vector2 pos)
+        {
+            return GetCellType(GetTileCX(pos), GetTileCY(pos));
+        }
+
         public bool isActualSolid(int tx, int ty)
         {
             return isActualSolid(GetCellType(tx, ty));

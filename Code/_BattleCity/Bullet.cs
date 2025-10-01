@@ -103,10 +103,10 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                     if (is_player_bullet) (parent as _Minesweeper.MinesweeperCell).Open();
                     is_show_explosion = false;
                 }
-                else if (solid is BombermanCapsule)
+                else if (solid is _Bomberman.BombermanCapsule)
                 {
                     if (is_player_bullet) 
-                        (solid as BombermanCapsule).Hit();
+                        (solid as _Bomberman.BombermanCapsule).Hit();
                 }
                 else if (!field.isInField(Position))
                     Audio.Play(SoundController.BC_FIRING_AT_THE_WALL);

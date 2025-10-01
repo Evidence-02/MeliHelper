@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper._BattleCity._EntitiesMeli
+namespace Celeste.Mod.MeliHelper
 {
     [CustomEntity("MeliHelper/MeliHelperButtonGUI")]
     class MeliHelperButtonGUI : Entity

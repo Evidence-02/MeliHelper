@@ -17,23 +17,22 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
         MTexture texture;
         Minesweeper_CellMark mark;
         bool is_exploded;
-        public bool isOpened { get; set; }
-        public bool isBomb { get; set; }
-        public int GetNeighbors { get; set; }
+        public bool isOpened { get; private set; }
+        public bool isBomb { get; private set; }
+        public int GetNeighbors { get; private set; }
 
         public MinesweeperCell(EntityData data, Vector2 offset) : base(data.Position + offset - new Vector2(8, 8))
         {
             isOpened = data.Bool("opened");
             if (data.Bool("bomb", false)) isBomb = true;
             else GetNeighbors = data.Int("neighbors");
-
-            // TODO: find field and register bomb there
-            //if (field == null) field = scene.Entities.FindFirst<MinesweeperField>(); // TODO: find first field where cell is inside
         }
 
-        public MinesweeperCell(MinesweeperField field, Vector2 position) : base(position)
+        public MinesweeperCell(MinesweeperField field, Vector2 position, bool is_bomb, int count_neighbors) : base(position)
         {
             this.field = field;
+            this.isBomb = is_bomb;
+            this.GetNeighbors = count_neighbors;
         }
 
         public override void Added(Scene scene)
@@ -43,6 +42,10 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
             solid.Add(new MeliHelperActualParentComponent(this));
             mark = Minesweeper_CellMark.None;
             UpdateTexture();
+
+            // try to find field and register cell there
+            if (field == null)
+                field = scene.Entities.FindAll<MinesweeperField>().FirstOrDefault(t => t.TryToRegisterCellThere(this));
 
             //MeliHelperModule.Instance.Session.RegisteredSolid[solid] = "MinesweeperCell";
         }
@@ -71,7 +74,8 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
         {
             player.RefillDash();
             player.RefillStamina();
-            if (MeliHelperModule.Instance.Session.Minesweeper_CellMarker == Minesweeper_CellMark.Flag)
+            if (MeliHelperModule.Instance.Session.Minesweeper_CellMarker == Minesweeper_CellMark.Flag 
+                || MeliHelperModule.Settings.Debug_MinesweeperAutoWin && isBomb)
                 InvertFlagMarker();
             else if (!isMarkedAsFlag)
             {
@@ -98,6 +102,8 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
 
         public void Open(Player player = null)
         {
+            if (isOpened) return;
+
             isOpened = true;
             solid.RemoveSelf();
             if (isBomb)
@@ -112,9 +118,11 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
             {
                 //texture = GFX.Game["Evidence02/objects_melihelper/minesweeper/cell0" + GetNeighbors];
                 if (field != null)
+                {
                     field.RegisterOpenedCell();
-                if (GetNeighbors == 0)
-                    field.OpenAllNeighborCells(this);
+                    if (GetNeighbors == 0)
+                        field.OpenAllNeighborCells(this);
+                }
             }
             UpdateTexture();
         }

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper._BattleCity._Bonuses
+namespace Celeste.Mod.MeliHelper._BattleCity
 {
     class ItemDirtBall : Item
     {
-        Vector2 speed;
+        Vector2 speed, destination;
 
         public ItemDirtBall(Field field, Player player) : base(field, player)
         {
@@ -19,30 +19,42 @@ namespace Celeste.Mod.MeliHelper._BattleCity._Bonuses
         public override void Awake(Scene scene)
         {
             base.Awake(scene);
-            Add(GFX.SpriteBank.Create("MeliHelper_BC_ItemDirtBall"));
+            Sprite sprite = GFX.SpriteBank.Create("MeliHelper_BC_ItemDirtBall");
+            sprite.Scale = new Vector2(0.6f);
+            Add(sprite);
             Depth = DepthController.BC_ITEM_DIRTBALL;
+
+            destination = player.Center;
+            Position = destination;
         }
 
         public override void Update()
         {
             base.Update();
-            if (!is_connected)
+            if (is_connected)
+            {
+                dir = (Input.MenuUp.Check ? new Vector2(0, -1) : player.Facing == Facings.Left ? new Vector2(-1, 0) : new Vector2(1, 0));
+                destination = player.Center + dist * dir;
+                Position += 0.2f * (destination - Position);
+                //if (MeliHelperModule.Settings.BC_Shoot.Check)
+                //    Shoot();
+            }
+            else
             {
                 //Position += speed * Engine.DeltaTime;
                 int tx = field.GetTileCX(Position);
                 int ty = field.GetTileCY(Position);
-                if (!field.isInField(tx, ty))
+                if (!field.isInField(tx, ty) || field.isActualSolid(tx, ty))
                 {
                     Position -= speed * Engine.DeltaTime;
                     Explode();
                 }
-                else if (field.isActualSolid(tx, ty))
-                {
-                    Position -= speed * Engine.DeltaTime;
+                else if (level.Entities.FindAll<Enemy>().Exists(t => t.CollidePoint(this.Center)))
                     Explode();
-                }
                 else
+                {
                     Position += speed * Engine.DeltaTime;
+                }
             }
         }
 
@@ -50,30 +62,29 @@ namespace Celeste.Mod.MeliHelper._BattleCity._Bonuses
         {
             base.Disconnect();
             speed = 300 * dir;
+            //Position = destination; // ?
         }
         
         public void Explode()
         {
-            //Audio.Play();
-            int cx = field.GetCellCX(Position);
-            int cy = field.GetCellCY(Position);
-
-            //for (int i = -2; i <= 2; i++)
-            //    for (int j = -2; j <= 2; j++)
-            for (int i = 0; i <= 0; i++)
-                for (int j = 0; j <= 0; j++)
-                {
-                    int tx1 = 4 * cx + 4 * i;
-                    int ty1 = 4 * cy + 4 * j;
-                    if (Math.Abs(i) + Math.Abs(j) < 4 && field.isInField(tx1, ty1))
+            List<Enemy> list_enemies = level.Entities.FindAll<Enemy>();
+            for (int i = 0; i <= 3; i++)
+                for (int j = 0; j <= 3; j++)
+                    if (!(i % 3 == 0 && j % 3 == 0))
                     {
-                            // Fill field cell with a blocks!
-                            for (int ii = 0; ii < 4; ii++)
-                                for (int jj = 0; jj < 4; jj++)
-                                    if (field.GetCellType(tx1 + ii, ty1 + jj) == BCEnum_CellType.Empty)
-                                        field.AddCellBrickTile(tx1 + ii, ty1 + jj);
+                        Vector2 pos = Position + new Vector2(8 * i - 12 - Position.X % 8 + 4, 8 * j - 12 - Position.Y % 8 + 4);
+                        if (field.isInField(pos) && field.GetCellType(pos) != BCEnum_CellType.Steel)
+                        {
+                            field.RemoveCell(pos);
+                            field.AddCell(BCEnum_CellType.Brick, pos);
+                        }
+
+                        if (i > 0 && i < 3 && j > 0 && j < 3)
+                        {
+                            foreach (var item in list_enemies.FindAll(t => t.CollidePoint(pos)))
+                                item.Die(true);
+                        }
                     }
-                }
 
             RemoveSelf();
         }

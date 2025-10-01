@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Celeste.Mod.MeliHelper._BattleCity
+namespace Celeste.Mod.MeliHelper
 {
     class LevelTemplateController
     {
@@ -113,6 +113,15 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                         list_rectangles.Add(new CustomWallInfo(new Rectangle(self.X + x, self.Y + y, w, h), clr));
                     }
                 }
+
+
+                // Any non-typical blocks
+                List<EntityData> list_blocks = data.Entities.FindAll(t => t.Name.StartsWith("MeliHelper/LaniIceBlock"));
+                foreach (EntityData entity_data in list_blocks)
+                    list_rectangles.Add(new CustomWallInfo(new Rectangle(
+                        self.X + (int)entity_data.Position.X / 8, 
+                        self.Y + (int)entity_data.Position.Y / 8, 
+                        entity_data.Width / 8, entity_data.Height / 8), Color.White * 0.8f));
 
 
                 dict_levels[self] = list_rectangles;
