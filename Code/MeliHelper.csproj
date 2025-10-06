@@ -31,12 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Celeste, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" HintPath="$(CELESTEGAMEPATH)\Celeste.dll" />
+    <Reference Include="Celeste, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib-stripped\Celeste.exe</HintPath>
+    </Reference>
     <Reference Include="CollabUtils2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Mods_not_use\CollabUtils2.dll</HintPath>
     </Reference>
-    <Reference Include="FNA" HintPath="$(CELESTEGAMEPATH)\FNA.dll" />
+    <Reference Include="FNA, Version=23.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib-stripped\FNA.dll</HintPath>
+    </Reference>
     <Reference Include="MMHOOK_Celeste" HintPath="$(CELESTEGAMEPATH)\MMHOOK_Celeste.dll" />
     <Reference Include="Mono.Cecil" HintPath="$(CELESTEGAMEPATH)\Mono.Cecil.dll" />
     <Reference Include="Mono.Cecil.Mdb" HintPath="$(CELESTEGAMEPATH)\Mono.Cecil.Mdb.dll" />
@@ -67,6 +73,9 @@
     <Reference Include="MonoMod.Utils, Version=25.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua">
+      <HintPath>lib-stripped\NLua.dll</HintPath>
     </Reference>
     <Reference Include="YamlDotNet" HintPath="$(CELESTEGAMEPATH)\YamlDotNet.dll" />
     <Reference Include="ExtendedVariantMode" HintPath="$(CELESTEGAMEPATH)\Mods\Cache\ExtendedVariantMode.ExtendedVariantMode.dll" />
@@ -122,15 +131,14 @@
     <Compile Include="Entities\_support\TemporalSpriteEntity.cs" />
     <Compile Include="_Bomberman\BombermanBorder.cs" />
     <Compile Include="_Bomberman\BombermanCapsule.cs" />
-    <Compile Include="_Lani\ActivateNearestSummitCheckpointTrigger.cs" />
-    <Compile Include="_Lani\ObjectGravityTrigger.cs" />
-    <Compile Include="_Lani\obj\LaniSnowball.cs" />
-    <Compile Include="_Lani\obj\LaniSnowballGenerator.cs" />
-    <Compile Include="_Lani\obj\LaniSpring.cs" />
-    <Compile Include="_Lani\CheckpointSaveFlag.cs" />
+    <Compile Include="Triggers\ObjectGravityTrigger.cs" />
+    <Compile Include="_Lani\LaniSnowball.cs" />
+    <Compile Include="_Lani\LaniSnowballGenerator.cs" />
+    <Compile Include="_Lani\LaniSpring.cs" />
+    <Compile Include="Entities\CheckpointSaveFlag.cs" />
     <Compile Include="_Lani\LaniHookSpot.cs" />
     <Compile Include="_Lani\LaniIceBlock.cs" />
-    <Compile Include="_Lani\obj\LaniThrowableObject.cs" />
+    <Compile Include="_Lani\LaniThrowableObject.cs" />
     <Compile Include="_Lani\setup\LaniHookClear.cs" />
     <Compile Include="_Lani\setup\LaniHookClearTrigger.cs" />
     <Compile Include="_Lani\setup\LaniHookSetEntity.cs" />
@@ -201,6 +209,5 @@
     <Compile Include="_BattleCity\Cells\FieldCellBrick.cs" />
     <Compile Include="_BattleCity\Flag.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

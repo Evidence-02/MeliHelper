@@ -25,7 +25,7 @@ entity.placements = {
         }
     }
 }
-entity.texture = "Evidence02/objects_lani/obj_spring/idle00"
+entity.texture = "Evidence02/objects_lani/loenn/spring"
 entity.fieldOrder = { "x", "y", "sprite", "koefMultX", "speedY", "speedYWithJump", "refillDash", "refillStamina", "destroyCrumblePlatformUnder" }
 
 return entity

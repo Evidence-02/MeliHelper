@@ -46,11 +46,11 @@ namespace Celeste.Mod.MeliHelper._Lani
         public static LaniHookParams GetHookParamsFromData(EntityData data)
         {
             LaniHookParams hook_params = new LaniHookParams();
-            hook_params.Direction = data.Attr("direction", "Horizontal");
-            hook_params.Length = data.Float("length", 120);
-            hook_params.Speed = data.Int("speed", 300);
-            hook_params.Cooldown = data.Float("cooldown", 0f);
-            hook_params.Color = Methods.GetColorFromString(data.Attr("color")) * data.Float("opacity", 1f);
+            hook_params.Direction = data.Attr("hookDirection", "Horizontal");
+            hook_params.Length = data.Float("hookLength", 120);
+            hook_params.Speed = data.Int("hookSpeed", 300);
+            hook_params.Cooldown = data.Float("hookCooldown", 0f);
+            hook_params.Color = Methods.GetColorFromString(data.Attr("hookColor")) * data.Float("hookOpacity", 1f);
             return hook_params;
         }
 

@@ -39,6 +39,7 @@ namespace Celeste.Mod.MeliHelper._Lani
             this.hook_origin = direction * 5;
             this.direction = direction;
             this.loc_start = player.Center + hook_origin;
+            this.loc_end = loc_start;
             this.length = 0;
             this.max_length_cur = 40;
             this.max_length = hook_params.Length;

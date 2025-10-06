@@ -220,6 +220,41 @@ namespace Celeste.Mod.MeliHelper
                 && level.Camera.Top  - bounds <= position.Y && position.Y <= level.Camera.Bottom + bounds;
         }
 
+        public static void CreateTiles(Solid entity, char tiletype, bool blendIn)
+        {
+            TileGrid tileGrid;
+            Level level = entity.SceneAs<Level>();
+            if (!blendIn)
+            {
+                tileGrid = GFX.FGAutotiler.GenerateBox(tiletype, (int)entity.Width / 8, (int)entity.Height / 8).TileGrid;
+                entity.Add(new LightOcclude());
+            }
+            else
+            {
+                Rectangle tileBounds = level.Session.MapData.TileBounds;
+                VirtualMap<char> solidsData = level.SolidsData;
+                int x = (int)(entity.X / 8f) - tileBounds.Left;
+                int y = (int)(entity.Y / 8f) - tileBounds.Top;
+                int tilesX = (int)entity.Width / 8;
+                int tilesY = (int)entity.Height / 8;
+                tileGrid = GFX.FGAutotiler.GenerateOverlay(tiletype, x, y, tilesX, tilesY, solidsData).TileGrid;
+                entity.Add(new EffectCutout());
+                entity.Depth = -10501;
+            }
+            entity.Add(tileGrid);
+            entity.Add(new TileInterceptor(tileGrid, highPriority: true));
+        }
+
+        public static ButtonBinding GetButtonBinding(string button)
+        {
+            switch (button)
+            {
+                case "BattleCity_Shoot": return MeliHelperModule.Settings.BattleCity_Shoot; break;
+                case "Minesweeper_ChangeDashMode": return MeliHelperModule.Settings.Minesweeper_ChangeDashMode; break;
+            }
+            return null;
+        }
+
 
 
 

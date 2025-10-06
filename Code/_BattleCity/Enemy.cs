@@ -36,7 +36,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         const int sx = 4, sy = 4;
 
         public Enemy(EntityData data, Vector2 offset)
-            : base(data.Position + offset - new Vector2(8, 8), 16, 16, false)
+            : base(data.Position + offset - new Vector2(8, 8), 16, 16, true)
         {
             string type = data.Attr("tankType", "Basic");
             this.opts = new EnemyTypeOptions(
@@ -59,7 +59,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         }
 
         public Enemy(Field field, Vector2 center, EnemyTypeOptions opts, bool is_contains_bonus)
-            : base(center - new Vector2(8, 8), 16, 16, false)
+            : base(center - new Vector2(8, 8), 16, 16, true)
         {
             this.field = field;
             this.opts = opts;

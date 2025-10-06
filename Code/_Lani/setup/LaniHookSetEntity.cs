@@ -35,9 +35,14 @@ namespace Celeste.Mod.MeliHelper._Lani
             base_center = Center;
             Visible = true;
             Depth = -9999999;
-            Add(new PlayerCollider(OnPlayer, new Hitbox(12, 4, -6, -2)));
-            Add(new VertexLight(Color.White, 1f, 32, 64));
-            Add(new BloomPoint(0.8f, 64));
+			
+			float size_hitbox = data.Float("hitboxSize", 6);
+            Add(new PlayerCollider(OnPlayer, new Hitbox(2 * size_hitbox, 2 * size_hitbox, -size_hitbox, -size_hitbox)));
+			if (data.Bool("addLight", true)) 
+			{
+				Add(new VertexLight(Color.White, 1f, 32, 64));
+				Add(new BloomPoint(0.8f, 64));
+			}
         }
 
         public override void Added(Scene scene)

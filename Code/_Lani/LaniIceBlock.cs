@@ -13,12 +13,19 @@ namespace Celeste.Mod.MeliHelper._Lani
     [Tracked(true)]
     class LaniIceBlock : Solid
     {
-        TileGrid tiles;
+        char tiletype;
+        bool blendin;
 
-        public LaniIceBlock(EntityData data, Vector2 offset) : base(data.Position + offset, data.Width, data.Height, false)
+        public LaniIceBlock(EntityData data, Vector2 offset) : base(data.Position + offset, data.Width, data.Height, true)
         {
-            char tiletype = data.Char("tiletype", '3');
-            Add(tiles = GFX.FGAutotiler.GenerateBox(tiletype, data.Width / 8, data.Height / 8).TileGrid);
+            tiletype = data.Char("tiletype", '3');
+            blendin = data.Bool("blendin", false);
+        }
+
+        public override void Awake(Scene scene)
+        {
+            base.Awake(scene);
+            Methods.CreateTiles(this, tiletype, blendin);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Celeste.Mod.MeliHelper._Lani
         int count_bounce;
         float timer_nokill;
 
-        public LaniSnowball(EntityData data, Vector2 offset) : base(data, offset)
+        public LaniSnowball(EntityData data, Vector2 offset) : base(data, offset + new Vector2(0, 8))
         {
             sprite_path = data.Attr("sprite", "MeliHelper_LaniSnowball");
             count_bounce = data.Int("bounces", 8);
@@ -33,8 +33,8 @@ namespace Celeste.Mod.MeliHelper._Lani
         {
             base.Added(scene);
             Add(sprite = GFX.SpriteBank.Create(sprite_path));
-            Add(new PlayerCollider(OnPlayerJump, new Hitbox(12, 4, -6, -8)));
-            Add(new PlayerCollider(OnPlayerKill, new Hitbox(+8, 6, -4, -6)));
+            Add(new PlayerCollider(OnPlayerJump, new Hitbox(20, 4, -10, -8)));
+            Add(new PlayerCollider(OnPlayerKill, new Hitbox(10, 6, -5, -6)));
             Depth = -9999999;
         }
 
@@ -64,8 +64,9 @@ namespace Celeste.Mod.MeliHelper._Lani
 
         void OnPlayerKill(Player player)
         {
-            if (!is_holding && timer_nokill <= 0 && Speed.Y > 80 && player.Center.Y > this.Center.Y + 4)
-                player.Die(this.Speed);
+            // && Speed.Y > 80
+            if (!is_holding && timer_nokill <= 0 && player.Center.Y > this.Center.Y + 4 && Methods.PlayerIsAlive(player))    
+                player.Die(Vector2.Normalize(player.Center - this.Center));
         }
 
         protected override void onCollideH(CollisionData data)

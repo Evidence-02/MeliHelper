@@ -16,10 +16,10 @@ namespace Celeste.Mod.MeliHelper._Lani
         float speed_y, speed_y_jump, koef_mult_x;
         bool is_refill_dash, is_refill_stamina, is_destroy_crumble_platform_under;
         
-        public LaniSpring(EntityData data, Vector2 offset) : base(data, offset)
+        public LaniSpring(EntityData data, Vector2 offset) : base(data, offset + new Vector2(0, 8))
         {
             Add(sprite = GFX.SpriteBank.Create(data.Attr("sprite", "MeliHelper_LaniSpring")));
-            Add(new PlayerCollider(OnPlayer, new Hitbox(16, 4, -8, -2)));
+            Add(new PlayerCollider(OnPlayer, new Hitbox(16, 4, -8, -8)));
 			koef_mult_x  = data.Float("koefMultX", 0.6f);
             speed_y      = data.Float("speedY", 320);
             speed_y_jump = data.Float("speedYWithJump", 420);
@@ -69,6 +69,11 @@ namespace Celeste.Mod.MeliHelper._Lani
                 speed.Y = 0;
             else
                 speed.Y *= -0.4f;
+        }
+
+        protected override Collider CreateCollider()
+        {
+            return new Hitbox(10, 10, -5, -10);
         }
     }
 }

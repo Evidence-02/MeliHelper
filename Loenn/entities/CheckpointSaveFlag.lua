@@ -15,7 +15,7 @@ entity.placements = {
 }
 
 function entity.texture(room, entity)
-	return "Evidence02/objects_lani/flag/idle00"
+	return "Evidence02/objects_melihelper/checkpoint_flag/idle00"
 end
 
 return entity

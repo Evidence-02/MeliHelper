@@ -19,7 +19,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         Color death_effect_color;
         bool is_destroyed, is_create_death_effect, is_kill_player_instead;
 
-        public Flag(EntityData data, Vector2 offset) : base(data.Position + offset - new Vector2(8, 8), 16, 16, true) 
+        public Flag(EntityData data, Vector2 offset) : base(data.Position + offset - new Vector2(8, 8), 16, 16, false) 
         {
             is_create_death_effect = data.Bool("createDeathEffect");
             death_effect_color = Methods.GetColorFromString(data.Attr("deathEffectColor"));

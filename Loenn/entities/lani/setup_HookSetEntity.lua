@@ -13,24 +13,31 @@ entity.placements = {
 			flagOnCollect = "",
 			periodBurst = 1.2,
 			distFloating = 8,
+			hitboxSize = 6,
+			addLight = true,
 			
-		
-			direction = "Horizontal",
-			length = 120,
-			speed = 300,
-			cooldown = 0.3,
-			color = "0000FF",
-			opacity = 0.5
+			hookDirection = "Horizontal",
+			hookLength = 120,
+			hookSpeed = 300,
+			hookCooldown = 0,
+			hookColor = "0000FF",
+			hookOpacity = 0.5
         }
     }
 }
 
+entity.fieldOrder = { "x", "y", 
+	"hookDirection", "hookLength", "hookSpeed", "hookCooldown", "hookColor", "hookOpacity",
+	"sprite", "dialogueOnCollect", "flagOnCollect", "periodBurst", "distFloating", "hitboxSize",
+	"addLight"
+}
+
 entity.fieldInformation = {
-    direction = {
+    hookDirection = {
 		options = { "Horizontal", "All directions" },
 		editable = false
     },
-	color = { fieldType = "color" }
+	hookColor = { fieldType = "color" }
 }
 
 function entity.texture(room, entity)
