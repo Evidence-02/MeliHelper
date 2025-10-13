@@ -40,6 +40,14 @@ namespace Celeste.Mod.MeliHelper._Lani
             level = scene as Level;
         }
 
+        public override void Awake(Scene scene)
+        {
+            base.Awake(scene);
+            foreach (Spikes spike in level.Entities.FindAll<Spikes>())
+                if (this.Depth >= spike.Depth)
+                    this.Depth = spike.Depth - 1;
+        }
+
         public override void Update()
         {
             base.Update();
@@ -54,7 +62,7 @@ namespace Celeste.Mod.MeliHelper._Lani
                     if (level.IsInBounds(this))
                         wasOnScreen = true;
                 }
-                else if (!level.IsInBounds(this))
+                else if (!level.IsInBounds(this.Center, 24f))
                     RemoveSelf();
             }
 

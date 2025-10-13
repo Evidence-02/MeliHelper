@@ -4,7 +4,8 @@ trigger.placements = {
 	{
 		name = "Object Gravity Trigger",
 		data = {
-			objectType = "TheoCrystal"
+			objectType = "TheoCrystal",
+			power = 1
 		}
 	}
 }

@@ -13,18 +13,7 @@ entity.placements = {
 			tiletype = "3",
 			blendin = false
         }
-    },
-    {
-        name = "Lani Ice Block (ice, delete later!)",
-        data = {
-			width = 8,
-			height = 8,
-			tiletype = "A",
-			blendin = false
-        }
-    },
-	
-	
+    }
 }
 
 return entity

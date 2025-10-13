@@ -214,10 +214,10 @@ namespace Celeste.Mod.MeliHelper
             return 1080 / (level.Camera.Bottom - level.Camera.Top);
         }
 
-        public static bool isInCamera(Level level, Vector2 position, int bounds = 0)
+        public static bool isInCamera(Level level, Vector2 position, int padding = 0)
         {
-            return level.Camera.Left - bounds <= position.X && position.X <= level.Camera.Right  + bounds
-                && level.Camera.Top  - bounds <= position.Y && position.Y <= level.Camera.Bottom + bounds;
+            return level.Camera.Left - padding <= position.X && position.X <= level.Camera.Right  + padding
+                && level.Camera.Top  - padding <= position.Y && position.Y <= level.Camera.Bottom + padding;
         }
 
         public static void CreateTiles(Solid entity, char tiletype, bool blendIn)

@@ -16,13 +16,6 @@ entity.placements = {
 			refillStamina = false,
 			destroyCrumblePlatformUnder = true
         }
-    },
-	
-	
-    {
-        name = "Lani Spring (empty, delete later)",
-        data = {
-        }
     }
 }
 entity.texture = "Evidence02/objects_lani/loenn/spring"

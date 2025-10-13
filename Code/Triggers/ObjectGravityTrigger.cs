@@ -18,7 +18,7 @@ namespace Celeste.Mod.MeliHelper
         Level level;
         Entity entity;
         string objtype;
-        float timer, period;
+        float timer, period, power;
 
         public ObjectGravityTrigger(EntityData data, Vector2 offset) : base(data, offset)
         {
@@ -27,6 +27,7 @@ namespace Celeste.Mod.MeliHelper
             // TheoCrystal
             // LaniHoldable
             objtype = data.Attr("objectType", "Player");
+            power = data.Float("power", 1f);
 
             period = 0.16f;
             timer = 0;
@@ -51,7 +52,7 @@ namespace Celeste.Mod.MeliHelper
             else
             {
                 if (   entity.CenterY >= Bottom 
-                    || Vector2.Distance(entity.Center, this.BottomCenter) <= 4 && GetSpeed().Length() <= 10)
+                    || Math.Abs(entity.Center.X - this.BottomCenter.X) <= 4 && Math.Abs(entity.Center.Y - this.BottomCenter.Y) <= 12 && GetSpeed().Length() <= 10)
                     RemoveSelf();
                 else
                 {
@@ -73,7 +74,7 @@ namespace Celeste.Mod.MeliHelper
             // equation for Y:
             // BottomCenter.Y = obj.Center.Y + obj.Speed.Y * [t] + 320 * Engine.DeltaTime * [t] * [t] / 2
             Vector2 speed = GetSpeed();
-            float a = 320 * Engine.DeltaTime * Engine.DeltaTime / 2;
+            float a = 320 * power * Engine.DeltaTime * Engine.DeltaTime / 2;
             float b = speed.Y * Engine.DeltaTime;
             float c = entity.Center.Y - BottomCenter.Y;
             float D = b * b - 4 * a * c;

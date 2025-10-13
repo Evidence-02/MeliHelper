@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Controllers\FontControllerOutline.cs" />
     <Compile Include="Entities\DateTimeMessage.cs" />
+    <Compile Include="Entities\CustomPortal.cs" />
     <Compile Include="Entities\_support\CustomLogger.cs" />
     <Compile Include="Entities\_support\CustomVirtualButtonChecker.cs" />
     <Compile Include="Entities\CustomCoreMessage.cs" />

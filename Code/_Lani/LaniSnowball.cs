@@ -33,7 +33,7 @@ namespace Celeste.Mod.MeliHelper._Lani
         {
             base.Added(scene);
             Add(sprite = GFX.SpriteBank.Create(sprite_path));
-            Add(new PlayerCollider(OnPlayerJump, new Hitbox(20, 4, -10, -8)));
+            Add(new PlayerCollider(OnPlayerJump, new Hitbox(18, 4, -9, -8)));
             Add(new PlayerCollider(OnPlayerKill, new Hitbox(10, 6, -5, -6)));
             Depth = -9999999;
         }
@@ -64,8 +64,8 @@ namespace Celeste.Mod.MeliHelper._Lani
 
         void OnPlayerKill(Player player)
         {
-            // && Speed.Y > 80
-            if (!is_holding && timer_nokill <= 0 && player.Center.Y > this.Center.Y + 4 && Methods.PlayerIsAlive(player))    
+            //
+            if (!is_holding && timer_nokill <= 0 && player.Center.Y > this.Center.Y + 4 && Methods.PlayerIsAlive(player) && Speed.Length() > 20)    
                 player.Die(Vector2.Normalize(player.Center - this.Center));
         }
 
