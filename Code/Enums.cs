@@ -53,6 +53,7 @@ namespace Celeste.Mod.MeliHelper
 
     enum DirectionEnum { Left, Right, Up, Down }
     enum TextAlignment { Left, Center, Right }
+    enum ClassicBadelineShotColorEnum { Red, Violet, Yellow, Blue, White, Black }
     public enum ConditionEnum { PlayerInside, PlayerOnLeft, PlayerOnRight, BerryCollected }
 
 }

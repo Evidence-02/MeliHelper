@@ -6,10 +6,12 @@ trigger.placements = {
         data = {
 			hookDirection = "Horizontal",
 			hookLength = 120,
-			hookSpeed = 300,
+			hookSpeed = 450,
+			hookSpeedMovePlayer = 300,
 			hookCooldown = 0,
 			hookColor = "0000FF",
 			hookOpacity = 0.5,
+			hookAllowHypers = true,
 			oneUse = true,
 			clearOnLeave = false
         }
@@ -17,7 +19,7 @@ trigger.placements = {
 }
 
 trigger.fieldOrder = { "x", "y", 
-	"hookDirection", "hookLength", "hookSpeed", "hookCooldown", "hookColor", "hookOpacity",
+	"hookDirection", "hookLength", "hookSpeed", "hookSpeedMovePlayer", "hookCooldown", "hookColor", "hookOpacity", "hookOpacity", "hookAllowHypers",
 	"oneUse", "clearOnLeave"
 }
 

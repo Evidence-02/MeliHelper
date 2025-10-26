@@ -18,8 +18,8 @@ namespace Celeste.Mod.MeliHelper
         float val, val_add_per_shoot, val_sub, delay, delay_after_shoot;
         bool is_loaded, is_dash_affective;
 
-        Vector2 spawnpoint;
-        string level_load, dialogue_before;
+        Vector2 room_spawnpoint;
+        string room_name, dialogue_before;
         Player.IntroTypes intro_type;
 
         // ???
@@ -39,10 +39,10 @@ namespace Celeste.Mod.MeliHelper
             delay_after_shoot = data.Float("delayBeforeSub", 0.7f);
             is_dash_affective = data.Bool("dashAffective", true);
 
-            level_load = data.Attr("levelLoad");
-            dialogue_before = data.Attr("dialogueBefore");
+            room_name = data.Attr("roomTeleport");
+            room_spawnpoint = new Vector2(data.Int("spawnpointX"), data.Int("spawnpointY"));
             intro_type = (Player.IntroTypes)Enum.Parse(typeof(Player.IntroTypes), data.Attr("introTypes", "WakeUp"));
-            spawnpoint = new Vector2(data.Int("spawnpointX"), data.Int("spawnpointY"));
+            dialogue_before = data.Attr("dialogueBefore");
 
             // ???
             text = data.Attr("text");
@@ -104,7 +104,7 @@ namespace Celeste.Mod.MeliHelper
             {
                 val = 1;
                 is_loaded = true;
-                level.Add(new CutsceneRoomTeleport(level_load, spawnpoint, intro_type, dialogue_before));
+                level.Add(new CutsceneRoomTeleport(room_name, room_spawnpoint, intro_type, dialogue_before));
             }
         }
 

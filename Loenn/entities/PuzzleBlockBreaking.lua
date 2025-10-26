@@ -4,12 +4,12 @@ entity.placements = {
     {
         name = "Puzzle Block Breaking",
         data = {
-			textureGUI = "Evidence02/puzzle_sugoma",
-			blocksNeedToBreak = 40,
+			textureGUI = "",
+			blocksNeedToBreak = 10,
 			action = "UnlockStrawberry",
-			flagOnSolve = "PuzzleBreakingSolved",
-			textureX = 960,
-			textureY = 60,
+			flagSetOnSolve = "PuzzleBreakingSolved",
+			textureX = 280,
+			textureY = 120,
 			textDX = 0,
 			textDY = 0,
 			textColor = "FFFFFF",
@@ -18,9 +18,13 @@ entity.placements = {
     }
 }
 entity.texture = "Evidence02/objects_melihelper/loenn/puzzle"
-entity.fieldOrder = { "x", "y", "textureGUI", "blocksNeedToBreak", "action", "flagOnSolve", "textureX", "textureY", "textDX", "textDY", "textScale" }
+entity.fieldOrder = { "x", "y", "textureGUI", "blocksNeedToBreak", "action", "flagSetOnSolve", "textureX", "textureY", "textDX", "textDY", "textScale" }
 
 entity.fieldInformation = {
+	action  = { 
+		options = { "UnlockStrawberry" }, 
+		editable = false 
+	},
 	textColor  = { fieldType = "color" },
 	blocksNeedToBreak = { field_type = "integer" }
 }

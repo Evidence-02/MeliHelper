@@ -56,45 +56,30 @@ namespace Celeste.Mod.MeliHelper
 
         public static Color GetColorFromString(string color)
         {
-            switch (color)
+            if (color.Length != 6) return Color.Black;
+
+            int R = 0, G = 0, B = 0;
+            for (int i = 0; i < color.Length; i++)
             {
-                case "Red": return Color.Red;
-                case "Orange": return Color.OrangeRed;
-                case "Blue": return Color.RoyalBlue;
-                case "Green": return Color.ForestGreen;
-                case "Yellow": return Color.Yellow;
-                case "Purple": return Color.DarkViolet;
-                case "White": return Color.White;
-                case "Black": return Color.Black;
-                case "Gray": return Color.Gray;
+                char ch = Char.ToUpper(color[i]);
+                int val = 0;
+                if (ch >= 48 && ch <= 57)
+                    val = ch - 48;
+                else if (ch >= 'A' && ch <= 'F')
+                    val = 10 + ch - 'A';
+                else return Color.Black;
 
-                default:
-                    if (color.Length != 6) return Color.Black;
-
-                    int R = 0, G = 0, B = 0;
-                    for (int i = 0; i < color.Length; i++)
-                    {
-                        char ch = Char.ToUpper(color[i]);
-                        int val = 0;
-                        if (ch >= 48 && ch <= 57)
-                            val = ch - 48;
-                        else if (ch >= 'A' && ch <= 'F')
-                            val = 10 + ch - 'A';
-                        else return Color.Black;
-
-                        switch (i)
-                        {
-                            case 0: R += 16 * val; break;
-                            case 1: R += val; break;
-                            case 2: G += 16 * val; break;
-                            case 3: G += val; break;
-                            case 4: B += 16 * val; break;
-                            case 5: B += val; break;
-                        }
-                    }
-                    return new Color(R, G, B);
+                switch (i)
+                {
+                    case 0: R += 16 * val; break;
+                    case 1: R += val; break;
+                    case 2: G += 16 * val; break;
+                    case 3: G += val; break;
+                    case 4: B += 16 * val; break;
+                    case 5: B += val; break;
+                }
             }
-
+            return new Color(R, G, B);
         }
 
         public static Color GetColorHSV(float value)
@@ -192,6 +177,13 @@ namespace Celeste.Mod.MeliHelper
                     || player.StateMachine.State == Player.StIntroWakeUp);
         }
 
+        public static void PlayerFixSubpixels(Player player)
+        {
+            player.Position = new Vector2((int)player.Position.X, (int)player.Position.Y);
+        }
+
+
+
         public static Vector2 GetMouseCoords(Level level)
         {
             return CoordsFromHUD(level, MInput.Mouse.Position);
@@ -220,10 +212,9 @@ namespace Celeste.Mod.MeliHelper
                 && level.Camera.Top  - padding <= position.Y && position.Y <= level.Camera.Bottom + padding;
         }
 
-        public static void CreateTiles(Solid entity, char tiletype, bool blendIn)
+        public static TileGrid CreateTiles(Level level, Solid entity, char tiletype, bool blendIn)
         {
             TileGrid tileGrid;
-            Level level = entity.SceneAs<Level>();
             if (!blendIn)
             {
                 tileGrid = GFX.FGAutotiler.GenerateBox(tiletype, (int)entity.Width / 8, (int)entity.Height / 8).TileGrid;
@@ -243,18 +234,87 @@ namespace Celeste.Mod.MeliHelper
             }
             entity.Add(tileGrid);
             entity.Add(new TileInterceptor(tileGrid, highPriority: true));
+            return tileGrid;
         }
 
         public static ButtonBinding GetButtonBinding(string button)
         {
             switch (button)
             {
-                case "BattleCity_Shoot": return MeliHelperModule.Settings.BattleCity_Shoot; break;
-                case "Minesweeper_ChangeDashMode": return MeliHelperModule.Settings.Minesweeper_ChangeDashMode; break;
+                case "BattleCity_Shoot": return MeliHelperModule.Settings.BattleCity_Shoot;
+                case "Minesweeper_ChangeDashMode": return MeliHelperModule.Settings.Minesweeper_ChangeDashMode;
+                case "BadelinePower_Switch": return MeliHelperModule.Settings.BadelinePower_Switch;
             }
             return null;
         }
 
+        public static void DeleteSpikesAroundRect(Level level, Rectangle rect)
+        {
+            List<Spikes> list_spikes = level.Entities.FindAll<Spikes>();
+            Rectangle rect_up = new Rectangle(rect.Left, rect.Top - 8, rect.Width, 8);
+            foreach (Entity spike in list_spikes.FindAll(t => t.Direction == Spikes.Directions.Up && t.CollideRect(rect_up)))
+                spike.RemoveSelf();
+
+            Rectangle rect_down = new Rectangle(rect.Left, rect.Bottom, rect.Width, 8);
+            foreach (Entity spike in list_spikes.FindAll(t => t.Direction == Spikes.Directions.Down && t.CollideRect(rect_down)))
+                spike.RemoveSelf();
+
+            Rectangle rect_left = new Rectangle(rect.Left - 8, rect.Top, 8, rect.Height);
+            foreach (Entity spike in list_spikes.FindAll(t => t.Direction == Spikes.Directions.Left && t.CollideRect(rect_left)))
+                spike.RemoveSelf();
+
+            Rectangle rect_right = new Rectangle(rect.Right, rect.Top, 8, rect.Height);
+            foreach (Entity spike in list_spikes.FindAll(t => t.Direction == Spikes.Directions.Right && t.CollideRect(rect_right)))
+                spike.RemoveSelf();
+        }
+
+        public static IEnumerator TrailCoroutine(Entity entity, Color color, float timer)
+        {
+            while (timer > 0)
+            {
+                TrailManager.Add(entity, color, 1);
+                timer -= Engine.DeltaTime;
+                yield return null;
+            }
+        }
+
+        public static IEnumerator TrailGradientCoroutine(Entity entity, Color color1, Color color2, float timer)
+        {
+            float timer_max = timer;
+            while (timer > 0)
+            {
+                TrailManager.Add(entity, GetColorBetween(color2, color1, timer / timer_max), 1);
+                timer -= Engine.DeltaTime;
+                yield return null;
+            }
+        }
+
+        public static IEnumerator SpinnerShatterTempCoroutine(Entity entity, Vector2 accet, float radius, float delay = 1f)
+        {
+            SpinnerShatterComponent shatter = new SpinnerShatterComponent(accet, radius);
+            entity.Add(shatter);
+            yield return delay;
+            entity.Components.Remove(shatter);
+        }
+
+        private static MethodInfo strawberryOnDash = typeof(Strawberry).GetMethod("OnDash", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static MethodInfo strawberryFlyAway = typeof(Strawberry).GetMethod("FlyAwayRoutine", BindingFlags.NonPublic | BindingFlags.Instance);
+        public static void RegisterDash(Level level)
+        {
+            level.Session.Dashes++;
+
+            Player player = level.Tracker.GetEntity<Player>();
+            List<Strawberry> list_strawberries_winged = level.Entities.FindAll<Strawberry>()
+                .FindAll(t => t.Winged);
+            foreach (Strawberry berry in list_strawberries_winged)
+            {
+                strawberryOnDash.Invoke(berry, new object[] { player.Speed });
+
+                // just flying away animation without actually flying away, funny
+                //IEnumerator flyAwayRoutine = (IEnumerator)(strawberryFlyAway.Invoke(berry, new object[] { }));
+                //berry.Add(new Coroutine(flyAwayRoutine));
+            }
+        }
 
 
 
@@ -281,27 +341,6 @@ namespace Celeste.Mod.MeliHelper
             while (Glitch.Value > 0)
             {
                 Glitch.Value -= speed * Engine.DeltaTime;
-                yield return null;
-            }
-        }
-
-        public static IEnumerator TrailCoroutine(Entity entity, Color color, float timer)
-        {
-            while (timer > 0)
-            {
-                TrailManager.Add(entity, color, 1);
-                timer -= Engine.DeltaTime;
-                yield return null;
-            }
-        }
-
-        public static IEnumerator TrailGradientCoroutine(Entity entity, Color color1, Color color2, float timer)
-        {
-            float timer_max = timer;
-            while (timer > 0)
-            {
-                TrailManager.Add(entity, GetColorBetween(color2, color1, timer / timer_max), 1);
-                timer -= Engine.DeltaTime;
                 yield return null;
             }
         }

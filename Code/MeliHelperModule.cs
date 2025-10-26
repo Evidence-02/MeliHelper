@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Celeste.Mod.MeliHelper._BattleCity;
 using Celeste.Mod.MeliHelper._Lani;
+using Celeste.Mod.MeliHelper._Baddy;
 
 namespace Celeste.Mod.MeliHelper
 {
@@ -39,6 +40,7 @@ namespace Celeste.Mod.MeliHelper
             BonusesController.Initialize();
             EnemyTypesController.Initialize();
             LaniController.Load();
+            BaddyController.Load();
         }
 
         public override void Unload()
@@ -46,6 +48,8 @@ namespace Celeste.Mod.MeliHelper
             Everest.Events.Level.OnLoadBackdrop -= OnLoadBackdrop;
             BCController.Unload();
             LevelTemplateController.Unload();
+            LaniController.Unload();
+            BaddyController.Unload();
         }
 
         private Backdrop OnLoadBackdrop(MapData map, BinaryPacker.Element child, BinaryPacker.Element super)

@@ -15,6 +15,7 @@ entity.placements = {
 			colorInside = "000000",
 			opacityBorder = 1,
 			opacityInside = 1,
+			depth = 0,
 			topLeft = true,
 			topRight = true,
 			bottomLeft = true,
@@ -25,7 +26,7 @@ entity.placements = {
 }
 
 entity.fieldOrder = { "x", "y", "width", "height", 
-	"textureBorder", 
+	"textureBorder", "depth",
 	"colorBorder", "colorInside", "opacityBorder", "opacityInside",
 	"topLeft", "topRight", "bottomLeft", "bottomRight", "solid"
 	}

@@ -24,7 +24,8 @@ namespace Celeste.Mod.MeliHelper
         public int LaniActiveFlagID { get; set; }
 
 
-        //public Dictionary<Solid, string> RegisteredSolid { get; set; } = new Dictionary<Solid, string>();
+
+        public BadelinePowerParams BadelinePower_Params { get; set; }
     }
 
     class BattleCityPlayerInfo
@@ -79,7 +80,68 @@ namespace Celeste.Mod.MeliHelper
         public string Direction { get; set; }
         public float Length { get; set; }
         public float Speed { get; set; }
+        public float SpeedMovePlayer { get; set; }
         public float Cooldown { get; set; }
         public Color Color { get; set; }
+        public bool isAllowHypers { get; set; }
+    }
+
+
+    class BadelinePowerParams
+    {
+        // Power
+        public float FullPower { get; set; }
+        public float CurrentPower { get; set; }
+        public float ShootPower { private get; set; }
+        public float LaserPower { private get; set; }
+        public float BoostPower { private get; set; }
+        public float AddMaxPowerOnStrawberryCollect { get; set; }
+
+
+        // Possible weapons
+        public bool isShootEnabled { get; set; }
+        public bool isLaserEnabled { get; set; }
+        public bool isBoostEnabled { get; set; }
+        public bool isCurrentWeaponShoot { get; set; }
+
+
+        // Visuals
+        public string uiTexture { get; set; }
+        public string uiLocation { get; set; }
+        public bool isShowUI { get; set; }
+        public bool isAffectPlayerSkin { get; set; }
+
+
+
+
+        public bool TryUseWeapon(string weapon)
+        {
+            float power_use = 0;
+            switch (weapon)
+            {
+                case "Shoot": power_use = ShootPower; break;
+                case "Laser": power_use = LaserPower; break;
+                case "Boost": power_use = BoostPower; break;
+                default: return false;
+            }
+
+            if (CurrentPower >= power_use)
+            {
+                CurrentPower -= power_use;
+                return true;
+            }
+            return false;
+        }
+
+        public void AddMaxPower(float add)
+        {
+            FullPower += add;
+            RestorePower();
+        }
+
+        public void RestorePower(float val_additional = 0)
+        {
+            CurrentPower = Math.Max(CurrentPower, FullPower) + val_additional;
+        }
     }
 }

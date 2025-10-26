@@ -33,7 +33,7 @@ entity.fieldOrder = { "x", "y", "button", "size", "koefFloating", "distanceAppea
 
 entity.fieldInformation = {
     button = {
-		options = { "BattleCity_Shoot", "Minesweeper_ChangeDashMode" },
+		options = { "BattleCity_Shoot", "Minesweeper_ChangeDashMode", "BadelinePower_Switch" },
 		editable = false
     }
 }

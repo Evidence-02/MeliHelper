@@ -11,20 +11,33 @@ entity.placements = {
 			sprite = "MeliHelper_WarpZone",
 			color = "FF0000",
 			roomTeleport = "a-00",
+			introTypes = "None",
+			spawnpointX = 0,
+			spawnpointY = 0,
+			
 			flagNotAppear = "",
 			ttl = 20,
 			radius = 16,
 			opacity = 0.6,
 			sound = "",
-			textureType = 2
+			textureType = 2,
+			showCutscene = true
         }
     }
 }
+entity.fieldOrder = { "x", "y", "sprite", "color", "roomTeleport", "introTypes", "spawnpointX", "spawnpointY", 
+	"flagNotAppear", "ttl", "radius", "opacity", "sound", "textureType", "showCutscene" }
 
 entity.fieldInformation = {
-    radius = { fieldType = "integer" },
+    introTypes = {
+		options = { "Respawn", "WalkInRight", "WalkInLeft", "Jump", "WakeUp", "Fall", "TempleMirrorVoid", "None", "ThinkForABit" },
+		editable = false
+    },
+	spawnpointX = { fieldType = "integer" },
+	spawnpointY = { fieldType = "integer" },
+	radius = { fieldType = "integer" },
 	color  = { fieldType = "color" },
-	textureType = {
+    textureType = {
 		field_type = "integer",
 		options = {
 			["Dark"] = 1,

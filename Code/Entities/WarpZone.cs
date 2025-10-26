@@ -13,13 +13,15 @@ namespace Celeste.Mod.MeliHelper
     class WarpZone : Entity
     {
         Player player;
+        Vector2 room_spawnpoint;
+        Player.IntroTypes intro_type;
         Sprite[] mass_sprites;
         Color color;
         int radius;
         float ttl, alpha;
         string room_name, sound, flag_not_appear;
         int texture_type;
-        bool is_activated;
+        bool is_activated, is_show_cutscene;
 
         public WarpZone(EntityData data, Vector2 offset) : base(data.Position + offset)
         {
@@ -27,6 +29,7 @@ namespace Celeste.Mod.MeliHelper
             color = Methods.GetColorFromString(data.Attr("color", "000000")) * data.Float("opacity", 0.6f);
             radius = data.Int("radius", 16);
             flag_not_appear = data.Attr("flagNotAppear");
+            is_show_cutscene = data.Bool("showCutscene");
             mass_sprites = new Sprite[5];
             for (int i = 0; i < mass_sprites.Length; i++)
             {
@@ -52,6 +55,8 @@ namespace Celeste.Mod.MeliHelper
             }
 
             room_name = data.Attr("roomTeleport");
+            room_spawnpoint = new Vector2(data.Int("spawnpointX"), data.Int("spawnpointY"));
+            intro_type = (Player.IntroTypes)Enum.Parse(typeof(Player.IntroTypes), data.Attr("introTypes", "None"));
             sound = data.Attr("sound");
             ttl = data.Float("ttl", 20);
             alpha = 1f;
@@ -99,7 +104,8 @@ namespace Celeste.Mod.MeliHelper
                     _BattleCity.Field.Instance.SetState(BCEnum_GameState.Pause);
                     _BattleCity.Field.Instance.GetEventUI.Visible = false;
                 }
-                SceneAs<Level>().Add(new CutsceneWarpZone(player, this, room_name, color, sound, texture_type));
+                SceneAs<Level>().Add(new CutsceneWarpZone(player, this, room_name, room_spawnpoint, intro_type, 
+                    color, sound, texture_type, is_show_cutscene));
             }
         }
     }

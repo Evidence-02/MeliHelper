@@ -14,11 +14,13 @@ namespace Celeste.Mod.MeliHelper
         Player player;
         WarpZoneTexture[] mass_textures;
         WarpZone warp_zone;
+        Vector2 room_spawnpoint;
+        Player.IntroTypes intro_type;
         Color texture_color;
         string room_teleport, sound;
         int texture_type;
         float alpha_back, alpha_hole;
-        bool is_update_canadian;
+        bool is_update_canadian, is_show_cutscene;
 
         MTexture player_texture, hair_texture;
         Vector2 player_pos;
@@ -27,14 +29,19 @@ namespace Celeste.Mod.MeliHelper
         float player_rotation, player_scale;
         float player_sprite_rotation, player_sprite_rotation_del;
 
-        public CutsceneWarpZone(Player player, WarpZone warp_zone, string room_teleport, Color color, string sound, int texture_type)
+        public CutsceneWarpZone(Player player, WarpZone warp_zone, 
+            string room_teleport, Vector2 room_spawnpoint, Player.IntroTypes intro_type,
+            Color color, string sound, int texture_type, bool is_show_cutscene = true)
         {
             this.player = player;
             this.warp_zone = warp_zone;
             this.room_teleport = room_teleport;
+            this.room_spawnpoint = room_spawnpoint;
+            this.intro_type = intro_type;
             this.sound = sound;
             this.texture_color = color;
             this.texture_type = texture_type;
+            this.is_show_cutscene = is_show_cutscene;
             Tag = Tags.HUD;
         }
 
@@ -44,30 +51,34 @@ namespace Celeste.Mod.MeliHelper
             if (Methods.PlayerIsAlive(player))
                 Methods.PlayerLock(player);
 
-            MTexture actual_texture = player.Sprite.Animations[player.Sprite.CurrentAnimationID].Frames[player.Sprite.CurrentAnimationFrame];
-            player_texture = new MTexture(actual_texture, new Rectangle((actual_texture.Width - 20) / 2, actual_texture.Height - 20, 20, 20));
+            if (is_show_cutscene)
+            {
+                MTexture actual_texture = player.Sprite.Animations[player.Sprite.CurrentAnimationID].Frames[player.Sprite.CurrentAnimationFrame];
+                player_texture = new MTexture(actual_texture, new Rectangle((actual_texture.Width - 20) / 2, actual_texture.Height - 20, 20, 20));
 
-            hair_texture = GFX.Game["Evidence02/objects_melihelper/warpzone/playerhair"];
-            //player_texture = GFX.Game["Evidence02/objects_melihelper/warpzone/player"];
-            pcenter_angle = 3 * MathExt.PI2 / 16;
-            pcenter_dist = 630;
-            player_scale = 16;
-            player_rotation = 7 * MathExt.PI2 / 4;
-            player_pos = new Vector2(920, 540) + Calc.AngleToVector(pcenter_angle, pcenter_dist);
+                hair_texture = GFX.Game["Evidence02/objects_melihelper/warpzone/playerhair"];
+                //player_texture = GFX.Game["Evidence02/objects_melihelper/warpzone/player"];
+                pcenter_angle = 3 * MathExt.PI2 / 16;
+                pcenter_dist = 630;
+                player_scale = 16;
+                player_rotation = 7 * MathExt.PI2 / 4;
+                player_pos = new Vector2(920, 540) + Calc.AngleToVector(pcenter_angle, pcenter_dist);
 
-            mass_hair_hodes = new Vector2[Math.Max(1, player.Hair.Nodes.Count)];
-            for (int i = 0; i < mass_hair_hodes.Length; i++)
-                mass_hair_hodes[i] = player.Center;
+                mass_hair_hodes = new Vector2[Math.Max(1, player.Hair.Nodes.Count)];
+                for (int i = 0; i < mass_hair_hodes.Length; i++)
+                    mass_hair_hodes[i] = player.Center;
 
-            mass_textures = new WarpZoneTexture[5];
-            for (int i = 0; i < mass_textures.Length; i++)
-                mass_textures[i] = new WarpZoneTexture(GFX.Gui["Evidence02/bc/warpZone" + texture_type],
-                    texture_color,
-                    new Vector2(920, 540) + Calc.AngleToVector((5 + i) * MathExt.PI2 / 8, 40),
-                    8f - 1.1f * i,
-                    MathExt.DegreesToRadians * 40 / (8f - 1.1f * i));
+                mass_textures = new WarpZoneTexture[5];
+                for (int i = 0; i < mass_textures.Length; i++)
+                    mass_textures[i] = new WarpZoneTexture(GFX.Gui["Evidence02/bc/warpZone" + texture_type],
+                        texture_color,
+                        new Vector2(920, 540) + Calc.AngleToVector((5 + i) * MathExt.PI2 / 8, 40),
+                        8f - 1.1f * i,
+                        MathExt.DegreesToRadians * 40 / (8f - 1.1f * i));
 
-            Audio.SetMusic(null);
+                Audio.SetMusic(null);
+            }
+
             Add(new Coroutine(Cutscene(level)));
         }
 
@@ -87,6 +98,11 @@ namespace Celeste.Mod.MeliHelper
                 player_sprite_rotation_del += 0.8f * Engine.DeltaTime;
                 player_sprite_rotation += player_sprite_rotation_del;
                 player.Sprite.Rotation = player_sprite_rotation;
+                //player.Sprite.Origin = new Vector2(20, 20);
+
+                //player.Sprite.Origin = new Vector2(0.5f, 0.75f);
+                //player.Sprite.Origin = new Vector2(player.Sprite.Width / 2, 3 * player.Sprite.Height / 4);
+
                 //player.Sprite.Color = Color.White * (delay / delay_max);
                 //player.Hair.Color = Color.White * (delay / delay_max);
 
@@ -101,28 +117,30 @@ namespace Celeste.Mod.MeliHelper
                 alpha_back += Engine.DeltaTime / 0.3f;
                 yield return null;
             }
-            yield return 0.2f;
 
-            // Warpzone appears
-            if (sound != "") Audio.Play(sound);
-            while (alpha_hole < 1)
+            if (is_show_cutscene)
             {
-                alpha_hole += Engine.DeltaTime / 0.6f;
-                yield return null;
-            }
+                // Delay
+                yield return 0.2f;
 
+                // Warpzone appears
+                if (sound != "") Audio.Play(sound);
+                while (alpha_hole < 1)
+                {
+                    alpha_hole += Engine.DeltaTime / 0.6f;
+                    yield return null;
+                }
 
-            // Silly goober got warped
-            is_update_canadian = true;
-            yield return 3.5f;
+                // Silly goober got warped
+                is_update_canadian = true;
+                yield return 3.5f;
 
-
-
-            // Black screen disappears
-            while (alpha_hole > 0)
-            {
-                alpha_hole -= Engine.DeltaTime / 0.4f;
-                yield return null;
+                // Black screen disappears
+                while (alpha_hole > 0)
+                {
+                    alpha_hole -= Engine.DeltaTime / 0.4f;
+                    yield return null;
+                }
             }
 
 
@@ -133,6 +151,10 @@ namespace Celeste.Mod.MeliHelper
         public override void Update()
         {
             base.Update();
+            if (!is_show_cutscene)
+                return;
+
+            player.Sprite.Origin = new Vector2(20, 20);
             if (alpha_back > 0)
             {
                 foreach (var item in mass_textures)
@@ -194,14 +216,14 @@ namespace Celeste.Mod.MeliHelper
 
                 //Leader.RestoreStrawberries(player.Leader);
 
-                level.Session.RespawnPoint = level.GetSpawnPoint(Vector2.Zero);
+                level.Session.RespawnPoint = level.GetSpawnPoint(room_spawnpoint);
 
                 // Unlock player moves
                 player.StateMachine.Locked = false;
                 player.StateMachine.State = 0;
                 player.ForceCameraUpdate = false;
 
-                level.LoadLevel(Player.IntroTypes.None);
+                level.LoadLevel(intro_type);
                 //Leader.RestoreStrawberries(level.Tracker.GetEntity<Player>().Leader);
             });
         }

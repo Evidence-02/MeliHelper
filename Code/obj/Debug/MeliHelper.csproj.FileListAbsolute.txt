@@ -105,3 +105,10 @@ D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_250925\Cod
 D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_250925\Code\obj\Debug\MeliHelper.csproj.CopyComplete
 D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_250925\Code\obj\Debug\MeliHelper.dll
 D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_250925\Code\obj\Debug\MeliHelper.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_251005\Code\obj\Debug\MeliHelper.csproj.AssemblyReference.cache
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_251005\Code\obj\Debug\MeliHelper.csproj.CoreCompileInputs.cache
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_251005\Code\obj\Debug\MeliHelper.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_251005\Code\obj\Debug\MeliHelper.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\Celeste.exe
+D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\FNA.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\NLua.dll

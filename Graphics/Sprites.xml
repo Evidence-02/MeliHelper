@@ -69,7 +69,6 @@
 	
 	
 	
-	
 	<MeliHelper_LaniHookEntity path="Evidence02/objects_lani/hook/" start="idle">
         <Center />
         <Loop id="idle" path="idle" delay="1" frames="0" />
@@ -92,4 +91,56 @@
         <Loop id="rotate" path="idle" delay="0.09" frames="0-3" />
     </MeliHelper_LaniSnowball>
 	
+	
+	
+    <MeliHelper_ClassicBadelineShot path="Evidence02/objects_baddy/shot/" start="red_start">
+        <Center />
+        <Anim id="red_start" path="red" delay="0.08" frames="0-3" goto="red" />
+        <Loop id="red" path="red" delay="0.08" frames="4-12" />
+        <Anim id="violet_start" path="violet" delay="0.08" frames="0-3" goto="violet" />
+        <Loop id="violet" path="violet" delay="0.08" frames="4-12" />
+        <Anim id="yellow_start" path="yellow" delay="0.08" frames="0-3" goto="yellow" />
+        <Loop id="yellow" path="yellow" delay="0.08" frames="4-12" />
+        <Anim id="blue_start" path="blue" delay="0.08" frames="0-3" goto="blue" />
+        <Loop id="blue" path="blue" delay="0.08" frames="4-12" />
+        <Anim id="white_start" path="white" delay="0.08" frames="0-3" goto="white" />
+        <Loop id="white" path="white" delay="0.08" frames="4-12" />
+        <Anim id="black_start" path="black" delay="0.08" frames="0-3" goto="black" />
+        <Loop id="black" path="black" delay="0.08" frames="4-12" />
+    </MeliHelper_ClassicBadelineShot>
+	
+	<MeliHelper_ClassicBeamRed path="Evidence02/objects_baddy/beam_red/" start="charge">
+        <Center />
+        <Anim id="charge" path="charge" delay="0.06" frames="0-13" goto="shoot" />
+        <Anim id="shoot" path="shoot" delay="0.04" frames="0-10" goto="lock" />
+        <Anim id="lock" path="lock" delay="0.03" frames="0-11" goto="off" />
+        <Loop id="off" path="lock" delay="0.03" frames="11" />
+    </MeliHelper_ClassicBeamRed>
+	
+	<MeliHelper_ClassicBeamRedStart path="Evidence02/objects_baddy/beam_red/" start="on">
+        <Center />
+        <Loop id="on" path="beamStart" delay="0.03" frames="0" />
+        <Anim id="charge" path="beamStart" delay="0.06" frames="0-4" goto="off" />
+        <Loop id="off" path="beamStart" delay="0.03" frames="5" />
+    </MeliHelper_ClassicBeamRedStart>
+
+	<MeliHelper_ClassicBeamViolet path="Evidence02/objects_baddy/beam_violet/" start="charge">
+        <Center />
+        <Anim id="charge" path="charge" delay="0.06" frames="0-13" goto="shoot" />
+        <Anim id="shoot" path="shoot" delay="0.04" frames="0-10" goto="lock" />
+        <Anim id="lock" path="lock" delay="0.03" frames="0-11" goto="off" />
+        <Loop id="off" path="lock" delay="0.03" frames="11" />
+    </MeliHelper_ClassicBeamViolet>
+	
+	<MeliHelper_ClassicBeamVioletStart path="Evidence02/objects_baddy/beam_violet/" start="on">
+        <Center />
+        <Loop id="on" path="beamStart" delay="0.03" frames="0" />
+        <Anim id="charge" path="beamStart" delay="0.06" frames="0-4" goto="off" />
+        <Loop id="off" path="beamStart" delay="0.03" frames="5" />
+    </MeliHelper_ClassicBeamVioletStart>
+	
+	<MeliHelper_BadelineShadow path="Evidence02/objects_baddy/shadow/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="0.12" frames="0-12" />
+    </MeliHelper_BadelineShadow>
 </Sprites>

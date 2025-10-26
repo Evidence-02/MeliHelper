@@ -18,16 +18,18 @@ entity.placements = {
 			
 			hookDirection = "Horizontal",
 			hookLength = 120,
-			hookSpeed = 300,
+			hookSpeed = 450,
+			hookSpeedMovePlayer = 300,
 			hookCooldown = 0,
 			hookColor = "0000FF",
-			hookOpacity = 0.5
+			hookOpacity = 0.5,
+			hookAllowHypers = true,
         }
     }
 }
 
 entity.fieldOrder = { "x", "y", 
-	"hookDirection", "hookLength", "hookSpeed", "hookCooldown", "hookColor", "hookOpacity",
+	"hookDirection", "hookLength", "hookSpeed", "hookSpeedMovePlayer", "hookCooldown", "hookColor", "hookOpacity", "hookAllowHypers",
 	"sprite", "dialogueOnCollect", "flagOnCollect", "periodBurst", "distFloating", "hitboxSize",
 	"addLight"
 }

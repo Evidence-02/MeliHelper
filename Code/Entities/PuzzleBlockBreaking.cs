@@ -17,7 +17,7 @@ namespace Celeste.Mod.MeliHelper
         Strawberry strawberry;
         Vector2 strawberry_pos;
         int count_blocks, count_blocks_max;
-        string flag_on_solve, action;
+        string flag_set_on_solve, action;
         bool is_solved;
 
         MTexture texture;
@@ -31,7 +31,7 @@ namespace Celeste.Mod.MeliHelper
 
             this.count_blocks_max = data.Int("blocksNeedToBreak", 40);
             this.count_blocks = 0;
-            this.flag_on_solve = data.Attr("flagOnSolve");
+            this.flag_set_on_solve = data.Attr("flagSetOnSolve");
             this.action = data.Attr("action", "UnlockStrawberry");
 
             string textureGUI = data.Attr("textureGUI", @"Evidence02/puzzle_sugoma");
@@ -43,12 +43,17 @@ namespace Celeste.Mod.MeliHelper
             this.text_scale = data.Float("textScale", 0.9f);
         }
 
-        public override void Added(Scene scene)
+        public override void Awake(Scene scene)
         {
-            base.Added(scene);
+            base.Awake(scene);
             Level level = scene as Level;
-            is_solved = (flag_on_solve != "" && level.Session.GetFlag(flag_on_solve));
-            
+            is_solved = (flag_set_on_solve != "" && level.Session.GetFlag(flag_set_on_solve));
+            if (is_solved)
+            {
+                RemoveSelf();
+                return;
+            }
+
             strawberry = level.Entities.FindFirst<Strawberry>();
             if (strawberry != null)
             {
@@ -59,7 +64,7 @@ namespace Celeste.Mod.MeliHelper
 
             Load();
         }
-        
+
         public override void Removed(Scene scene)
         {
             base.Removed(scene);
@@ -87,15 +92,16 @@ namespace Celeste.Mod.MeliHelper
                 position: text_center + new Vector2(0, shake_del * (float)Math.Sin(shake_sin)),
                 justify: new Vector2(0.5f),
                 scale: new Vector2(text_scale),
-                color: Color.White);
+                color: text_color);
         }
 
         public void SetSolved()
         {
             is_solved = true;
-            if (flag_on_solve != "")
-                SceneAs<Level>().Session.SetFlag(flag_on_solve, true);
-            strawberry.Position = strawberry_pos;
+            if (flag_set_on_solve != "")
+                SceneAs<Level>().Session.SetFlag(flag_set_on_solve, true);
+            if (strawberry != null)
+                strawberry.Position = strawberry_pos;
         }
 
         public void SetShake(float power, float time)
@@ -134,20 +140,20 @@ namespace Celeste.Mod.MeliHelper
             orig(self, from, direction, playSound, playDebrisSound);
             
             Level level = self.Scene as Level;
-            SugomaPuzzleEntity puzzle = level.Entities.FindFirst<SugomaPuzzleEntity>();
-            if (puzzle != null && !puzzle.is_solved)
+            PuzzleBlockBreaking puzzle = level.Entities.FindFirst<PuzzleBlockBreaking>();
+            if (puzzle != null && !puzzle.is_solved && !(self is KillPlayerDashBlock))
             {
                 puzzle.SetShake(32f, 0.4f);
                 puzzle.count_blocks++;
                 if (puzzle.count_blocks >= puzzle.count_blocks_max)
                 {
                     puzzle.SetSolved();
-                    puzzle.Add(new Coroutine(CoroutineWeaponSetVisible(level, puzzle)));
+                    puzzle.Add(new Coroutine(CoroutineStrawberryAppear(level, puzzle)));
                 }
             }
         }
 
-        static IEnumerator CoroutineWeaponSetVisible(Level level, SugomaPuzzleEntity puzzle)
+        static IEnumerator CoroutineStrawberryAppear(Level level, PuzzleBlockBreaking puzzle)
         {
             Audio.Play(SFX.game_01_birdbros_thrust);
             Player player = level.Tracker.GetEntity<Player>();

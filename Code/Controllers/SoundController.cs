@@ -10,6 +10,9 @@ namespace Celeste.Mod.MeliHelper
     {
         static string BC_PREFIX = "event:/meli/bc_";
 
+        public static string BADELINE_CLASSIC_SHOT = "event:/meli/baddy_shot";                               // +
+
+
         public static string BC_STARTUP              = BC_PREFIX + "startup";                               // +
         public static string BC_PAUSE                = BC_PREFIX + "pause";
         public static string BC_PLAYER_TANK_FIRING        = BC_PREFIX + "player_tank_firing";               // +

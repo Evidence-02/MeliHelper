@@ -36,6 +36,9 @@ namespace Celeste.Mod.MeliHelper
             show_bottomleft  = data.Bool("bottomLeft");
             show_bottomright = data.Bool("bottomRight");
             is_solid = data.Bool("solid");
+
+            int depth = data.Int("depth");
+            if (depth != 0) Depth = depth;
         }
 
         public override void Added(Scene scene)

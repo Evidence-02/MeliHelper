@@ -1,0 +1,51 @@
+﻿using Celeste.Mod.Entities;
+using Microsoft.Xna.Framework;
+using Monocle;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Celeste.Mod.MeliHelper
+{
+    [CustomEntity("MeliHelper/MoveEntityTrigger")]
+    class MoveEntityTrigger : Trigger
+    {
+        Vector2 dx, dy;
+        string entity_type;
+
+        public MoveEntityTrigger(EntityData data, Vector2 offset) : base(data, offset)
+        {
+            entity_type = data.Attr("entityType");
+
+        }
+
+        public override void OnEnter(Player player)
+        {
+            base.OnEnter(player);
+
+
+            // Hide all strawberries
+            Level level = scene as Level;
+            switch (affect)
+            {
+                case "Nearest":
+                    List<Strawberry> list_strawberries = level.Entities.FindAll<Strawberry>();
+                    if (list_strawberries.Count > 0)
+                    {
+                        Strawberry berry = list_strawberries.OrderBy(t => Vector2.Distance(t.Center, this.Center)).ToList()[0];
+                        AffectStorby(berry);
+                    }
+                    break;
+
+                // All Strawberries
+                default:
+                    foreach (var item in level.Entities.FindAll<Strawberry>())
+                        AffectStorby(item);
+                    break;
+            }
+        }
+
+    }
+}

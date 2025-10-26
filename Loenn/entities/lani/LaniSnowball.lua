@@ -9,11 +9,12 @@ entity.placements = {
         name = "Lani Snowball",
         data = {
 			sprite = "MeliHelper_LaniSnowball",
-			bounces = 8
+			bounces = 8,
+			jumps = 6
         }
     }
 }
 entity.texture = "Evidence02/objects_lani/loenn/snowball"
-entity.fieldOrder = { "x", "y", "sprite", "bounces" }
+entity.fieldOrder = { "x", "y", "sprite", "bounces", "jumps" }
 
 return entity

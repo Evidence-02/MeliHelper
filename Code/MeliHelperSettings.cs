@@ -18,8 +18,8 @@ namespace Celeste.Mod.MeliHelper
         public ButtonBinding Minesweeper_ChangeDashMode { get; set; }
 
 
-        //[DefaultButtonBinding(Buttons.LeftShoulder, Keys.LeftShift)]
-        //public ButtonBinding BC_ShootInsteadOfDash { get; set; }
+        [DefaultButtonBinding(Buttons.LeftShoulder, Keys.Tab)]
+        public ButtonBinding BadelinePower_Switch { get; set; }
 
 
 
@@ -61,15 +61,29 @@ namespace Celeste.Mod.MeliHelper
 
 
 
+        [SettingIgnore()]
         public bool Debug_MinesweeperSolvedFromStart { get; set; } = false;
 
+        [SettingIgnore()]
         public bool Debug_MinesweeperAutoWin { get; set; } = false;
 
 
-
         [SettingIgnore()]
-        public bool Debug_LaniHookShowAhhhh { get; set; } = false;
+        public bool Debug_LaniHookShowInfo { get; set; } = false;
 
-        
+
+
+        ////[SettingIgnore()]
+        //[SettingRange(0, 999)]
+        //public int Debug_LaniHookLength10 { get; set; } = 0;
+
+        ////[SettingIgnore()]
+        //[SettingRange(0, 999)]
+        //public int Debug_LaniHookSpeed10 { get; set; } = 0;
+
+        ////[SettingIgnore()]
+        //[SettingRange(0, 999)]
+        //public int Debug_LaniHookSpeedReturn10 { get; set; } = 0;
+
     }
 }

@@ -43,6 +43,7 @@ namespace Celeste.Mod.MeliHelper
             orig(self, data);
             if (!dict_levels.ContainsKey(self))
             {
+                Color color_room = GetRoomColor(data);
                 List<CustomWallInfo> list_rectangles = new List<CustomWallInfo>();
                 List<EntityData> list_fields = data.Entities.FindAll(t => t.Name.StartsWith("MeliHelper/BattleCityField") && t.Attr("backgroundType", "Default") == "Default");
                 foreach (EntityData entity_data in list_fields)
@@ -121,11 +122,25 @@ namespace Celeste.Mod.MeliHelper
                     list_rectangles.Add(new CustomWallInfo(new Rectangle(
                         self.X + (int)entity_data.Position.X / 8, 
                         self.Y + (int)entity_data.Position.Y / 8, 
-                        entity_data.Width / 8, entity_data.Height / 8), Color.White * 0.8f));
+                        entity_data.Width / 8, entity_data.Height / 8), color_room * 0.8f));
 
 
                 dict_levels[self] = list_rectangles;
             }
+        }
+
+        public static Color GetRoomColor(LevelData data)
+        {
+            switch (data.EditorColorIndex)
+            {
+                case 1: return Color.OrangeRed;
+                case 2: return Color.LimeGreen;
+                case 3: return Color.LightBlue;
+                case 4: return Color.Blue;
+                case 5: return Color.Violet;
+                case 6: return Color.Red;
+            }
+            return Color.White;
         }
 
         class CustomWallInfo
