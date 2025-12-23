@@ -71,6 +71,12 @@ namespace Celeste.Mod.MeliHelper
             Unload();
         }
 
+        public override void SceneEnd(Scene scene)
+        {
+            base.SceneEnd(scene);
+            Unload();
+        }
+
         public override void Update()
         {
             base.Update();
@@ -116,7 +122,7 @@ namespace Celeste.Mod.MeliHelper
         
         static bool is_loaded;
 
-        static void Load()
+        public static void Load()
         {
             if (!is_loaded)
             {
@@ -125,7 +131,7 @@ namespace Celeste.Mod.MeliHelper
             }
         }
 
-        static void Unload()
+        public static void Unload()
         {
             if (is_loaded)
             {
@@ -133,7 +139,7 @@ namespace Celeste.Mod.MeliHelper
                 On.Celeste.DashBlock.Break_Vector2_Vector2_bool_bool -= onDashBlockBreak;
             }
         }
-
+        
         static void onDashBlockBreak(On.Celeste.DashBlock.orig_Break_Vector2_Vector2_bool_bool orig, DashBlock self, 
             Vector2 from, Vector2 direction, bool playSound, bool playDebrisSound)
         {

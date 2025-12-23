@@ -39,7 +39,7 @@ namespace Celeste.Mod.MeliHelper
             delay_after_shoot = data.Float("delayBeforeSub", 0.7f);
             is_dash_affective = data.Bool("dashAffective", true);
 
-            room_name = data.Attr("roomTeleport");
+            room_name = data.Attr("levelLoad");
             room_spawnpoint = new Vector2(data.Int("spawnpointX"), data.Int("spawnpointY"));
             intro_type = (Player.IntroTypes)Enum.Parse(typeof(Player.IntroTypes), data.Attr("introTypes", "WakeUp"));
             dialogue_before = data.Attr("dialogueBefore");

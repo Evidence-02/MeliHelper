@@ -20,29 +20,6 @@ namespace Celeste.Mod.MeliHelper._Lani
         private static FieldInfo playerLastDashes = typeof(Player).GetField("lastDashes", BindingFlags.NonPublic | BindingFlags.Instance);
         static bool is_loaded;
 
-        private static int dashCountBeforeDash;
-        private static Vector2 dashDirectionBeforeDash;
-
-
-        public static void Load()
-        {
-            On.Celeste.Level.LoadLevel += onLoadLevel_LoadFromSession;
-        }
-
-        public static void Unload()
-        {
-            On.Celeste.Level.LoadLevel -= onLoadLevel_LoadFromSession;
-        }
-
-        public static void onLoadLevel_LoadFromSession(On.Celeste.Level.orig_LoadLevel orig, Level self, Player.IntroTypes playerIntro, bool isFromLoader)
-        {
-            orig(self, playerIntro, isFromLoader);
-            if (MeliHelperModule.Instance.Session.LaniHook_Params != null && !is_loaded)
-                SetHook(MeliHelperModule.Instance.Session.LaniHook_Params);
-        }
-
-
-
         public static LaniHookParams GetHookParamsFromData(EntityData data)
         {
             LaniHookParams hook_params = new LaniHookParams();
@@ -65,8 +42,6 @@ namespace Celeste.Mod.MeliHelper._Lani
             if (!is_loaded)
             {
                 is_loaded = true;
-                On.Celeste.Player.StartDash += onStartDash;
-                On.Celeste.Player.BoostEnd += onBoostEnd;
                 On.Celeste.Player.SuperBounce += onSuperBounce;
                 On.Celeste.Player.SuperJump += onSuperJump;
                 On.Celeste.Player.SuperWallJump += onSuperWallJump;
@@ -80,8 +55,6 @@ namespace Celeste.Mod.MeliHelper._Lani
             if (is_loaded)
             {
                 is_loaded = false;
-                On.Celeste.Player.StartDash -= onStartDash;
-                On.Celeste.Player.BoostEnd -= onBoostEnd;
                 On.Celeste.Player.SuperBounce -= onSuperBounce;
                 On.Celeste.Player.SuperJump -= onSuperJump;
                 On.Celeste.Player.SuperWallJump -= onSuperWallJump;
@@ -89,51 +62,42 @@ namespace Celeste.Mod.MeliHelper._Lani
             }
         }
 
-
-        static int onStartDash(On.Celeste.Player.orig_StartDash orig, Player self)
+        public static bool isLoaded()
         {
-            dashCountBeforeDash = self.Dashes;
-            dashDirectionBeforeDash = (Vector2)playerLastAim.GetValue(self);
-            return orig(self);
+            return is_loaded;
         }
 
-        static void onBoostEnd(On.Celeste.Player.orig_BoostEnd orig, Player self)
+        public static bool isActuallyLoaded()
         {
-            if (self.StateMachine.State == Player.StDash || self.StateMachine.State == Player.StRedDash)
-            {
-                dashCountBeforeDash = self.Dashes;
-                dashDirectionBeforeDash = (Vector2)playerLastAim.GetValue(self);
-            }
-
-            orig(self);
+            return is_loaded && MeliHelperModule.Instance.Session.LaniHook_Params != null;
         }
+
+
 
         static void onSuperBounce(On.Celeste.Player.orig_SuperBounce orig, Player self, float fromY)
         {
-            //orig(self, fromY);
+            if (!isActuallyLoaded())
+                orig(self, fromY);
         }
 
         static void onSuperJump(On.Celeste.Player.orig_SuperJump orig, Player self)
         {
-            //orig(self);
+            if (!isActuallyLoaded())
+                orig(self);
         }
 
         static void onSuperWallJump(On.Celeste.Player.orig_SuperWallJump orig, Player self, int dir)
         {
-            //orig(self, dir);
+            if (!isActuallyLoaded())
+                orig(self, dir);
         }
-
-
-        //On.Celeste.Player.SuperBounce += onSuperBounce;
-        //        On.Celeste.Player.SuperJump += onSuperJump;
-        //On.Celeste.Player.SuperWallJump += onSuperWallJump;
-
+        
         private static IEnumerator onDashCoroutine(On.Celeste.Player.orig_DashCoroutine orig, Player self)
         {
             // if inside of booster, just do vanilla coroutine and nothing else
-            IEnumerator origEnum = orig(self);
+            IEnumerator origEnum = orig(self).SafeEnumerate();
             LaniHookParams hook_params = MeliHelperModule.Instance.Session.LaniHook_Params;
-            if (self.CurrentBooster != null || hook_params == null)
+            if (self.CurrentBooster != null || hook_params == null || !is_loaded)
             {
                 yield return new SwapImmediately(origEnum);
                 yield break;

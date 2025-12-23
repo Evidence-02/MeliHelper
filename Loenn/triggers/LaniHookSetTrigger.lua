@@ -18,7 +18,7 @@ trigger.placements = {
     }
 }
 
-trigger.fieldOrder = { "x", "y", 
+trigger.fieldOrder = { "x", "y", "width", "height",
 	"hookDirection", "hookLength", "hookSpeed", "hookSpeedMovePlayer", "hookCooldown", "hookColor", "hookOpacity", "hookOpacity", "hookAllowHypers",
 	"oneUse", "clearOnLeave"
 }

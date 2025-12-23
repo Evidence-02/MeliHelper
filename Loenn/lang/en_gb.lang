@@ -3,129 +3,237 @@
 # CirclineDisasterBackdrop
 
 # BombermanCapsule
+#entities.MeliHelper/BombermanCapsule.placements.description=
 entities.MeliHelper/BombermanCapsule.placements.name.default=Bomberman Capsule
 
 # BombermanStation
+#entities.MeliHelper/BombermanStation.placements.description=
 entities.MeliHelper/BombermanStation.placements.name.default=Bomberman Station
 
+# CheckpointSaveFlag
+#entities.MeliHelper/CheckpointSaveFlag.placements.description=
+entities.MeliHelper/CheckpointSaveFlag.placements.name.default=Checkpoint Save Flag
+
+# CustomEntityPortal
+#entities.MeliHelper/CustomEntityPortal.placements.description=
+entities.MeliHelper/CustomEntityPortal.placements.name.default=Custom Entity Portal
+
 # DateTimeMessage
+#entities.MeliHelper/DateTimeMessage.placements.description=
 entities.MeliHelper/DateTimeMessage.placements.name.default=Datetime Message
 
+# FakeStrawberry
+#entities.MeliHelper/FakeStrawberry.placements.description=
+entities.MeliHelper/FakeStrawberry.placements.name.default=Fake Strawberry
+
 # HideStrawberryEntity
+#entities.MeliHelper/HideStrawberryEntity.placements.description=
 entities.MeliHelper/HideStrawberryEntity.placements.name.default=Hide Strawberry Entity
 
 # InteractiveLevelLoadEntity
+#entities.MeliHelper/InteractiveLevelLoadEntity.placements.description=
 entities.MeliHelper/InteractiveLevelLoadEntity.placements.name.default=Interactive Room Loader (line)
 
 # InteractiveLevelLoadEntityCenter
+#entities.MeliHelper/InteractiveLevelLoadEntityCenter.placements.description=
 entities.MeliHelper/InteractiveLevelLoadEntityCenter.placements.name.default=Interactive Room Loader (center)
 
+# KillPlayerDashBlock
+#entities.MeliHelper/KillPlayerDashBlock.placements.description=
+entities.MeliHelper/KillPlayerDashBlock.placements.name.default=Kill Player Dash Block
+
 # MeliHelperButtonGUI
+#entities.MeliHelper/MeliHelperButtonGUI.placements.description=
 entities.MeliHelper/MeliHelperButtonGUI.placements.name.default=Meli Helper Button GUI
 
+# NiceBorder
+#entities.MeliHelper/NiceBorder.placements.description=
+entities.MeliHelper/NiceBorder.placements.name.default=Nice Border
+
 # NiceFrame
+#entities.MeliHelper/NiceFrame.placements.description=
 entities.MeliHelper/NiceFrame.placements.name.default=Nice Frame
 
-# SaveCheckpointFlag
-entities.MeliHelper/SaveCheckpointFlag.placements.name.default=Save Checkpoint Flag
+# PuzzleBlockBreaking
+#entities.MeliHelper/PuzzleBlockBreaking.placements.description=
+entities.MeliHelper/PuzzleBlockBreaking.placements.name.default=Puzzle Block Breaking
+
+# SolidAppearOnFlag
+#entities.MeliHelper/SolidAppearOnFlag.placements.description=
+entities.MeliHelper/SolidAppearOnFlag.placements.name.default=Solid Appear On Flag
+
+# StaticText
+#entities.MeliHelper/StaticText.placements.description=
+entities.MeliHelper/StaticText.placements.name.default=StaticText
 
 # WarpZone
+#entities.MeliHelper/WarpZone.placements.description=
 entities.MeliHelper/WarpZone.placements.name.default=Warp Zone
 
+# BaddyPowerClear
+#entities.MeliHelper/BaddyPowerClear.placements.description=
+entities.MeliHelper/BaddyPowerClear.placements.name.default=Badeline Power Clear
+
+# BaddyPowerSet
+#entities.MeliHelper/BaddyPowerSet.placements.description=
+entities.MeliHelper/BaddyPowerSet.placements.name.default=Badeline Power Set
+
 # BattleCityBlockedZone
+#entities.MeliHelper/BattleCityBlockedZone.placements.description=
 entities.MeliHelper/BattleCityBlockedZone.placements.name.default=Battle City Blocked Zone
 
 # BattleCityBonusHidden
+#entities.MeliHelper/BattleCityBonusHidden.placements.description=
 entities.MeliHelper/BattleCityBonusHidden.placements.name.default=Battle City Bonus Hidden
 
 # BattleCityBonusRespawn
+#entities.MeliHelper/BattleCityBonusRespawn.placements.description=
 entities.MeliHelper/BattleCityBonusRespawn.placements.name.default=Battle City Bonus Respawn
 
 # BattleCityCampaignClearInfo
+#entities.MeliHelper/BattleCityCampaignClearInfo.placements.description=
 entities.MeliHelper/BattleCityCampaignClearInfo.placements.name.default=Battle City Campaign Clear Info
 
 # BattleCityCampaignStartEntity
+#entities.MeliHelper/BattleCityCampaignStartEntity.placements.description=
 entities.MeliHelper/BattleCityCampaignStartEntity.placements.name.default=Battle City Campaign Start Entity
 
 # BattleCityCell
+#entities.MeliHelper/BattleCityCell.placements.description=
 entities.MeliHelper/BattleCityCell.placements.name.default=Battle City Cell 
 
 # BattleCityCellAnyCustomTexture
+#entities.MeliHelper/BattleCityCellAnyCustomTexture.placements.description=
 entities.MeliHelper/BattleCityCellAnyCustomTexture.placements.name.default=Battle City Cell Any Custom Texture
 
 # BattleCityCellBrickCustomTexture
+#entities.MeliHelper/BattleCityCellBrickCustomTexture.placements.description=
 entities.MeliHelper/BattleCityCellBrickCustomTexture.placements.name.default=Battle City Cell Brick Custom Texture
 
 # BattleCityCellBrickRow
+#entities.MeliHelper/BattleCityCellBrickRow.placements.description=
 entities.MeliHelper/BattleCityCellBrickRow.placements.name.default=Battle City Cell Brick Row
 
 # BattleCityCellWall
+#entities.MeliHelper/BattleCityCellWall.placements.description=
 entities.MeliHelper/BattleCityCellWall.placements.name.default=Battle City Wall 
 
 # BattleCityCustomBonusChances
+#entities.MeliHelper/BattleCityCustomBonusChances.placements.description=
 entities.MeliHelper/BattleCityCustomBonusChances.placements.name.default=Battle City Custom Bonus Chances (full)
 
 # BattleCityCustomCellTextures
+#entities.MeliHelper/BattleCityCustomCellTextures.placements.description=
 entities.MeliHelper/BattleCityCustomCellTextures.placements.name.default=Battle City Custom Cell Textures
 
 # BattleCityCustomEnemyType
+#entities.MeliHelper/BattleCityCustomEnemyType.placements.description=
 entities.MeliHelper/BattleCityCustomEnemyType.placements.name.default=Battle City Custom Enemy Type (basic)
 
 # BattleCityCustomRulesEntity
+#entities.MeliHelper/BattleCityCustomRulesEntity.placements.description=
 entities.MeliHelper/BattleCityCustomRulesEntity.placements.name.default=Battle City Custom Rules
 
 # BattleCityEnemySpawnpoint
+#entities.MeliHelper/BattleCityEnemySpawnpoint.placements.description=
 entities.MeliHelper/BattleCityEnemySpawnpoint.placements.name.default=Battle City Enemy Spawnpoint
 
 # BattleCityField
+#entities.MeliHelper/BattleCityField.placements.description=
 entities.MeliHelper/BattleCityField.placements.name.default=Battle City Field (extended)
 
 # BattleCityFlag
+#entities.MeliHelper/BattleCityFlag.placements.description=
 entities.MeliHelper/BattleCityFlag.placements.name.default=Battle City Flag
 
 # BattleCityTank
+#entities.MeliHelper/BattleCityTank.placements.description=
 entities.MeliHelper/BattleCityTank.placements.name.default=Battle City Tank (basic)
 
-# LaniIceBlock
-entities.MeliHelper/LaniIceBlock.placements.name.default=Lani Ice Block (blendin)
-
-# IceBlock
-
 # LaniHookSpot
+#entities.MeliHelper/LaniHookSpot.placements.description=
 entities.MeliHelper/LaniHookSpot.placements.name.default=Lani Hook Spot
 
+# LaniIceBlock
+#entities.MeliHelper/LaniIceBlock.placements.description=
+entities.MeliHelper/LaniIceBlock.placements.name.default=Lani Ice Block
+
+# LaniSnowball
+#entities.MeliHelper/LaniSnowball.placements.description=
+entities.MeliHelper/LaniSnowball.placements.name.default=Lani Snowball
+
+# LaniSnowballGenerator
+#entities.MeliHelper/LaniSnowballGenerator.placements.description=
+entities.MeliHelper/LaniSnowballGenerator.placements.name.default=Lani Snowball Generator
+
+# LaniSpring
+#entities.MeliHelper/LaniSpring.placements.description=
+entities.MeliHelper/LaniSpring.placements.name.default=Lani Spring
+
 # LaniHookClear
+#entities.MeliHelper/LaniHookClear.placements.description=
 entities.MeliHelper/LaniHookClear.placements.name.default=Lani Hook Clear
 
 # LaniHookSet
+#entities.MeliHelper/LaniHookSet.placements.description=
 entities.MeliHelper/LaniHookSet.placements.name.default=Lani Hook Set
 
 # LaniHookSetEntity
+#entities.MeliHelper/LaniHookSetEntity.placements.description=
 entities.MeliHelper/LaniHookSetEntity.placements.name.default=Lani Hook Set Entity
 
 # MinesweeperBombCounter
+#entities.MeliHelper/MinesweeperBombCounter.placements.description=
 entities.MeliHelper/MinesweeperBombCounter.placements.name.default=Minesweeper Bomb Counter
 
 # MinesweeperCell
+#entities.MeliHelper/MinesweeperCell.placements.description=
 entities.MeliHelper/MinesweeperCell.placements.name.default=Minesweeper Cell
 
 # MinesweeperFace
+#entities.MeliHelper/MinesweeperFace.placements.description=
 entities.MeliHelper/MinesweeperFace.placements.name.default=Minesweeper Face (normal)
 
 # MinesweeperField
+#entities.MeliHelper/MinesweeperField.placements.description=
 entities.MeliHelper/MinesweeperField.placements.name.default=Minesweeper Field
 
 # MinesweeperFlagGUI
+#entities.MeliHelper/MinesweeperFlagGUI.placements.description=
 entities.MeliHelper/MinesweeperFlagGUI.placements.name.default=Minesweeper Flag GUI
 
 # MinesweeperTimer
+#entities.MeliHelper/MinesweeperTimer.placements.description=
 entities.MeliHelper/MinesweeperTimer.placements.name.default=Minesweeper Timer
 
+# BaddyPowerClearTrigger
+#entities.MeliHelper/BaddyPowerClearTrigger.placements.description=
+entities.MeliHelper/BaddyPowerClearTrigger.placements.name.default=Badeline Power Clear Trigger
+
+# BaddyPowerSetTrigger
+#entities.MeliHelper/BaddyPowerSetTrigger.placements.description=
+entities.MeliHelper/BaddyPowerSetTrigger.placements.name.default=Badeline Power Set Trigger
+
 # MeliHelperConditionTrigger
+#entities.MeliHelper/MeliHelperConditionTrigger.placements.description=
 entities.MeliHelper/MeliHelperConditionTrigger.placements.name.default=Meli Helper Condition Trigger
 
 # DebugTeleportTrigger
+#entities.MeliHelper/DebugTeleportTrigger.placements.description=
 entities.MeliHelper/DebugTeleportTrigger.placements.name.default=Debug Teleport Trigger
 
 # KillPlayerTrigger
+#entities.MeliHelper/KillPlayerTrigger.placements.description=
 entities.MeliHelper/KillPlayerTrigger.placements.name.default=Kill Player Trigger (OnEnter)
+
+# LaniHookClearTrigger
+#entities.MeliHelper/LaniHookClearTrigger.placements.description=
+entities.MeliHelper/LaniHookClearTrigger.placements.name.default=Lani Hook Clear Trigger
+
+# LaniHookSetTrigger
+#entities.MeliHelper/LaniHookSetTrigger.placements.description=
+entities.MeliHelper/LaniHookSetTrigger.placements.name.default=Lani Hook Set Trigger
+
+# ObjectGravityTrigger
+#entities.MeliHelper/ObjectGravityTrigger.placements.description=
+entities.MeliHelper/ObjectGravityTrigger.placements.name.default=Object Gravity Trigger

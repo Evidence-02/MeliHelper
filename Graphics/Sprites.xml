@@ -41,6 +41,10 @@
         <Loop id="stop" path="explosionBig" delay="99" frames="1" />
     </MeliHelper_BC_ExplosionBig>
 	
+	<MeliHelper_WYS_Turret path="Evidence02/objects_wys/turret/" start="idle">
+        <Center />
+        <Loop id="idle" path="idle" delay="1" frames="0" />
+    </MeliHelper_WYS_Turret>
 	
 	
 	<MeliHelper_BombermanCapsule path="Evidence02/objects_melihelper/bomberman_capsule/" start="idle">

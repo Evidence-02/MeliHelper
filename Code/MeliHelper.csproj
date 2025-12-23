@@ -9,9 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Celeste.Mod.MeliHelper</RootNamespace>
     <AssemblyName>MeliHelper</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>9.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,16 +92,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\FontControllerOutline.cs" />
+    <Compile Include="Entities\NiceArrow.cs" />
+    <Compile Include="Entities\StaticText.cs" />
     <Compile Include="Entities\DateTimeMessage.cs" />
-    <Compile Include="Entities\CustomPortal.cs" />
+    <Compile Include="Entities\CustomEntityPortal.cs" />
     <Compile Include="Entities\FakeStrawberry.cs" />
     <Compile Include="Entities\KillPlayerDashBlock.cs" />
     <Compile Include="Entities\NiceBorder.cs" />
     <Compile Include="Entities\PuzzleBlockBreaking.cs" />
     <Compile Include="Entities\_support\CustomLogger.cs" />
     <Compile Include="Entities\_support\CustomVirtualButtonChecker.cs" />
-    <Compile Include="Entities\CustomCoreMessage.cs" />
+    <None Include="Entities\CustomCoreMessage.cs_" />
     <Compile Include="Entities\NiceFrame.cs" />
+    <Compile Include="Entities\_support\PlayerChaseTracker.cs" />
+    <Compile Include="Entities\_support\SwapImmediatelyExtension.cs" />
     <Compile Include="MeliHelperModule.cs" />
     <Compile Include="MeliHelperSaveData.cs" />
     <Compile Include="MeliHelperSession.cs" />
@@ -115,6 +121,7 @@
     <Compile Include="_LaniAndFriends\Baddy\ClassicBadelineShotInteractive.cs" />
     <Compile Include="Entities\SolidAppearOnFlag.cs" />
     <Compile Include="_LaniAndFriends\setup\BaddyPowerClear.cs" />
+    <Compile Include="_LaniAndFriends\setup\BaddyPowerClearTrigger.cs" />
     <Compile Include="_LaniAndFriends\setup\BaddyPowerSet.cs" />
     <Compile Include="_LaniAndFriends\Baddy\SpinnerShatterComponent.cs" />
     <Compile Include="_BattleCity\Controllers\BonusesController.cs" />
@@ -155,10 +162,10 @@
     <Compile Include="_LaniAndFriends\Lani\LaniHookSpot.cs" />
     <Compile Include="_LaniAndFriends\Lani\LaniIceBlock.cs" />
     <Compile Include="_LaniAndFriends\Lani\LaniThrowableObject.cs" />
+    <Compile Include="_LaniAndFriends\setup\BaddyPowerSetTrigger.cs" />
     <Compile Include="_LaniAndFriends\setup\LaniHookClear.cs" />
     <Compile Include="_LaniAndFriends\setup\LaniHookClearTrigger.cs" />
     <Compile Include="_LaniAndFriends\setup\LaniHookSetEntity.cs" />
-    <Compile Include="_LaniAndFriends\Lani\LaniHookStopTrigger.cs" />
     <Compile Include="_LaniAndFriends\setup\LaniHookSetTrigger.cs" />
     <Compile Include="_LaniAndFriends\setup\LaniHookSet.cs" />
     <Compile Include="_LaniAndFriends\Lani\LaniController.cs" />

@@ -53,6 +53,8 @@ namespace Celeste.Mod.MeliHelper._Baddy
         public override void Update()
         {
             base.Update();
+            if (MeliHelperModule.Instance.Session.BadelinePower_Params == null)
+                return;
 
             power_visual += 0.16f * (MeliHelperModule.Instance.Session.BadelinePower_Params.CurrentPower - power_visual);
             if (power_visual < 0.4) is_power_visible = !is_power_visible;
@@ -88,18 +90,22 @@ namespace Celeste.Mod.MeliHelper._Baddy
         public override void Render()
         {
             base.Render();
+            if (MeliHelperModule.Instance.Session.BadelinePower_Params == null)
+                return;
+
+            BadelinePowerParams _params = BaddyController.GetParams();
             if (texture != null)
                 texture.Draw(new Vector2(texture_left, texture_top));
 
             // Screen Width:  1920
             // Screen Height: 1080
-            ActiveFont.Draw(BaddyController.GetParams().isCurrentWeaponShoot ? "Standart shot" : "Laser",
+            ActiveFont.Draw(_params.isCurrentWeaponShoot ? "Standart shot" : "Laser",
                 new Vector2(texture_left + 50, texture_top + 120), Vector2.Zero, new Vector2(0.6f, 0.6f),
                 Color.White);
 
             // Override max (farewell double-dash refills)
-            float val = MeliHelperModule.Instance.Session.BadelinePower_Params.CurrentPower;
-            float max = MeliHelperModule.Instance.Session.BadelinePower_Params.FullPower;
+            float val = _params.CurrentPower;
+            float max = _params.FullPower;
             if (val > max)
                 Draw.Rect(
                     left - POWER_BORDER,
@@ -121,7 +127,7 @@ namespace Celeste.Mod.MeliHelper._Baddy
             if (is_power_visible)
             {
                 Color clr = (power_visual >= 1.4f ? Color.DarkRed :
-                             power_visual < 0.4f ? Color.Green
+                             power_visual <  0.4f ? Color.Green
                                                   : Methods.GetColorBetween(Color.Green, Color.DarkRed, power_visual - 0.4f));
                 Draw.Rect(left, top, CELL_WIDTH * power_visual, HEIGHT, clr);
                 for (int i = 1; i < max; i++)

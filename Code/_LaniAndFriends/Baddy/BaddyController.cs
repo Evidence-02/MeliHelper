@@ -26,21 +26,9 @@ namespace Celeste.Mod.MeliHelper._Baddy
         static float previous_shot_time, saved_power_after_boost;
         static int old_player_state;
         
-        public static void Load()
-        {
-            On.Celeste.Level.LoadLevel += onLoadLevel_LoadFromSession;
-        }
-
-        public static void Unload()
-        {
-            On.Celeste.Level.LoadLevel -= onLoadLevel_LoadFromSession;
-        }
-
         public static void onLoadLevel_LoadFromSession(On.Celeste.Level.orig_LoadLevel orig, Level self, Player.IntroTypes playerIntro, bool isFromLoader)
         {
             orig(self, playerIntro, isFromLoader);
-            if (MeliHelperModule.Instance.Session.BadelinePower_Params != null && !is_loaded)
-                SetPower(self, MeliHelperModule.Instance.Session.BadelinePower_Params);
         }
 
         public static BadelinePowerParams GetHookParamsFromData(EntityData data)
@@ -53,8 +41,8 @@ namespace Celeste.Mod.MeliHelper._Baddy
             baddy_params.LaserPower = data.Float("laserPower", 2f);
             baddy_params.BoostPower = data.Float("boostPower", 1.5f);
             baddy_params.AddMaxPowerOnStrawberryCollect = data.Float("addMaxPowerOnStrawberryCollect", 0.1f);
+            baddy_params.AddMaxPowerOnGem = data.Float("addMaxPowerOnGem", 0.2f);
 
-            
             baddy_params.isShootEnabled = data.Bool("shootEnabled", true);
             baddy_params.isLaserEnabled = data.Bool("laserEnabled", true);
             baddy_params.isBoostEnabled = data.Bool("boostEnabled", true);
@@ -74,10 +62,13 @@ namespace Celeste.Mod.MeliHelper._Baddy
                 is_loaded = true;
                 if (_params.isAffectPlayerSkin)
                     SetSkin(true);
-                if (_params.isShowUI && (hud is null || !level.Contains(hud)))
+                if (_params.isShowUI && (hud == null || !level.Contains(hud)))
                     level.Add(hud = new BaddyPowerUI());
 
                 On.Celeste.Level.LoadLevel += onLoadLevel;
+                On.Celeste.Player.SuperBounce += onSuperBounce;
+                On.Celeste.Player.SuperJump += onSuperJump;
+                On.Celeste.Player.SuperWallJump += onSuperWallJump;
                 On.Celeste.Player.Update += onPlayerUpdate;
                 On.Celeste.Player.DashCoroutine += onDashCoroutine;
                 On.Celeste.Player.StartDash += onStartDash;
@@ -93,14 +84,17 @@ namespace Celeste.Mod.MeliHelper._Baddy
 
         public static void ClearPower()
         {
-            bool is_affect_player_skin = MeliHelperModule.Instance.Session.BadelinePower_Params.isAffectPlayerSkin;
+            bool is_affect_player_skin = MeliHelperModule.Instance.Session.BadelinePower_Params != null 
+                && MeliHelperModule.Instance.Session.BadelinePower_Params.isAffectPlayerSkin;
             MeliHelperModule.Instance.Session.BadelinePower_Params = null;
             if (is_loaded)
             {
                 is_loaded = false;
-                if (is_affect_player_skin)
-                    SetSkin(false);
+                SetSkin(false);
                 On.Celeste.Level.LoadLevel -= onLoadLevel;
+                On.Celeste.Player.SuperBounce -= onSuperBounce;
+                On.Celeste.Player.SuperJump -= onSuperJump;
+                On.Celeste.Player.SuperWallJump -= onSuperWallJump;
                 On.Celeste.Player.Update -= onPlayerUpdate;
                 On.Celeste.Player.DashCoroutine -= onDashCoroutine;
                 On.Celeste.Player.StartDash -= onStartDash;
@@ -114,9 +108,14 @@ namespace Celeste.Mod.MeliHelper._Baddy
             }
         }
 
-        static bool isActuallyLoaded()
+        public static bool isLoaded()
         {
-            return is_loaded && MeliHelperModule.Instance.Session.BadelinePower_Params != null;
+            return is_loaded;
+        }
+
+        public static bool isActuallyLoaded()
+        {
+            return is_loaded && MeliHelperModule.Instance.Session.LaniHook_Params != null;
         }
 
         public static BadelinePowerParams GetParams()
@@ -131,13 +130,13 @@ namespace Celeste.Mod.MeliHelper._Baddy
 
         public static void SetSkin(bool is_badeline)
         {
-            SaveData.Instance.Assists.PlayAsBadeline = is_badeline;
-            Player entity = Engine.Scene.Tracker.GetEntity<Player>();
-            if (entity != null)
+            //SaveData.Instance.Assists.PlayAsBadeline = is_badeline;
+            Player player = Engine.Scene.Tracker.GetEntity<Player>();
+            if (player != null)
             {
-                PlayerSpriteMode mode = is_badeline ? PlayerSpriteMode.MadelineAsBadeline : entity.DefaultSpriteMode;
-                if (entity.Active) entity.ResetSpriteNextFrame(mode);
-                else entity.ResetSprite(mode);
+                PlayerSpriteMode mode = is_badeline ? PlayerSpriteMode.MadelineAsBadeline : player.DefaultSpriteMode;
+                if (player.Active) player.ResetSpriteNextFrame(mode);
+                else               player.ResetSprite(mode);
             }
         }
 
@@ -150,19 +149,41 @@ namespace Celeste.Mod.MeliHelper._Baddy
         private static void onLoadLevel(On.Celeste.Level.orig_LoadLevel orig, Level self, Player.IntroTypes playerIntro, bool isFromLoader)
         {
             orig(self, playerIntro, isFromLoader);
-            if (isActuallyLoaded())
+            if (is_loaded && GetParams() != null)
             {
                 if (GetParams().isShowUI)
                     self.Add(hud = new BaddyPowerUI());
                 GetParams().RestorePower();
+
+                Player player = self.Tracker.GetEntity<Player>();
+                if (player.DefaultSpriteMode != PlayerSpriteMode.MadelineAsBadeline)
+                    SetSkin(true);
             }
+        }
+
+        static void onSuperBounce(On.Celeste.Player.orig_SuperBounce orig, Player self, float fromY)
+        {
+            if (!isActuallyLoaded())
+                orig(self, fromY);
+        }
+
+        static void onSuperJump(On.Celeste.Player.orig_SuperJump orig, Player self)
+        {
+            if (!isActuallyLoaded())
+                orig(self);
+        }
+
+        static void onSuperWallJump(On.Celeste.Player.orig_SuperWallJump orig, Player self, int dir)
+        {
+            if (!isActuallyLoaded())
+                orig(self, dir);
         }
 
         private static void onPlayerUpdate(On.Celeste.Player.orig_Update orig, Player self)
         {
             orig(self);
             previous_shot_time += Engine.DeltaTime;
-            if (isActuallyLoaded() && GetParams().isShootEnabled && GetParams().isLaserEnabled)
+            if (is_loaded && GetParams().isShootEnabled && GetParams().isLaserEnabled)
             {
                 if (!is_switch_button_pressed_old && MeliHelperModule.Settings.BadelinePower_Switch.Pressed)
                     GetParams().isCurrentWeaponShoot = !GetParams().isCurrentWeaponShoot;
@@ -172,7 +193,7 @@ namespace Celeste.Mod.MeliHelper._Baddy
 
         static void onPlayerRefill(On.Celeste.Refill.orig_OnPlayer orig, Refill self, Player player)
         {
-            if (self.Collidable && isActuallyLoaded() && !is_temporary_stop_restoring_power)
+            if (self.Collidable && is_loaded && !is_temporary_stop_restoring_power)
             {
                 BadelinePowerParams _params = MeliHelperModule.Instance.Session.BadelinePower_Params;
                 DynData<Refill> data = new DynData<Refill>(self);
@@ -222,7 +243,7 @@ namespace Celeste.Mod.MeliHelper._Baddy
         private static void onCollectBerry(On.Celeste.Strawberry.orig_OnCollect orig, Strawberry self)
         {
             orig(self);
-            if (isActuallyLoaded() && GetParams().AddMaxPowerOnStrawberryCollect > 0)
+            if (is_loaded && GetParams().AddMaxPowerOnStrawberryCollect > 0)
             {
                 GetParams().AddMaxPower(GetParams().AddMaxPowerOnStrawberryCollect);
                 if (hud != null) hud.SetColorTemp(Color.Red);
@@ -231,9 +252,9 @@ namespace Celeste.Mod.MeliHelper._Baddy
 
         static IEnumerator onSummitGemSmashRoutine(On.Celeste.SummitGem.orig_SmashRoutine orig, SummitGem self, Player player, Level level)
         {
-            if (isActuallyLoaded())
+            if (is_loaded && GetParams().AddMaxPowerOnGem > 0)
             {
-                GetParams().AddMaxPower(0.2f);
+                GetParams().AddMaxPower(GetParams().AddMaxPowerOnGem);
                 if (hud != null) hud.SetColorTemp(Color.RoyalBlue);
             }
             yield return new SwapImmediately(orig(self, player, level));
@@ -254,18 +275,19 @@ namespace Celeste.Mod.MeliHelper._Baddy
         private static IEnumerator onDashCoroutine(On.Celeste.Player.orig_DashCoroutine orig, Player self)
         {
             // if inside of booster, just do vanilla coroutine and nothing else
+            IEnumerator origEnum = orig(self).SafeEnumerate();
             BadelinePowerParams _params = GetParams();
             if (self.CurrentBooster != null || _params == null)
             {
-                yield return new SwapImmediately(orig(self));
+                yield return new SwapImmediately(origEnum);
                 yield break;
             }
             
 
 
             // make a step forward
-            if (orig(self).MoveNext())
-                yield return orig(self).Current;
+            if (origEnum.MoveNext())
+                yield return origEnum.Current;
 
 
             // get the dash general direction

@@ -30,13 +30,23 @@ namespace Celeste.Mod.MeliHelper
 
         static bool is_loaded;
 
-        static void Load()
+        public static void Load()
         {
             if (!is_loaded)
             {
                 is_loaded = true;
                 On.Celeste.DashBlock.Break_Vector2_Vector2_bool += onDashBlockBreak;
                 On.Celeste.DashBlock.Break_Vector2_Vector2_bool_bool += onDashBlockBreak;
+            }
+        }
+
+        public static void Unload()
+        {
+            if (is_loaded)
+            {
+                is_loaded = false;
+                On.Celeste.DashBlock.Break_Vector2_Vector2_bool -= onDashBlockBreak;
+                On.Celeste.DashBlock.Break_Vector2_Vector2_bool_bool -= onDashBlockBreak;
             }
         }
 

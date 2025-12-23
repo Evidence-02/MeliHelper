@@ -55,21 +55,11 @@ namespace Celeste.Mod.MeliHelper
         {
             base.Render();
 
-            VirtualButton vb = null;
-            switch (button)
-            {
-                case "BattleCity_Shoot": vb = MeliHelperModule.Settings.BattleCity_Shoot.Button; break;
-                case "Minesweeper_ChangeDashMode": vb = MeliHelperModule.Settings.Minesweeper_ChangeDashMode.Button; break;
-            }
+            VirtualButton vb = Methods.GetButtonBinding(button).Button;
             if (vb != null)
             {
                 // Copied code from an old project again. But this time I modified it!
-                Vector2 cam = level.Camera.Position;
-                float zoom_koef = Methods.GetZoomKoefHUD(level);
-                Vector2 posTmp = cam + new Vector2(960, 540) / zoom_koef;
-                Vector2 pos = (Position - cam + (Position - posTmp) * koef_floating) * zoom_koef;
-                if (SaveData.Instance != null && SaveData.Instance.Assists.MirrorMode)
-                    pos.X = 1920f - pos.X;
+                Vector2 pos = Methods.CoordsToHUDwithFloating(level, Position, koef_floating);
                 Input.GuiButton(vb, Input.PrefixMode.Attached).DrawCentered(pos, Color.White * alpha, scale: size);
                 // pos = Methods.CoordsToHUD(level, Position)
             }

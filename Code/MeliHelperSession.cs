@@ -96,6 +96,7 @@ namespace Celeste.Mod.MeliHelper
         public float LaserPower { private get; set; }
         public float BoostPower { private get; set; }
         public float AddMaxPowerOnStrawberryCollect { get; set; }
+        public float AddMaxPowerOnGem { get; set; }
 
 
         // Possible weapons

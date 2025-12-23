@@ -60,13 +60,7 @@ namespace Celeste.Mod.MeliHelper
             base.Render();
 
             // Copied code from MeliHelperButtonGUI. Made a new function in Methods?
-            Vector2 cam = level.Camera.Position;
-            float zoom_koef = Methods.GetZoomKoefHUD(level);
-            Vector2 posTmp = cam + new Vector2(960, 540) / zoom_koef;
-            Vector2 pos = (Position - cam + (Position - posTmp) * koef_floating) * zoom_koef;
-            if (SaveData.Instance != null && SaveData.Instance.Assists.MirrorMode)
-                pos.X = 1920f - pos.X;
-
+            Vector2 pos = Methods.CoordsToHUDwithFloating(level, Position, koef_floating);
             if (outline)
                 ActiveFont.DrawOutline(text: text, position: pos, justify: new Vector2(0.5f), scale: new Vector2(size), 
                     color: color_text * alpha, stroke: stroke, strokeColor: color_stroke * alpha);

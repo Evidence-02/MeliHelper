@@ -108,6 +108,30 @@ namespace Celeste.Mod.MeliHelper
             return new Color(R, G, B);
         }
 
+        /// <summary>
+        /// returns value from 0 to 360
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static float GetHueFromColor(Color color)
+        {
+            float R = color.R / 255f;
+            float G = color.G / 255f;
+            float B = color.B / 255f;
+            float min = Math.Min(Math.Min(R, G), B);
+            float max = Math.Max(Math.Max(R, G), B);
+            if (min == max)
+                return 0;
+
+            float delta = max - min;
+            if (R == max)
+                return 120 * (G - B) / delta;
+            else if (G == max)
+                return 120 + 120 * (B - R) / delta;
+            else
+                return 240 + 120 * (R - G) / delta;
+        }
+
 
 
 
@@ -199,6 +223,18 @@ namespace Celeste.Mod.MeliHelper
         public static Vector2 CoordsToHUD(Level level, Vector2 position)
         {
             return GetZoomKoefHUD(level) * level.Camera.Zoom * (position - new Vector2(level.Camera.X, level.Camera.Y));
+        }
+
+        public static Vector2 CoordsToHUDwithFloating(Level level, Vector2 pos, float koef_floating)
+        {
+            // Copied code from an old project again. But this time I modified it!
+            Vector2 cam = level.Camera.Position;
+            float zoom_koef = GetZoomKoefHUD(level);
+            Vector2 posTmp = cam + new Vector2(960, 540) / zoom_koef;
+            Vector2 res = (pos - cam + (pos - posTmp) * koef_floating) * zoom_koef;
+            if (SaveData.Instance != null && SaveData.Instance.Assists.MirrorMode)
+                res.X = 1920f - res.X;
+            return res;
         }
 
         public static float GetZoomKoefHUD(Level level)

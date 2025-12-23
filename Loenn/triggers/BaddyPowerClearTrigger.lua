@@ -1,8 +1,8 @@
 local trigger = {}
-trigger.name = "MeliHelper/LaniHookClearTrigger"
+trigger.name = "MeliHelper/BaddyPowerClearTrigger"
 trigger.placements = {
     {
-        name = "Lani Hook Clear Trigger",
+        name = "Badeline Power Clear Trigger",
         data = {
 			oneUse = true
         }
