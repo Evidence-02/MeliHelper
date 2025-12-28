@@ -60,7 +60,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         public static int GetPlayerPower()
         {
-            return (MeliHelperModule.Settings.Debug_StarPower > 0) ? MeliHelperModule.Settings.Debug_StarPower :
+            return (MeliHelperModule.Settings.DebugToolsBC.StarPower > 0) ? MeliHelperModule.Settings.DebugToolsBC.StarPower :
                    GetCurrentPlayerInfo().Stars;
         }
 
@@ -73,7 +73,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         public static bool PlayerCanMoveThroughWater()
         {
-            return MeliHelperModule.Settings.Debug_MoveThroughtWaterAlways ||
+            return MeliHelperModule.Settings.DebugToolsBC.MoveThroughtWaterAlways ||
                    GetCurrentPlayerInfo().MoveThroughWater;
         }
 

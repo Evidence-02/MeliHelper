@@ -23,55 +23,6 @@ namespace Celeste.Mod.MeliHelper
 
 
 
-        [SettingIgnore()]
-        public bool Debug_ShowEnemyAhhhhMovebox { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_EnemiesPoisoned { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_EnemiesShootingEndlessly { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_FasterSpawn { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_IntroEverytime { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_BonusesEverytime { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_UnlimitedShooting { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_MoveThroughtWaterAlways { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Testing_MoveThroughWaterisDreamblock { get; set; } = false;
-
-
-        [SettingIgnore()]
-        [SettingRange(0, 999)]
-        public int Debug_BonusType { get; set; } = 0;
-
-        [SettingIgnore()]
-        [SettingRange(0, 5)]
-        public int Debug_StarPower { get; set; } = 0;
-
-
-
-        [SettingIgnore()]
-        public bool Debug_MinesweeperSolvedFromStart { get; set; } = false;
-
-        [SettingIgnore()]
-        public bool Debug_MinesweeperAutoWin { get; set; } = false;
-
-
-        [SettingIgnore()]
-        public bool Debug_LaniHookShowInfo { get; set; } = false;
-
-
 
         ////[SettingIgnore()]
         //[SettingRange(0, 999)]
@@ -85,5 +36,41 @@ namespace Celeste.Mod.MeliHelper
         //[SettingRange(0, 999)]
         //public int Debug_LaniHookSpeedReturn10 { get; set; } = 0;
 
+
+
+
+        [SettingSubMenu]
+        public class DebugBC_Tools
+        {
+            [SettingRange(0, 5)]
+            public int StarPower { get; set; } = 0;
+
+            [SettingRange(0, 999)]
+            public int BonusType { get; set; } = 0;
+
+            public bool ShowEnemyHitboxes { get; set; } = false;
+            public bool EnemiesPoisoned { get; set; } = false;
+            public bool EnemiesShootingEndlessly { get; set; } = false;
+            public bool EnemiesFasterSpawn { get; set; } = false;
+            public bool IntroEverytime { get; set; } = false;
+            public bool BonusesEverytime { get; set; } = false;
+            public bool UnlimitedShooting { get; set; } = false;
+            public bool MoveThroughtWaterAlways { get; set; } = false;
+            public bool MoveThroughWaterAsDreamblock { get; set; } = false;
+        }
+        [SettingName("EVIDENCE02_MELIHELPER_DEBUGTOOLSBC")]
+        public DebugBC_Tools DebugToolsBC { get; set; } = new DebugBC_Tools();
+
+
+
+        [SettingSubMenu]
+        public class Debug_Tools
+        {
+            public bool LaniHookShowHitboxes { get; set; } = false;
+            public bool MinesweeperSolvedFromStart { get; set; } = false;
+            public bool MinesweeperCantLose { get; set; } = false;
+        }
+        [SettingName("EVIDENCE02_MELIHELPER_DEBUGTOOLS")]
+        public Debug_Tools DebugTools { get; set; } = new Debug_Tools();
     }
 }

@@ -102,7 +102,7 @@
     <Compile Include="Entities\PuzzleBlockBreaking.cs" />
     <Compile Include="Entities\_support\CustomLogger.cs" />
     <Compile Include="Entities\_support\CustomVirtualButtonChecker.cs" />
-    <None Include="Entities\CustomCoreMessage.cs_" />
+    <Compile Include="Entities\CustomCoreMessage.cs" />
     <Compile Include="Entities\NiceFrame.cs" />
     <Compile Include="Entities\_support\PlayerChaseTracker.cs" />
     <Compile Include="Entities\_support\SwapImmediatelyExtension.cs" />
@@ -163,7 +163,7 @@
     <Compile Include="Entities\InvisibleSolid.cs" />
     <Compile Include="Effects\StarCitizenBackdrop.cs" />
     <Compile Include="Entities\_support\TemporalSpriteEntity.cs" />
-    <Compile Include="Entities\BombermanBorder.cs" />
+    <Compile Include="Entities\BombermanStation.cs" />
     <Compile Include="Entities\BombermanCapsule.cs" />
     <Compile Include="Triggers\ObjectGravityTrigger.cs" />
     <Compile Include="_LaniAndFriends\Lani\LaniSnowball.cs" />

@@ -82,7 +82,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                     EnemyInfo info = list_enemy_info[id_enemy_to_spawn];
                     mass_spawnpoints[id_spawnpoint].Activate(delay_spawn, id_enemy_to_spawn);
                     count_enemies_on_screen++;
-                    timer_spawn = period_spawn * (MeliHelperModule.Settings.Debug_FasterSpawn ? 0.1f : 1f);
+                    timer_spawn = period_spawn * (MeliHelperModule.Settings.DebugToolsBC.EnemiesFasterSpawn ? 0.1f : 1f);
                     if (++id_spawnpoint >= mass_spawnpoints.Length)
                         id_spawnpoint = 0;
 
@@ -102,7 +102,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             EnemyInfo info = list_enemy_info[id_enemy];
             Enemy enemy = new Enemy(field, position, info.GetOpts,
-                is_contains_bonus: info.isContainsBonus() || MeliHelperModule.Settings.Debug_BonusesEverytime);
+                is_contains_bonus: info.isContainsBonus() || MeliHelperModule.Settings.DebugToolsBC.BonusesEverytime);
             field.SceneAs<Level>().Add(enemy);
             info.GetEnemy = enemy;
             info.isAppeared = true;

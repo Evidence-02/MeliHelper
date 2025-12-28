@@ -58,7 +58,7 @@ namespace Celeste.Mod.MeliHelper._Lani
             //    _params.Length = 10 * MeliHelperModule.Settings.Debug_LaniHookLength10;
             
             Audio.Play(SFX.char_mad_dash_red_left);
-            Depth = (MeliHelperModule.Settings.Debug_LaniHookShowInfo) ? -9999999 : (player.Depth - 1);
+            Depth = (MeliHelperModule.Settings.DebugTools.LaniHookShowHitboxes) ? -9999999 : (player.Depth - 1);
         }
 
         public override void Added(Scene scene)
@@ -669,7 +669,7 @@ namespace Celeste.Mod.MeliHelper._Lani
                 Draw.Rect(loc - perp, 1, 1, Color.White);
             }
 
-            if (MeliHelperModule.Settings.Debug_LaniHookShowInfo)
+            if (MeliHelperModule.Settings.DebugTools.LaniHookShowHitboxes)
             {
                 Draw.Rect(loc_end - new Vector2(2, 2), 4, 4, Color.White);
                 Draw.Rect(loc_end - new Vector2(1, 1), 2, 2, Color.Red);

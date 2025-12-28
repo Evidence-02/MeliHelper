@@ -110,7 +110,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         public override void Awake(Scene scene)
         {
             base.Awake(scene);
-            if (is_show_intro && !MeliHelperModule.Instance.Session.BattleCity_StartedLevelsID.Contains(this.id) || MeliHelperModule.Settings.Debug_IntroEverytime)
+            if (is_show_intro && !MeliHelperModule.Instance.Session.BattleCity_StartedLevelsID.Contains(this.id) || MeliHelperModule.Settings.DebugToolsBC.IntroEverytime)
             {
                 MeliHelperModule.Instance.Session.BattleCity_StartedLevelsID.Add(this.id);
                 level.Add(new BCCutsceneIntro(this, level.Tracker.GetEntity<Player>(), name));

@@ -214,9 +214,9 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
 
 
-            if (MeliHelperModule.Settings.Debug_EnemiesPoisoned && Scene.OnInterval(0.5f))
+            if (MeliHelperModule.Settings.DebugToolsBC.EnemiesPoisoned && Scene.OnInterval(0.5f))
                 TakeDamage(true);
-            if (MeliHelperModule.Settings.Debug_EnemiesShootingEndlessly && Scene.OnInterval(0.3f))
+            if (MeliHelperModule.Settings.DebugToolsBC.EnemiesShootingEndlessly && Scene.OnInterval(0.3f))
                 Shoot();
 
             if (timer_shoot.Tick())
@@ -291,7 +291,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         public override void Render()
         {
-            if (MeliHelperModule.Settings.Debug_ShowEnemyAhhhhMovebox)
+            if (MeliHelperModule.Settings.DebugToolsBC.ShowEnemyHitboxes)
             {
                 Vector2 tile = field.GetTilePosition(tx, ty);
                 switch (state)

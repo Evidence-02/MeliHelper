@@ -29,7 +29,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         public void SetMoveThrough(bool value)
         {
             Level level = SceneAs<Level>();
-            if (MeliHelperModule.Settings.Testing_MoveThroughWaterisDreamblock)
+            if (MeliHelperModule.Settings.DebugToolsBC.MoveThroughWaterAsDreamblock)
             {
                 // Dreamblock should be nicer, but i'm worrying field is too small for a dreamblocks
                 if (value)

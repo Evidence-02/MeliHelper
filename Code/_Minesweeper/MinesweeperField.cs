@@ -134,7 +134,7 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
                 }
             }
 
-            if (MeliHelperModule.Settings.Debug_MinesweeperSolvedFromStart)
+            if (MeliHelperModule.Settings.DebugTools.MinesweeperSolvedFromStart)
             {
                 for (int y = 0; y < h; y++)
                     for (int x = 0; x < w; x++)
@@ -157,7 +157,7 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
                 Audio.Play(SFX.char_mad_backpack_drop);
             }
 
-            if (list_reserved_cells.Count > 0 && Scene.OnInterval(MeliHelperModule.Settings.Debug_MinesweeperSolvedFromStart ? 0.01f : 0.06f))
+            if (list_reserved_cells.Count > 0 && Scene.OnInterval(MeliHelperModule.Settings.DebugTools.MinesweeperSolvedFromStart ? 0.01f : 0.06f))
             {
                 list_reserved_cells[0].Open();
                 list_reserved_cells.RemoveAt(0);
@@ -245,7 +245,7 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
         public void RegisterOpenedCell()
         {
             count_empty_cells--;
-            if (count_empty_cells <= 0 && !MeliHelperModule.Settings.Debug_MinesweeperSolvedFromStart)
+            if (count_empty_cells <= 0 && !MeliHelperModule.Settings.DebugTools.MinesweeperSolvedFromStart)
             {
                 // You're win!
                 // Teleport yourself out bitch

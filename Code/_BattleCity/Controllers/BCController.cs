@@ -82,7 +82,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             int count_bullets = player.Scene.Entities.FindAll<Bullet>().FindAll(t => t.GetParent == player && !t.isShadowBullet).Count;
             if (count_bullets >= count_bullets_at_once
-                && !MeliHelperModule.Settings.Debug_UnlimitedShooting
+                && !MeliHelperModule.Settings.DebugToolsBC.UnlimitedShooting
                 && !Field.Instance.GetEventUI.isEventExists(BCEnum_BonusEvent.UnlimitedShooting))
                 return;
 

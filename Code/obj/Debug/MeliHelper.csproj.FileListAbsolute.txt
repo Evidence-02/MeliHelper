@@ -112,3 +112,36 @@ D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper_251005\Cod
 D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\Celeste.exe
 D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\FNA.dll
 D:\games\Steam Library\steamapps\common\Celeste\Mods\MeliHelper\Code\bin\Debug\NLua.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MeliHelper.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MeliHelper.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\Celeste.exe
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\FNA.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Backports.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Core.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Iced.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.ILHelpers.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Patcher.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.HookGen.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Utils.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\NLua.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Backports.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Backports.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Core.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Core.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Iced.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Iced.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.ILHelpers.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Patcher.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Patcher.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.HookGen.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.RuntimeDetour.HookGen.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Utils.pdb
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\bin\Debug\MonoMod.Utils.xml
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\obj\Debug\MeliHelper.csproj.AssemblyReference.cache
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\obj\Debug\MeliHelper.csproj.CoreCompileInputs.cache
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\obj\Debug\MeliHelper.csproj.CopyComplete
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\obj\Debug\MeliHelper.dll
+D:\games\Steam Library\steamapps\common\Celeste\Mods saved\MeliHelper\Code\obj\Debug\MeliHelper.pdb

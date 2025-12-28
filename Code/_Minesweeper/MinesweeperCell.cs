@@ -75,7 +75,7 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
             player.RefillDash();
             player.RefillStamina();
             if (MeliHelperModule.Instance.Session.Minesweeper_CellMarker == Minesweeper_CellMark.Flag 
-                || MeliHelperModule.Settings.Debug_MinesweeperAutoWin && isBomb)
+                || MeliHelperModule.Settings.DebugTools.MinesweeperCantLose && isBomb)
                 InvertFlagMarker();
             else if (!isMarkedAsFlag)
             {
