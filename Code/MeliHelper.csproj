@@ -105,6 +105,7 @@
     <Compile Include="Entities\CustomCoreMessage.cs" />
     <Compile Include="Entities\NiceFrame.cs" />
     <Compile Include="Entities\_support\PlayerChaseTracker.cs" />
+    <Compile Include="Entities\_support\RoomTeleportInfo.cs" />
     <Compile Include="Entities\_support\SwapImmediatelyExtension.cs" />
     <Compile Include="MeliHelperModule.cs" />
     <Compile Include="MeliHelperSaveData.cs" />

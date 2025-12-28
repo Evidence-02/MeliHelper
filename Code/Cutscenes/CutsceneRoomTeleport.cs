@@ -11,18 +11,22 @@ namespace Celeste.Mod.MeliHelper
 {
     class CutsceneRoomTeleport : CutsceneEntity
     {
-        Player.IntroTypes intro_type;
         Player player;
-        Vector2 spawnpoint;
-        string next_level, dialogue_before;
+        RoomTeleportInfo teleport_info;
+        string dialogue_before;
         float alpha_black;
 
-        public CutsceneRoomTeleport(string next_level, Vector2 spawnpoint, Player.IntroTypes intro_type = Player.IntroTypes.None, 
+        public CutsceneRoomTeleport(string room_teleport, Vector2 room_spawnpoint, Player.IntroTypes intro_type = Player.IntroTypes.None, 
             string dialogue_before = "")
         {
-            this.next_level = next_level;
-            this.spawnpoint = spawnpoint;
-            this.intro_type = intro_type;
+            this.teleport_info = new RoomTeleportInfo(room_teleport, room_spawnpoint, intro_type);
+            this.dialogue_before = dialogue_before;
+            Tag = Tags.HUD;
+        }
+
+        public CutsceneRoomTeleport(RoomTeleportInfo info, string dialogue_before = "")
+        {
+            this.teleport_info = info;
             this.dialogue_before = dialogue_before;
             Tag = Tags.HUD;
         }
@@ -80,27 +84,7 @@ namespace Celeste.Mod.MeliHelper
 
         public override void OnEnd(Level level)
         {
-            //Methods.PlayerLock(player, false);
-            level.OnEndOfFrame += (Action)(() => {
-                level.Remove(player);
-                level.UnloadLevel();
-                level.Session.Dreaming = false;
-                level.Session.Level = next_level;
-
-                //Leader.RestoreStrawberries(player.Leader);
-
-                //There's only 1 spawnpoint on every level anyway
-                //level.Session.RespawnPoint = level.GetSpawnPoint(new Vector2(level.Bounds.Left, level.Bounds.Top));
-                level.Session.RespawnPoint = level.GetSpawnPoint(spawnpoint);
-
-                // Unlock player moves
-                player.StateMachine.Locked = false;
-                player.StateMachine.State = 0;
-                player.ForceCameraUpdate = false;
-
-                level.LoadLevel(intro_type);
-                //Leader.RestoreStrawberries(level.Tracker.GetEntity<Player>().Leader);
-            });
+            teleport_info.OnRoomEnd(level, player);
         }
     }
 }

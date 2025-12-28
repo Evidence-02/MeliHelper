@@ -120,7 +120,7 @@ namespace Celeste.Mod.MeliHelper
             is_activated = true;
             switch (action)
             {
-                case "Teleport": level.Add(new CutsceneRoomTeleport(param, Vector2.Zero)); break;
+                case "Teleport": level.Add(new CutsceneRoomTeleport(new RoomTeleportInfo(param))); break;
                 case "Dialogue": if (Methods.PlayerIsAlive(player)) level.Add(new DialogCutscene(param, player, false)); break;
             }
 

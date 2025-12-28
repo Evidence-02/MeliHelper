@@ -18,18 +18,19 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         Field field;
         Player player;
+        RoomTeleportInfo teleport_info;
         Dictionary<BCEnum_EnemyType, BCCutsceneWinStat> mass_stats;
-        string current_level, next_level, hiscore_message;
+        string current_level, hiscore_message;
         int total_points, total_enemies, state_show;
         float label_gameover_dy;
         bool is_show_screen, is_show_gameover_bricks, is_game_over;
 
-        public BCCutsceneWin(Field field, Player player, string current_level, string next_level, bool is_game_over = false)
+        public BCCutsceneWin(Field field, Player player, RoomTeleportInfo teleport_info, string current_level, bool is_game_over = false)
         {
             this.field = field;
             this.player = player;
+            this.teleport_info = teleport_info;
             this.current_level = current_level;
-            this.next_level = next_level;
             this.is_game_over = is_game_over;
             this.label_gameover_dy = 1120;
             //this.font = FontController.GetBCFont();
@@ -61,11 +62,11 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             // Hiscore
             string campaign = ProgressController.CampaignName();
             hiscore_message =
-                (MeliHelperModule.Instance.SaveData.BattleCity_HiScores is null) ? "ERROR#BRUH-1" :
+                (MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores is null) ? "ERROR#BRUH-1" :
                 (campaign is null) ? "ERROR--CAMPAIGN-IS-NULL" :
                 (campaign == "") ? "ERROR--CANT-FIND-CAMPAIGN" :
-                (!MeliHelperModule.Instance.SaveData.BattleCity_HiScores.ContainsKey(campaign)) ? "ERROR#BRUH-2" :
-                MeliHelperModule.Instance.SaveData.BattleCity_HiScores[campaign].ToString();
+                (!MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores.ContainsKey(campaign)) ? "ERROR#BRUH-2" :
+                MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores[campaign].ToString();
 
             // Clear field
             foreach (var item in level.Entities.FindAll<StarHUD>()) item.RemoveSelf();
@@ -200,13 +201,13 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             {
                 // GAME
                 string[] mass_bricks = {
-                    "0011111-0011100-1100011-1111111",
-                    "0110000-0110110-1110111-1100000",
-                    "1100000-1100011-1111111-1100000",
-                    "1100111-1100011-1111111-1111100",
-                    "1100011-1111111-1101011-1100000",
-                    "0110011-1100011-1100011-1100000",
-                    "0011111-1100011-1100011-1111111"
+                    "--11111---111---11---11-1111111",
+                    "-11------11-11--111-111-11-----",
+                    "11------11---11-1111111-11-----",
+                    "11--111-11---11-1111111-11111--",
+                    "11---11-1111111-11-1-11-11-----",
+                    "-11--11-11---11-11---11-11-----",
+                    "--11111-11---11-11---11-1111111"
                 };
                 for (int j = 0; j < mass_bricks.Length; j++)
                     for (int i = 0; i < mass_bricks[j].Length; i++)
@@ -218,13 +219,13 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
                 // OVER
                 mass_bricks = new string[] {
-                    "0111110-1100011-1111111-1111110",
-                    "1100011-1100011-1100000-1100011",
-                    "1100011-1100011-1100000-1100011",
-                    "1100011-1110111-1111100-1100111",
-                    "1100011-0111110-1100000-1111100",
-                    "1100011-0011100-1100000-1101110",
-                    "0111110-0001000-1111111-1100111"
+                    "-11111--11---11-1111111-111111-",
+                    "11---11-11---11-11------11---11",
+                    "11---11-11---11-11------11---11",
+                    "11---11-111-111-11111---11--111",
+                    "11---11--11111--11------11111--",
+                    "11---11---111---11------11-111-",
+                    "-11111-----1----1111111-11--111"
                 };
                 for (int j = 0; j < mass_bricks.Length; j++)
                     for (int i = 0; i < mass_bricks[j].Length; i++)
@@ -245,28 +246,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                 MeliHelperModule.Instance.Session.BattleCity_PlayerInfo.BruhGameover();
                 MeliHelperModule.Instance.Session.BattleCity_PlayerInfoSaved.BruhGameover();
             }
-
-            //Methods.PlayerLock(player, false);
-            level.OnEndOfFrame += (Action)(() => {
-                level.Remove(player);
-                level.UnloadLevel();
-                level.Session.Dreaming = false;
-                level.Session.Level = next_level;
-
-                //Leader.RestoreStrawberries(player.Leader);
-
-                //There's only 1 spawnpoint on every level anyway
-                //level.Session.RespawnPoint = level.GetSpawnPoint(new Vector2(level.Bounds.Left, level.Bounds.Top));
-                level.Session.RespawnPoint = level.GetSpawnPoint(Vector2.Zero);
-
-                // Unlock player moves
-                player.StateMachine.Locked = false;
-                player.StateMachine.State = 0;
-                player.ForceCameraUpdate = false;
-
-                level.LoadLevel(is_game_over ? Player.IntroTypes.Respawn : Player.IntroTypes.None);
-                //Leader.RestoreStrawberries(level.Tracker.GetEntity<Player>().Leader);
-            });
+            teleport_info.OnRoomEnd(level, player);
         }
 
         class BCCutsceneWinStat

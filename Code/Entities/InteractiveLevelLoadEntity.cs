@@ -13,18 +13,16 @@ namespace Celeste.Mod.MeliHelper
     class InteractiveLevelLoadEntity : Solid
     {
         Level level;
+        RoomTeleportInfo teleport_info;
         Rectangle rect, rect_inside;
         Color color_border, color_fill, color_back;
         float val, val_add_per_shoot, val_sub, delay, delay_after_shoot;
         bool is_loaded, is_dash_affective;
-
-        Vector2 room_spawnpoint;
-        string room_name, dialogue_before;
-        Player.IntroTypes intro_type;
+        string dialogue_before;
 
         // ???
-        Color clr_text;
-        string text;
+        //Color clr_text;
+        //string text;
 
         public InteractiveLevelLoadEntity(EntityData data, Vector2 offset)
             : base(data.Position + offset, data.Width, data.Height, true)
@@ -38,15 +36,12 @@ namespace Celeste.Mod.MeliHelper
             val_sub = data.Float("valueSubPerSecond", 0.07f);   
             delay_after_shoot = data.Float("delayBeforeSub", 0.7f);
             is_dash_affective = data.Bool("dashAffective", true);
-
-            room_name = data.Attr("levelLoad");
-            room_spawnpoint = new Vector2(data.Int("spawnpointX"), data.Int("spawnpointY"));
-            intro_type = (Player.IntroTypes)Enum.Parse(typeof(Player.IntroTypes), data.Attr("introTypes", "WakeUp"));
+            teleport_info = new RoomTeleportInfo(data, room_param_name: "levelLoad");
             dialogue_before = data.Attr("dialogueBefore");
 
             // ???
-            text = data.Attr("text");
-            clr_text = Methods.GetColorFromString(data.Attr("colorText"));
+            //text = data.Attr("text");
+            //clr_text = Methods.GetColorFromString(data.Attr("colorText"));
         }
 
         public override void Added(Scene scene)
@@ -79,12 +74,12 @@ namespace Celeste.Mod.MeliHelper
             Draw.Rect(new Rectangle(rect_inside.X, rect_inside.Y, (int)(rect_inside.Width * val), rect_inside.Height), color_fill);
             Draw.HollowRect(rect, color_border);
 
-            if (text != "")
-                ActiveFont.Draw(text, 
-                    position: new Vector2(rect.Center.X, rect.Center.Y), 
-                    justify: new Vector2(0.5f), 
-                    scale: new Vector2(0.3f), 
-                    color: clr_text);
+            //if (text != "")
+            //    ActiveFont.Draw(text, 
+            //        position: new Vector2(rect.Center.X, rect.Center.Y), 
+            //        justify: new Vector2(0.5f), 
+            //        scale: new Vector2(0.3f), 
+            //        color: clr_text);
         }
 
         protected virtual DashCollisionResults onDashCollide(Player player, Vector2 dir)
@@ -104,7 +99,7 @@ namespace Celeste.Mod.MeliHelper
             {
                 val = 1;
                 is_loaded = true;
-                level.Add(new CutsceneRoomTeleport(room_name, room_spawnpoint, intro_type, dialogue_before));
+                level.Add(new CutsceneRoomTeleport(teleport_info, dialogue_before));
             }
         }
 

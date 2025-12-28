@@ -21,8 +21,8 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (campaign != null && campaign != "")
             {
                 CheckAndCreateCampaignHighScore(campaign);
-                if (MeliHelperModule.Instance.SaveData.BattleCity_HiScores[campaign] < from.Points)
-                    MeliHelperModule.Instance.SaveData.BattleCity_HiScores[campaign] = from.Points;
+                if (MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores[campaign] < from.Points)
+                    MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores[campaign] = from.Points;
             }
         }
         
@@ -47,10 +47,10 @@ namespace Celeste.Mod.MeliHelper._BattleCity
 
         static void CheckAndCreateCampaignHighScore(string campaign, int default_value = 0) // 20000
         {
-            if (MeliHelperModule.Instance.SaveData.BattleCity_HiScores is null)
-                MeliHelperModule.Instance.SaveData.BattleCity_HiScores = new Dictionary<string, int>();
-            if (!MeliHelperModule.Instance.SaveData.BattleCity_HiScores.Keys.Contains(campaign))
-                MeliHelperModule.Instance.SaveData.BattleCity_HiScores[campaign] = default_value;
+            if (MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores is null)
+                MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores = new Dictionary<string, int>();
+            if (!MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores.Keys.Contains(campaign))
+                MeliHelperModule.Instance.SaveData.BattleCity_CampaignHiScores[campaign] = default_value;
         }
 
         public static BattleCityPlayerInfo GetCurrentPlayerInfo()

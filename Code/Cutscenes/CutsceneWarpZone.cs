@@ -12,12 +12,11 @@ namespace Celeste.Mod.MeliHelper
     class CutsceneWarpZone : CutsceneEntity
     {
         Player player;
+        RoomTeleportInfo teleport_info;
         WarpZoneTexture[] mass_textures;
         WarpZone warp_zone;
-        Vector2 room_spawnpoint;
-        Player.IntroTypes intro_type;
         Color texture_color;
-        string room_teleport, sound;
+        string sound;
         int texture_type;
         float alpha_back, alpha_hole;
         bool is_update_canadian, is_show_cutscene;
@@ -29,15 +28,12 @@ namespace Celeste.Mod.MeliHelper
         float player_rotation, player_scale;
         float player_sprite_rotation, player_sprite_rotation_del;
 
-        public CutsceneWarpZone(Player player, WarpZone warp_zone, 
-            string room_teleport, Vector2 room_spawnpoint, Player.IntroTypes intro_type,
+        public CutsceneWarpZone(Player player, WarpZone warp_zone, RoomTeleportInfo teleport_info,
             Color color, string sound, int texture_type, bool is_show_cutscene = true)
         {
             this.player = player;
             this.warp_zone = warp_zone;
-            this.room_teleport = room_teleport;
-            this.room_spawnpoint = room_spawnpoint;
-            this.intro_type = intro_type;
+            this.teleport_info = teleport_info;
             this.sound = sound;
             this.texture_color = color;
             this.texture_type = texture_type;
@@ -169,12 +165,12 @@ namespace Celeste.Mod.MeliHelper
                 player_scale *= 0.988f;
                 player_rotation += 2.4f * MathExt.PI2 * Engine.DeltaTime;
                 player_pos = new Vector2(920, 540) + Calc.AngleToVector(pcenter_angle, pcenter_dist);
-                
+
                 // It's called hair, Strax...
                 mass_hair_hodes[0] = player_pos + Calc.AngleToVector(player_rotation + 268 * MathExt.DegreesToRadians, player_scale * 3.6f);
                 for (int i = 1; i < mass_hair_hodes.Length; i++)
                     mass_hair_hodes[i] = mass_hair_hodes[i - 1]
-                        + (hair_texture.Width * player_scale * GetHairScale(i) / 32) * Vector2.Normalize(mass_hair_hodes[i] - mass_hair_hodes[i-1]);
+                        + (hair_texture.Width * player_scale * GetHairScale(i) / 32) * Vector2.Normalize(mass_hair_hodes[i] - mass_hair_hodes[i - 1]);
             }
         }
 
@@ -200,33 +196,17 @@ namespace Celeste.Mod.MeliHelper
             }
         }
 
+        public override void OnEnd(Level level)
+        {
+            teleport_info.OnRoomEnd(level, player);
+        }
+
         float GetHairScale(int i)
         {
             return Math.Max(1f - 0.8f * (i + 1) / mass_hair_hodes.Length, 0.4f);
         }
 
-        public override void OnEnd(Level level)
-        {
-            //Methods.PlayerLock(player, false);
-            level.OnEndOfFrame += (Action)(() => {
-                level.Remove(player);
-                level.UnloadLevel();
-                level.Session.Dreaming = false;
-                level.Session.Level = room_teleport;
 
-                //Leader.RestoreStrawberries(player.Leader);
-
-                level.Session.RespawnPoint = level.GetSpawnPoint(room_spawnpoint);
-
-                // Unlock player moves
-                player.StateMachine.Locked = false;
-                player.StateMachine.State = 0;
-                player.ForceCameraUpdate = false;
-
-                level.LoadLevel(intro_type);
-                //Leader.RestoreStrawberries(level.Tracker.GetEntity<Player>().Leader);
-            });
-        }
 
         class WarpZoneTexture
         {

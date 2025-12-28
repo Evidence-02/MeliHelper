@@ -166,7 +166,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             this.state = state;
             if (state == BCEnum_GameState.Gameover)
-                level.Add(new BCCutsceneWin(this, level.Tracker.GetEntity<Player>(), name, return_level, true));
+                level.Add(new BCCutsceneWin(this, level.Tracker.GetEntity<Player>(), new RoomTeleportInfo(return_level, Vector2.Zero, Player.IntroTypes.Respawn), current_level: name, is_game_over: true));
                 //level.Add(new BCCutsceneGameover(this, return_level));
         }
 
@@ -270,8 +270,8 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (this.goal == check_goal)
                 switch (event_finish)
                 {
-                    case BCEnum_FinishEvent.Endscreen:    level.Add(new BCCutsceneWin(this, level.Tracker.GetEntity<Player>(), name, next_level)); break;
-                    case BCEnum_FinishEvent.FastTeleport: level.Add(new CutsceneRoomTeleport(next_level, Vector2.Zero, Player.IntroTypes.None)); break;
+                    case BCEnum_FinishEvent.Endscreen: level.Add(new BCCutsceneWin(this, level.Tracker.GetEntity<Player>(), new RoomTeleportInfo(next_level), current_level: name)); break;
+                    case BCEnum_FinishEvent.FastTeleport: level.Add(new CutsceneRoomTeleport(new RoomTeleportInfo(next_level))); break;
                 }
         }
 

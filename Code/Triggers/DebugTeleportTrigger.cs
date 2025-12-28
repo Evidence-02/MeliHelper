@@ -11,25 +11,25 @@ namespace Celeste.Mod.MeliHelper
     [CustomEntity("MeliHelper/DebugTeleportTrigger")]
     class DebugTeleportTrigger : Trigger
     {
-        string room_teleport;
+        RoomTeleportInfo teleport_info;
 
         public DebugTeleportTrigger(EntityData data, Vector2 offset) : base(data, offset)
         {
-            room_teleport = data.Attr("room");
+            teleport_info = new RoomTeleportInfo(data, "room");
         }
 
         public override void OnEnter(Player player)
         {
             base.OnEnter(player);
-            player.SceneAs<Level>().Add(new CutsceneRoomTeleport(room_teleport, Vector2.Zero));
+            player.SceneAs<Level>().Add(new CutsceneRoomTeleport(teleport_info));
             RemoveSelf();
         }
 
         public override void Render()
         {
             base.Render();
-            ActiveFont.Draw(room_teleport,
-                position: new Vector2(Center.X, Position.Y - 20), 
+            ActiveFont.Draw(teleport_info.GetRoomName,
+                position: new Vector2(Center.X, Position.Y - 20),
                 justify: new Vector2(0.5f),
                 scale: new Vector2(0.2f),
                 color: Color.White
