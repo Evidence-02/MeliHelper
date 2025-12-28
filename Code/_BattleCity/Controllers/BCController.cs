@@ -186,7 +186,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                 SaveData.Instance.Assists.Invincible = true;
 
             Vector2 pos_saved = player.Center;
-            float delay = 1f;
+            float delay = 1.6f;
             while (delay > 0)
             {
                 player.Center = pos_saved;
@@ -194,10 +194,14 @@ namespace Celeste.Mod.MeliHelper._BattleCity
                 delay -= Engine.DeltaTime;
                 yield return null;
             }
-            player.Position = Vector2.Zero;
-
+            //Vector2 safe_position = Vector2.Zero;
+            //Field field = level.Entities.FindFirst<Field>();
+            //if (field != null) safe_position = field.Center + new Vector2(16, -32); // topleft point
+            //                                                                        // point of the field, actually
+            //                                                 // I needed the point inside of the camera triggers but not inside of the actual field
+            //player.Position = safe_position;
             //player.Position = Vector2.Zero;
-            yield return 1f;
+            //yield return 1f;
             
             
             // Spawn player on spawnpoint
@@ -206,6 +210,10 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             player.Sprite.Visible = true;
             player.Hair.Visible = true;
             Methods.PlayerLock(player, false);
+
+            // Kill all the dangerous thing near the spawnpoint
+            foreach (Enemy tank in level.Entities.FindAll<Enemy>().FindAll(t => Vector2.Distance(t.Center, player.Center) <= 24))
+                tank.Die(true);
 
             // Imitate respawn
             Audio.Play(SFX.char_mad_revive);

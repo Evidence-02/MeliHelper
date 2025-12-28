@@ -311,16 +311,16 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             if (!is_dead)
             {
                 if (true)
-                    GFX.Game["Evidence02/objects_bc/tanks/gray" + opts.id_sprite.ToString() + frame_id.ToString()]
+                    GFX.Game["Evidence02/objects_bc/tanks/gray"   + opts.id_sprite + frame_id.ToString()]
                         .Draw(Position + new Vector2(7.5f), new Vector2(7.5f), Color.White, scale: 1f, rotation: texture_angle);
                 if (is_contains_bonus && is_show_bonus)
-                    GFX.Game["Evidence02/objects_bc/tanks/red"   + opts.id_sprite.ToString() + frame_id.ToString()]
+                    GFX.Game["Evidence02/objects_bc/tanks/red"    + opts.id_sprite + frame_id.ToString()]
                         .Draw(Position + new Vector2(7.5f), new Vector2(7.5f), Color.White, scale: 1f, rotation: texture_angle);
                 else if (timer_hit > 0 && is_show_hit)
-                    GFX.Game["Evidence02/objects_bc/tanks/yellow" + opts.id_sprite.ToString() + frame_id.ToString()]
+                    GFX.Game["Evidence02/objects_bc/tanks/yellow" + opts.id_sprite + frame_id.ToString()]
                         .Draw(Position + new Vector2(7.5f), new Vector2(7.5f), Color.White, scale: 1f, rotation: texture_angle);
                 else if (is_armored)
-                    GFX.Game["Evidence02/objects_bc/tanks/green" + opts.id_sprite.ToString() + frame_id.ToString()]
+                    GFX.Game["Evidence02/objects_bc/tanks/green"  + opts.id_sprite + frame_id.ToString()]
                         .Draw(Position + new Vector2(7.5f), new Vector2(7.5f), Color.White, scale: 1f, rotation: texture_angle);
             }
 

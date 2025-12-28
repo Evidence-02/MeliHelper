@@ -29,7 +29,7 @@ namespace Celeste.Mod.MeliHelper
             color = Methods.GetColorFromString(data.Attr("color", "000000")) * data.Float("opacity", 0.6f);
             radius = data.Int("radius", 16);
             flag_not_appear = data.Attr("flagNotAppear");
-            is_show_cutscene = data.Bool("showCutscene");
+            is_show_cutscene = data.Bool("showCutscene", true);
             mass_sprites = new Sprite[5];
             for (int i = 0; i < mass_sprites.Length; i++)
             {

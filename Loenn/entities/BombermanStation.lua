@@ -8,6 +8,7 @@ entity.placements = {
     {
         name = "Bomberman Station",
         data = {
+			flag = ""
         }
     }
 }

@@ -16,11 +16,20 @@ namespace Celeste.Mod.MeliHelper._BattleCity
         {
             list_types_current = new List<EnemyTypeOptions>();
             list_types_default = new List<EnemyTypeOptions>();
-            
+
+            //         !!! CAUTION !!!
+            // Synchronized with meliLib.lua (also used in CustomEnemyType.lua, Tank.lua)
             list_types_default.Add(new EnemyTypeOptions('B', BCEnum_EnemyType.Basic,   100, 1, 36, 100, 2.4f));
             list_types_default.Add(new EnemyTypeOptions('F', BCEnum_EnemyType.Fast,    200, 1, 60, 150, 2.4f)); 
             list_types_default.Add(new EnemyTypeOptions('P', BCEnum_EnemyType.Power,   300, 1, 48, 200, 1.8f, true));
             list_types_default.Add(new EnemyTypeOptions('A', BCEnum_EnemyType.Armored, 400, 4, 48, 150, 2.4f));
+            // custom types
+            list_types_default.Add(new EnemyTypeOptions('Z', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
+            list_types_default.Add(new EnemyTypeOptions('Y', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
+            list_types_default.Add(new EnemyTypeOptions('X', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
+            list_types_default.Add(new EnemyTypeOptions('W', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
+            list_types_default.Add(new EnemyTypeOptions('V', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
+            list_types_default.Add(new EnemyTypeOptions('U', BCEnum_EnemyType.Basic, 100, 1, 36, 100, 2.4f));
             ResetToDefault();
         }
 
@@ -46,7 +55,7 @@ namespace Celeste.Mod.MeliHelper._BattleCity
     {
         public BCEnum_EnemyType type;
         public char id;
-        public int id_sprite;
+        public string id_sprite;
         public int points, health;
         public float speed_move, speed_bullets, shoot_frequency;
         public bool is_can_break_through_steel;
@@ -59,10 +68,10 @@ namespace Celeste.Mod.MeliHelper._BattleCity
             this.type = type;
             switch (type)
             {
-                case BCEnum_EnemyType.Basic:   id_sprite = 4; break;
-                case BCEnum_EnemyType.Fast:    id_sprite = 5; break;
-                case BCEnum_EnemyType.Power:   id_sprite = 6; break;
-                case BCEnum_EnemyType.Armored: id_sprite = 7; break;
+                case BCEnum_EnemyType.Basic:   id_sprite = "4"; break;
+                case BCEnum_EnemyType.Fast:    id_sprite = "5"; break;
+                case BCEnum_EnemyType.Power:   id_sprite = "6"; break;
+                case BCEnum_EnemyType.Armored: id_sprite = "7"; break;
             }
             this.points = points;
             this.health = health;

@@ -110,6 +110,17 @@
     <Compile Include="MeliHelperSaveData.cs" />
     <Compile Include="MeliHelperSession.cs" />
     <Compile Include="MeliHelperSettings.cs" />
+    <Compile Include="Test\FakeCrystalHeart.cs" />
+    <Compile Include="Test\FakeKey.cs" />
+    <Compile Include="Test\VirtualButtonRebindingBlock.cs" />
+    <Compile Include="Test\VirtualButtonRebindingTrigger.cs" />
+    <Compile Include="Test\VirtualButtonRebindingUI.cs" />
+    <Compile Include="Test\_WYS\Bullet.cs" />
+    <Compile Include="Test\_WYS\MovingBlock.cs" />
+    <Compile Include="Test\_WYS\TurretChase.cs" />
+    <Compile Include="Test\_WYS\TurretRotate.cs" />
+    <Compile Include="Test\_WYS\WYSBoss01.cs" />
+    <Compile Include="Test\_WYS\WYSBoss01_old.cs" />
     <Compile Include="Triggers\KillPlayerTrigger.cs" />
     <Compile Include="Triggers\StrawberryCollectTrigger.cs" />
     <Compile Include="_LaniAndFriends\Baddy\BaddyController.cs" />
@@ -233,5 +244,6 @@
     <Compile Include="_BattleCity\Cells\FieldCellBrick.cs" />
     <Compile Include="_BattleCity\Flag.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

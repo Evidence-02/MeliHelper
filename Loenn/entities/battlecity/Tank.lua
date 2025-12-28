@@ -6,64 +6,23 @@ local meliLib = require('mods').requireFromPlugin('libraries.meliLib')
 local entity = {}
 entity.name = "MeliHelper/BattleCityTank"
 entity.depth = -9999
-entity.placements = {
-    {
-        name = "Battle City Tank (basic)",
+entity.placements = { }
+for tank, prms in pairs(meliLib.bcEnemyParams) do
+	table.insert(entity.placements, {
+        name = "Battle City Tank (".. tank ..")",
         data = {
-			tankType = 'Basic',
-			points = 100,
-			health = 1,
-			speedMove = 36,
-			speedBullets = 100,
-			shootFrequency = 2.4,
-			canDamageSteel = false,
+			tankType = tank,
+			points = prms.points,
+			health = prms.health,
+			speedMove = prms.speedMove,
+			speedBullets = prms.speedBullets,
+			shootFrequency = prms.shootFrequency,
+			canDamageSteel = prms.canDamageSteel,
 			bonusRandomPosition = true,
 			containsBonus = false
         }
-    },
-    {
-        name = "Battle City Tank (fast)",
-        data = {
-			tankType = 'Fast',
-			points = 200,
-			health = 1,
-			speedMove = 60,
-			speedBullets = 150,
-			shootFrequency = 2.4,
-			canDamageSteel = false,
-			bonusRandomPosition = true,
-			containsBonus = false
-        }
-    },
-    {
-        name = "Battle City Tank (power)",
-        data = {
-			tankType = 'Power',
-			points = 300,
-			health = 1,
-			speedMove = 48,
-			speedBullets = 200,
-			shootFrequency = 1.8,
-			canDamageSteel = true,
-			bonusRandomPosition = true,
-			containsBonus = false
-        }
-    },
-    {
-        name = "Battle City Tank (armored)",
-        data = {
-			tankType = 'Armored',
-			points = 400,
-			health = 4,
-			speedMove = 48,
-			speedBullets = 150,
-			shootFrequency = 2.4,
-			canDamageSteel = true,
-			bonusRandomPosition = true,
-			containsBonus = false
-        }
-    }
-}
+	})
+end
 
 entity.fieldInformation = {
     tankType = {

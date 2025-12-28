@@ -284,6 +284,11 @@ namespace Celeste.Mod.MeliHelper
             return null;
         }
 
+        public static bool isKeyboardConnected()
+        {
+            return !Input.GuiInputController();
+        }
+
         public static void DeleteSpikesAroundRect(Level level, Rectangle rect)
         {
             List<Spikes> list_spikes = level.Entities.FindAll<Spikes>();
