@@ -44,6 +44,7 @@ namespace Celeste.Mod.MeliHelper
             BCController.Load();
             BonusesController.Initialize();
             EnemyTypesController.Initialize();
+            CustomTextController.Initialize();
         }
 
         public override void Unload()

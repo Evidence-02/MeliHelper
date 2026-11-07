@@ -51,9 +51,45 @@ namespace Celeste.Mod.MeliHelper
 
 
 
+
+
+
+    enum RCMEnum_CubeType
+    {
+        DinoCube, Skewb, CloverCube,
+        FloppyCube, Cube222, Cube223, Cube233, Cube333, Cube234,
+        Mirror, Mirror22, MirrorFloppy,
+        PetalPyraminx,
+        Kilominx, Megaminx,
+        // unused
+        AxisCube
+    }
+    enum RCMEnum_CubeState
+    {
+        Normal, Scramble, Descramble, RestorePrevious, Solved
+    }
+    enum RCMEnum_AxisType
+    {
+        Front, Back, Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight,
+        AxisX, AxisY, AxisZ,
+        RotateCenter,
+        None
+    }
+    enum RCMEnum_AxisDirection
+    {
+        All, Normal
+    }
+    enum RCMEnum_ControlScheme
+    {
+        Main, Scheme1, Scheme2, Scheme3
+    }
+
+
+
     enum DirectionEnum { Left, Right, Up, Down }
     enum TextAlignment { Left, Center, Right }
     enum ClassicBadelineShotColorEnum { Red, Violet, Yellow, Blue, White, Black }
     public enum ConditionEnum { PlayerInside, PlayerOnLeft, PlayerOnRight, BerryCollected }
-
+    enum UIButtonEnum { Dash, Talk, Up, Down, Left, Right }
+    enum UIButtonActionEnum { GoNext, GoPrev, GoTo0, Save, Exit, Another, None }
 }

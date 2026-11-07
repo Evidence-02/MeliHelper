@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CustomTextController.cs" />
     <Compile Include="Controllers\FontControllerOutline.cs" />
     <Compile Include="Entities\NiceArrow.cs" />
     <Compile Include="Entities\StaticText.cs" />
@@ -244,6 +245,52 @@
     <Compile Include="_BattleCity\Cells\FieldCellSteel.cs" />
     <Compile Include="_BattleCity\Cells\FieldCellBrick.cs" />
     <Compile Include="_BattleCity\Flag.cs" />
+    <Compile Include="_RCM\Controllers\DashController.cs" />
+    <Compile Include="_RCM\Controllers\SeedController.cs" />
+    <Compile Include="_RCM\Entities\CustomRubikBackground.cs" />
+    <Compile Include="_RCM\Entities\CustomRubikPointsDisplay.cs" />
+    <Compile Include="_RCM\Entities\CustomRubikPointsDoor.cs" />
+    <Compile Include="_RCM\Entities\CustomRubikSolvedSignal.cs" />
+    <Compile Include="_RCM\Entities\CustomRubikWaveText.cs" />
+    <Compile Include="_RCM\Entities\DebugRubikFacesDetail.cs" />
+    <Compile Include="_RCM\Entities\DebugRubikFacesInfo.cs" />
+    <Compile Include="_RCM\Entities\RubikBlockRotateAxis.cs" />
+    <Compile Include="_RCM\Entities\RubikCube.cs" />
+    <Compile Include="_RCM\Entities\RubikCubeProjectionEntity.cs" />
+    <Compile Include="_RCM\Entities\RubikDashSchemeEntity.cs" />
+    <Compile Include="_RCM\Entities\RubikDisplayMove.cs" />
+    <Compile Include="_RCM\Entities\RubikSwitchCubeDirection.cs" />
+    <Compile Include="_RCM\Entities\RubikSwitchScheme.cs" />
+    <Compile Include="_RCM\Entities\RubikSwitchTexture.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputer.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputerUI.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputerUIButton.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputerUICheckbox.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputerUIElement.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedComputerUILetter.cs" />
+    <Compile Include="_RCM\Entities\_seeds\SeedLabel.cs" />
+    <Compile Include="_RCM\Triggers\RubikCancelDashTrigger.cs" />
+    <Compile Include="_RCM\Triggers\RubikMoveTrigger.cs" />
+    <Compile Include="_RCM\_cube\Axis.cs" />
+    <Compile Include="_RCM\_cube\AxisSphere.cs" />
+    <Compile Include="_RCM\_cube\AxisSphere3.cs" />
+    <Compile Include="_RCM\_cube\AxisSurface.cs" />
+    <Compile Include="_RCM\_cube\Face.cs" />
+    <Compile Include="_RCM\_cube\Journal.cs" />
+    <Compile Include="_RCM\_cube\JournalMove.cs" />
+    <Compile Include="_RCM\_cube\JournalSession.cs" />
+    <Compile Include="_RCM\_cube\RotationEvent.cs" />
+    <Compile Include="_RCM\_cube\RotationGrid.cs" />
+    <Compile Include="_RCM\_cube\Sticker.cs" />
+    <Compile Include="_RCM\_cube\StickerFlickering.cs" />
+    <Compile Include="_RCM\_projection\CubeProjection.cs" />
+    <Compile Include="_RCM\_projection\CubeProjection1.cs" />
+    <Compile Include="_RCM\_projection\CubeProjection2.cs" />
+    <Compile Include="_RCM\_projection\CubeProjection3.cs" />
+    <Compile Include="_RCM\_projection\StickerProjection.cs" />
+    <Compile Include="_RCM\_projection\StickerProjection1.cs" />
+    <Compile Include="_RCM\_projection\StickerProjection2.cs" />
+    <Compile Include="_RCM\_projection\StickerProjection3.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

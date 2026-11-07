@@ -39,7 +39,7 @@ namespace Celeste.Mod.MeliHelper._Minesweeper
 
             list_reserved_cells = new List<MinesweeperCell>();
 
-            button_change_mode = new CustomVirtualButtonChecker(MeliHelperModule.Settings.Minesweeper_ChangeDashMode);
+            button_change_mode = new CustomVirtualButtonChecker(MeliHelperModule.Settings.Minesweeper_ChangeDashMode.Button);
             MeliHelperModule.Instance.Session.Minesweeper_CellMarker = Minesweeper_CellMark.None;
             Depth = DepthController.DEFAULT_UI;
         }

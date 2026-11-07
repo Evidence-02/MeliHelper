@@ -1,0 +1,23 @@
+local utils = require("utils")
+
+local entity = {}
+entity.name = "MeliHelper/RubikDebugFacesInfo"
+entity.depth = 0
+entity.placements = {
+    {
+        name = "Rubik *debug Faces Info",
+        data = {
+        }
+    }
+}
+
+function entity.selection(room, entity)
+    local x, y = entity.x or 0, entity.y or 0
+    return utils.rectangle(x - 12, y - 12, 24, 24)
+end
+
+function entity.texture(room, entity)
+	return "Evidence02/objects_cubes/loenn/debug"
+end
+
+return entity

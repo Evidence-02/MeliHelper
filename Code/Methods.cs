@@ -206,6 +206,13 @@ namespace Celeste.Mod.MeliHelper
             player.Position = new Vector2((int)player.Position.X, (int)player.Position.Y);
         }
 
+        public static void StayBehindPlayer(Level level, Entity entity)
+        {
+            Player player = level.Tracker.GetEntity<Player>();
+            if (player != null && !player.Dead && entity.Depth < player.Depth + 1)
+                entity.Depth = player.Depth + 1;
+        }
+
 
 
         public static Vector2 GetMouseCoords(Level level)
@@ -358,6 +365,121 @@ namespace Celeste.Mod.MeliHelper
         }
 
 
+        #region Vector3
+
+        public static void GenerateCubeVectors(Vector3 v_center, float dist,
+            ref Vector3 v000, ref Vector3 v001, ref Vector3 v010, ref Vector3 v011,
+            ref Vector3 v100, ref Vector3 v101, ref Vector3 v110, ref Vector3 v111)
+        {
+            v000 = v_center + new Vector3(-dist, -dist, -dist);
+            v001 = v_center + new Vector3(-dist, -dist, dist);
+            v010 = v_center + new Vector3(-dist, dist, -dist);
+            v011 = v_center + new Vector3(-dist, dist, dist);
+            v100 = v_center + new Vector3(dist, -dist, -dist);
+            v101 = v_center + new Vector3(dist, -dist, dist);
+            v110 = v_center + new Vector3(dist, dist, -dist);
+            v111 = v_center + new Vector3(dist, dist, dist);
+        }
+
+        public static Vector3[,,] GenerateVectorArray(Vector3 v_center, float dist, int length)
+        {
+            Vector3[,,] res = new Vector3[length, length, length];
+            float xyz_start = -dist * (length - 1) / 2;
+            for (int i = 0; i < length; i++)
+                for (int j = 0; j < length; j++)
+                    for (int k = 0; k < length; k++)
+                        res[i, j, k] = new Vector3(v_center.X + xyz_start + i * dist, v_center.Y + xyz_start + j * dist, v_center.Z + xyz_start + k * dist);
+            return res;
+        }
+
+
+        public static Vector3[,,] GenerateVectorArray(Vector3 v_center, float dist, int lenx, int leny, int lenz)
+        {
+            Vector3[,,] res = new Vector3[lenx, leny, lenz];
+            float x_start = v_center.X - dist * (lenx - 1) / 2;
+            float y_start = v_center.Y - dist * (leny - 1) / 2;
+            float z_start = v_center.Z - dist * (lenz - 1) / 2;
+            for (int x = 0; x < lenx; x++)
+                for (int y = 0; y < leny; y++)
+                    for (int z = 0; z < lenz; z++)
+                        res[x, y, z] = new Vector3(x_start + x * dist, y_start + y * dist, z_start + z * dist);
+            return res;
+        }
+
+        public static Vector3[,,] GenerateVectorArray(float[] coords_x, float[] coords_y, float[] coords_z)
+        {
+            int lenx = coords_x.Length;
+            int leny = coords_y.Length;
+            int lenz = coords_z.Length;
+
+            Vector3[,,] res = new Vector3[lenx, leny, lenz];
+            for (int x = 0; x < lenx; x++)
+                for (int y = 0; y < leny; y++)
+                    for (int z = 0; z < lenz; z++)
+                        res[x, y, z] = new Vector3(coords_x[x], coords_y[y], coords_z[z]);
+            return res;
+        }
+
+
+        public static void GetSurfaceEquation(Vector3 p1, Vector3 p2, Vector3 p3, ref float A, ref float B, ref float C, ref float D)
+        {
+            A = p1.Y * (p2.Z - p3.Z) + p2.Y * (p3.Z - p1.Z) + p3.Y * (p1.Z - p2.Z);
+            B = p1.Z * (p2.X - p3.X) + p2.Z * (p3.X - p1.X) + p3.Z * (p1.X - p2.X);
+            C = p1.X * (p2.Y - p3.Y) + p2.X * (p3.Y - p1.Y) + p3.X * (p1.Y - p2.Y);
+            D = -(p1.X * (p2.Y * p3.Z - p3.Y * p2.Z) + p2.X * (p3.Y * p1.Z - p1.Y * p3.Z) + p3.X * (p1.Y * p2.Z - p2.Y * p1.Z));
+
+            //A = y1 * (z2 - z3) + y2 * (z3 - z1) + y3 * (z1 - z2);
+            //B = z1 * (x2 - x3) + z2 * (x3 - x1) + z3 * (x1 - x2);
+            //C = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
+            //D = -(x1 * (y2 * z3 - y3 * z2) + x2 * (y3 * z1 - y1 * z3) + x3 * (y1 * z2 - y2 * z1));
+        }
+
+        public static bool isPointInsideOfThePolygon(Vector2[] points, Vector2 p)
+        {
+            if (points.Length < 3)
+                return false;
+
+            Vector2 p1, p2;
+            bool inside = false;
+            var oldPoint = new Vector2(
+                points[points.Length - 1].X, points[points.Length - 1].Y);
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                var newPoint = new Vector2(points[i].X, points[i].Y);
+                if (newPoint.X > oldPoint.X)
+                {
+                    p1 = oldPoint;
+                    p2 = newPoint;
+                }
+                else
+                {
+                    p1 = newPoint;
+                    p2 = oldPoint;
+                }
+
+                if ((newPoint.X < p.X) == (p.X <= oldPoint.X)
+                    && (p.Y - (long)p1.Y) * (p2.X - p1.X)
+                    < (p2.Y - (long)p1.Y) * (p.X - p1.X))
+                {
+                    inside = !inside;
+                }
+
+                oldPoint = newPoint;
+            }
+
+            return inside;
+        }
+
+        public static Vector3 GetCentralPoint(params Vector3[] vectors)
+        {
+            Vector3 central_point = Vector3.Zero;
+            for (int i = 0; i < vectors.Length; i++) central_point += vectors[i] / vectors.Length;
+            return central_point;
+        }
+
+
+        #endregion
 
         #region old unused things ?
 

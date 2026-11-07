@@ -26,6 +26,19 @@ namespace Celeste.Mod.MeliHelper
 
 
         public BadelinePowerParams BadelinePower_Params { get; set; }
+
+
+
+
+        public Dictionary<string, CubeSessionInfo> CubeInfo { get; set; } = new Dictionary<string, CubeSessionInfo>();
+        public int Points { get; set; }
+        public string Seed { get; set; }
+        public int SeedID { get; set; }
+        public bool RerollSeedOnDeath { get; set; } = true;
+        public bool RerollSeedOnSolve { get; set; } = false;
+        public bool HideSeed { get; set; } = false;
+        //public bool GoldenCollected { get; set; } = false;
+        //public bool RestoreCubesOnRoomEnter { get; set; } = true;
     }
 
     class BattleCityPlayerInfo
@@ -144,5 +157,13 @@ namespace Celeste.Mod.MeliHelper
         {
             CurrentPower = Math.Max(CurrentPower, FullPower) + val_additional;
         }
+    }
+
+
+    class CubeSessionInfo
+    {
+        public string GetSeed { get; set; }
+        public bool isCubeSolved { get; set; }
+        public JournalSession GetJournal { get; set; }
     }
 }

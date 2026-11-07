@@ -9,10 +9,10 @@ namespace Celeste.Mod.MeliHelper
 {
     class CustomVirtualButtonChecker
     {
-        ButtonBinding button;
+        VirtualButton button;
         bool is_pressed_old;
 
-        public CustomVirtualButtonChecker(ButtonBinding button)
+        public CustomVirtualButtonChecker(VirtualButton button)
         {
             this.button = button;
         }
@@ -26,6 +26,11 @@ namespace Celeste.Mod.MeliHelper
             }
             is_pressed_old = button.Pressed;
             return false;
+        }
+
+        public void Clear()
+        {
+            is_pressed_old = true;
         }
     }
 }
