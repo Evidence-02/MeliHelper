@@ -1,5 +1,5 @@
 - Name: MeliHelper
-  Version: 1.3.0
+  Version: 1.4.0.1
   DLL: Code/bin/Debug/MeliHelper.dll
   Dependencies:
     - Name: Everest

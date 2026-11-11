@@ -26,7 +26,7 @@ namespace Celeste.Mod.MeliHelper
         string id;
         bool is_can_rotate_x, is_can_rotate_y, is_can_rotate_z, is_rotate_clockwise;
         bool is_generate_borders, is_generate_insides, is_flickering, is_short_name_in_journal, is_solved_from_start;
-        int id_scramble, count_points_on_solve, count_faces_need_to_be_solved;
+        int id_scramble, count_points_on_solve;
         float rotate_time_manual, rotate_time_scramble, cube_size, delay_scramble;
         int[] scramble_rotates;
 
@@ -207,26 +207,9 @@ namespace Celeste.Mod.MeliHelper
             foreach (var item in list_stickers)
                 Add(item);
             
-
-
-
             // FACES
             GenerateFaces();
             
-            // for some math reason white and yellow faces couldn't be solved in Mirror Floppy
-            // ...so i removed them! if all other faces are solved, the cube is solved too
-            if (type == RCMEnum_CubeType.MirrorFloppy)
-                list_faces.RemoveAll(t => !t.isSolved());
-
-            count_faces_need_to_be_solved = list_faces.Count;
-
-            // in the Kilominx and Megaminx front and back faces can't be solved too... and they can be moved....................
-            if (type == RCMEnum_CubeType.Kilominx || type == RCMEnum_CubeType.Megaminx)
-                count_faces_need_to_be_solved -= 2;
-
-
-
-
 
             Color recolor = Color.Black;
             if (type == RCMEnum_CubeType.Mirror || type == RCMEnum_CubeType.Mirror22) recolor = Color.White;
@@ -549,7 +532,7 @@ namespace Celeste.Mod.MeliHelper
             {
                 // center
                 Color clr = (del.Z > 0) ? COLOR_UP : COLOR_DOWN;
-                list_stickers.Add(new Sticker(clr, vC[0] + del, vC[1] + del, vC[2] + del, vC[3] + del, vC[4] + del));
+                list_stickers.Add(new Sticker(clr, vC[0] + del, vC[1] + del, vC[2] + del, vC[3] + del, vC[4] + del) { isFaceSticker = false });
 
                 // star
                 list_stickers.Add(new Sticker(clr, vC[0] + del, vC[1] + del, vL[2] + del, vR[0] + del));
@@ -1325,9 +1308,9 @@ namespace Celeste.Mod.MeliHelper
         void GenerateFaces()
         {
             Dictionary<Color, Face> dict_faces = new Dictionary<Color, Face>();
-            //float koef_sticker_shift = (type == CubeTypeEnum.Kilominx || type == CubeTypeEnum.Megaminx) ? 0.021f : 0.001f;
-            //float koef_sticker_shift = 0.001f;
-            float koef_sticker_shift = (type == RCMEnum_CubeType.MirrorFloppy) ? 0.005f : 0.001f;
+            float koef_sticker_shift = (type == RCMEnum_CubeType.Kilominx || type == RCMEnum_CubeType.Megaminx) ? 0.1f 
+                                     : (type == RCMEnum_CubeType.MirrorFloppy) ? 0.005f 
+                                     : 0.001f;
             foreach (Sticker sticker in list_stickers.FindAll(t => t.isFaceSticker))
             {
                 Color key = sticker.GetColor;
@@ -1400,7 +1383,7 @@ namespace Celeste.Mod.MeliHelper
                 event_rotate.Update();
                 if (event_rotate.isFinished)
                 {
-                    if (state != RCMEnum_CubeState.Scramble && count_faces_need_to_be_solved <= list_faces.Count(t => t.isSolved())) // && !MeliHelperModule.Instance.Session.SolvedCubes.Contains(this.type))
+                    if (state != RCMEnum_CubeState.Scramble && list_faces.Count <= list_faces.Count(t => t.isSolved())) // && !MeliHelperModule.Instance.Session.SolvedCubes.Contains(this.type))
                     {
                         state = RCMEnum_CubeState.Solved;
                         MeliHelperModule.Instance.Session.Points += this.count_points_on_solve;
