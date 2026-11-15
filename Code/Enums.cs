@@ -83,6 +83,7 @@ namespace Celeste.Mod.MeliHelper
     {
         Main, Scheme1, Scheme2, Scheme3
     }
+    public enum RCMEnum_ShowUI { None, Short, Normal, Extended }
 
 
 

@@ -31,19 +31,41 @@ namespace Celeste.Mod.MeliHelper
             return true;
         }
 
-        public void RenderDebug(Vector2 pos)
+        public void RenderUI(ref float dx, ref float dy)
         {
-            Draw.Rect(pos, 6, 6, color);
-            CustomTextController.DrawText(isSolved() ? "SOLVED" : "SCRAMBLED", pos + new Vector2(8, 0), Color.White);
-        }
+            Draw.Rect(new Vector2(dx + 10, dy + 10), 180, 40, color);
 
-        public void RenderDebugDetail(Vector2 pos)
-        {
-            Draw.Rect(pos, 6, 6, color);
-            foreach (var item in list_stickers)
+            bool is_solved = isSolved();
+            if (is_solved)
+                ActiveFont.DrawOutline(text: "SOLVED", position: new Vector2(dx + 100, dy + 25), justify: new Vector2(0.5f), scale: new Vector2(0.3f), color: Color.White, stroke: 2, strokeColor: Color.Black);
+            else
+                ActiveFont.Draw(text: "SCRAMBLED", position: new Vector2(dx + 100, dy + 25), justify: new Vector2(0.5f), scale: new Vector2(0.3f), color: Methods.GetColorBetween(color, Color.Black, 0.3f));
+
+            if (   MeliHelperModule.Settings.DebugTools.RubiksShowDebugUI != RCMEnum_ShowUI.None 
+                && MeliHelperModule.Settings.DebugTools.RubiksShowDebugUI != RCMEnum_ShowUI.Short)
             {
-                CustomTextController.DrawText(item.GetFaceCode(koef_sticker_shift), pos + new Vector2(8, 0), Color.White);
-                pos.Y += 8;
+                bool is_extended = (MeliHelperModule.Settings.DebugTools.RubiksShowDebugUI == RCMEnum_ShowUI.Extended);
+                foreach (Sticker sticker in list_stickers)
+                {
+                    ActiveFont.DrawOutline(text: sticker.GetFaceCode(koef_sticker_shift, is_extended: is_extended), position: new Vector2(dx + 200, dy),
+                        justify: Vector2.Zero, scale: new Vector2(0.4f), color: Color.White, stroke: 2, strokeColor: Color.Black);
+                    dy += 16;
+                    if (dy >= 1080)
+                    {
+                        dy = 0;
+                        dx += 300;
+                    }
+                }
+                dy += 24;
+            }
+            else
+                dy += 50;
+
+
+            if (dy >= 1080)
+            {
+                dy = 0;
+                dx += 300;
             }
         }
     }

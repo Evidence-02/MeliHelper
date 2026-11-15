@@ -93,12 +93,17 @@ namespace Celeste.Mod.MeliHelper
             return Methods.GetCentralPoint(GetVertices);
         }
 
-        public string GetFaceCode(float koef)
+        public string GetFaceCode(float koef, bool is_extended = false)
         {
             if (length < 3) return "";
 
             float A = 0, B = 0, C = 0, D = 0;
             Methods.GetSurfaceEquation(GetVertices[0], GetVertices[1], GetVertices[2], ref A, ref B, ref C, ref D);
+            if (is_extended)
+                return ((int)(A * 1000)).ToString() + " "
+                     + ((int)(B * 1000)).ToString() + " "
+                     + ((int)(C * 1000)).ToString();
+
             return (Math.Abs(A) < koef ? "0" : A > 0 ? "+" : "-")
                  + (Math.Abs(B) < koef ? "0" : B > 0 ? "+" : "-")
                  + (Math.Abs(C) < koef ? "0" : C > 0 ? "+" : "-")

@@ -23,6 +23,7 @@ namespace Celeste.Mod.MeliHelper
         Color COLOR_UP, COLOR_DOWN, COLOR_LEFT, COLOR_RIGHT, COLOR_FRONT, COLOR_BACK, COLOR_BORDER, COLOR_INSIDE;
         Journal journal;
         RotationEvent event_rotate;
+        DebugRubikFacesUI ui_debug;
         string id;
         bool is_can_rotate_x, is_can_rotate_y, is_can_rotate_z, is_rotate_clockwise;
         bool is_generate_borders, is_generate_insides, is_flickering, is_short_name_in_journal, is_solved_from_start;
@@ -128,7 +129,8 @@ namespace Celeste.Mod.MeliHelper
             {
                 id_scramble = 0;
                 Clear();
-                state = RCMEnum_CubeState.Scramble;
+                if (!MeliHelperModule.Settings.DebugTools.RubiksTestMode)
+                    state = RCMEnum_CubeState.Scramble;
 
                 SeedController.RestartRandomizer();
                 for (int i = 0; i < scramble_rotates.Length; i++)
@@ -154,6 +156,8 @@ namespace Celeste.Mod.MeliHelper
                 foreach (var item in level.Entities.FindAll<RubikCubeProjectionEntity>())
                     item.RemoveSelf();
             }
+            if (MeliHelperModule.Settings.DebugTools.RubiksShowDebugUI != RCMEnum_ShowUI.None)
+                level.Add(ui_debug = new DebugRubikFacesUI(this));
         }
 
         public void Descramble()
@@ -211,12 +215,15 @@ namespace Celeste.Mod.MeliHelper
             GenerateFaces();
             
 
-            Color recolor = Color.Black;
-            if (type == RCMEnum_CubeType.Mirror || type == RCMEnum_CubeType.Mirror22) recolor = Color.White;
-            if (type == RCMEnum_CubeType.MirrorFloppy) recolor = Color.Gold;
-            if (recolor != Color.Black)
-                foreach (var item in list_stickers.FindAll(t => t.isFaceSticker))
-                    item.SetColor(recolor);
+            if (!MeliHelperModule.Settings.DebugTools.RubiksDontRecolorMirrorCubes)
+            {
+                Color recolor = Color.Black;
+                if (type == RCMEnum_CubeType.Mirror || type == RCMEnum_CubeType.Mirror22) recolor = Color.White;
+                if (type == RCMEnum_CubeType.MirrorFloppy) recolor = Color.Gold;
+                if (recolor != Color.Black)
+                    foreach (var item in list_stickers.FindAll(t => type == RCMEnum_CubeType.MirrorFloppy || t.isFaceSticker))
+                        item.SetColor(recolor);
+            }
 
 
 
@@ -1383,7 +1390,7 @@ namespace Celeste.Mod.MeliHelper
                 event_rotate.Update();
                 if (event_rotate.isFinished)
                 {
-                    if (state != RCMEnum_CubeState.Scramble && list_faces.Count <= list_faces.Count(t => t.isSolved())) // && !MeliHelperModule.Instance.Session.SolvedCubes.Contains(this.type))
+                    if (state != RCMEnum_CubeState.Scramble && !MeliHelperModule.Settings.DebugTools.RubiksTestMode && list_faces.Count <= list_faces.Count(t => t.isSolved())) // && !MeliHelperModule.Instance.Session.SolvedCubes.Contains(this.type))
                     {
                         state = RCMEnum_CubeState.Solved;
                         MeliHelperModule.Instance.Session.Points += this.count_points_on_solve;
@@ -1434,26 +1441,16 @@ namespace Celeste.Mod.MeliHelper
                 case RCMEnum_CubeState.Normal: break;
                 case RCMEnum_CubeState.Solved: break;
             }
+
+            // Show UI immediately, if it switched in ModOptions
+            if (MeliHelperModule.Settings.DebugTools.RubiksShowDebugUI != RCMEnum_ShowUI.None && ui_debug == null && SceneAs<Level>() != null)
+                SceneAs<Level>().Add(ui_debug = new DebugRubikFacesUI(this));
         }
 
         public override void Render()
         {
             base.Render();
             projection.Render();
-        }
-
-        public void RenderDebugFaces(Vector2 pos)
-        {
-            foreach (var item in list_faces)
-            {
-                item.RenderDebug(pos);
-                pos.Y += 8;
-            }
-        }
-
-        public void RenderDebugFaceDetail(Vector2 pos, int id_face)
-        {
-            list_faces[id_face].RenderDebugDetail(pos);
         }
 
         IEnumerator CutsceneSolve()
@@ -1512,45 +1509,31 @@ namespace Celeste.Mod.MeliHelper
             }
         }
 
-        public string GetCubeID
+        #region properties
+
+        public void AddAxis(Axis axis)
         {
-            get
-            {
-                return id;
-            }
+            list_axis.Add(axis);
         }
 
-        public Journal GetJournalManual
+        public void AddSticker(Sticker sticker)
         {
-            get
-            {
-                return journal;
-            }
+            list_stickers.Add(sticker);
         }
 
-        public CubeProjection GetProjection
+        public void SetGrid(RotationGrid grid)
         {
-            get
-            {
-                return projection;
-            }
+            this.grid = grid;
         }
 
-        public List<Sticker> GetListStickers
-        {
-            get
-            {
-                return list_stickers;
-            }
-        }
-
-        public RCMEnum_CubeState GetState
-        {
-            get
-            {
-                return state;
-            }
-        }
+        public string GetCubeID { get { return id; } }
+        public Journal GetJournalManual { get { return journal; } }
+        public CubeProjection GetProjection { get { return projection; } }
+        public List<Sticker> GetListStickers { get { return list_stickers; } }
+        public List<Face> GetListFaces { get { return list_faces; } }
+        public RCMEnum_CubeState GetState { get { return state; } }
+        public float GetCubeSize { get { return cube_size; } }
+        public bool isGenerateInsides { get { return is_generate_insides; } }
 
         public bool isRotateClockwise
         {
@@ -1568,12 +1551,13 @@ namespace Celeste.Mod.MeliHelper
         {
             get
             {
-                if (state == RCMEnum_CubeState.Scramble)
+                if (state == RCMEnum_CubeState.Scramble && scramble_rotates.Length > 0)
                     return (100 * id_scramble / scramble_rotates.Length);
 
                 return 0;
             }
         }
 
+        #endregion
     }
 }

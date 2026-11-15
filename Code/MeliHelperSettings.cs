@@ -69,6 +69,14 @@ namespace Celeste.Mod.MeliHelper
             public bool LaniHookShowHitboxes { get; set; } = false;
             public bool MinesweeperSolvedFromStart { get; set; } = false;
             public bool MinesweeperCantLose { get; set; } = false;
+
+
+            public bool RubiksDontRecolorMirrorCubes { get; set; } = false;
+            public bool RubiksTestMode { get; set; } = false;
+            public RCMEnum_ShowUI RubiksShowDebugUI { get; set; } = RCMEnum_ShowUI.None;
+
+
+
         }
         [SettingName("EVIDENCE02_MELIHELPER_DEBUGTOOLS")]
         public Debug_Tools DebugTools { get; set; } = new Debug_Tools();

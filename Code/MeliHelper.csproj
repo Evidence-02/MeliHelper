@@ -252,8 +252,7 @@
     <Compile Include="_RCM\Entities\CustomRubikPointsDoor.cs" />
     <Compile Include="_RCM\Entities\CustomRubikSolvedSignal.cs" />
     <Compile Include="_RCM\Entities\CustomRubikWaveText.cs" />
-    <Compile Include="_RCM\Entities\DebugRubikFacesDetail.cs" />
-    <Compile Include="_RCM\Entities\DebugRubikFacesInfo.cs" />
+    <Compile Include="_RCM\Entities\DebugRubikFacesUI.cs" />
     <Compile Include="_RCM\Entities\RubikBlockRotateAxis.cs" />
     <Compile Include="_RCM\Entities\RubikCube.cs" />
     <Compile Include="_RCM\Entities\RubikCubeProjectionEntity.cs" />
